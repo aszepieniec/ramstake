@@ -120,8 +120,14 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_mod(s, s, p);
 
     /* draw pseudorandom stream from integer */
-    /* TODO: we only care about the first (most significant) 1020 bytes. */
-    mpz_export(c->e, NULL, 1, 1, 1, 0, s);
+    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
+    mpz_export(data, NULL, 1, 1, 1, 0, s);
+    /* we only care about the first (most significant) 1020 bytes. */
+    for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+    {
+        c->e[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+    }
+    free(data);
 
     /* encode seed using reed-solomon ecc */
     data = malloc(RS_N);
@@ -150,7 +156,11 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_clear(g);
 }
 
-
+/**
+ * ramstake_decaps
+ * Decapsulate symmetric key from ramstake ciphertext, and check for
+ * manipulation.
+ */
 int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret_key sk, int kat )
 {
     csprng rng;
@@ -159,14 +169,17 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     mpz_t g, p;
     mpz_t s;
     unsigned char * data;
+    unsigned char word[RAMSTAKE_SEEDENC_LENGTH];
+    unsigned char seed[RAMSTAKE_SEED_LENGTH];
     ramstake_public_key pk;
+    ramstake_ciphertext rec;
 
     /* initialize pk object */
     ramstake_public_key_init(&pk);
 
     /* recreate the csprng from keygen */
     csprng_init(&rng);
-    csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, sk->seed);
+    csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, sk.seed);
 
     /* initialize modulus */
     mpz_init(p);
@@ -185,7 +198,7 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
         pk.seed[i] = data[i];
     }
 
-    /* generate data stream integer s */
+    /* generate data stream integer s = da mod p */
     mpz_init(s);
     mpz_mul(s, c.d, sk.a);
     mpz_mod(s, s, p);
@@ -193,6 +206,63 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     /* turn noisy-shared integer s into noisy-shared data stream */
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
     mpz_export(data, NULL, 1, 1, 1, 0, s);
+
+    for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+    {
+        word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+    }
+    free(data);
+
+    /* xor encoded string e into our noisy codeword */
+    for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+    {
+        word[i] ^= c.e[i];
+    }
+
+    /* decode any one of the codewords */
+    for( i = 0 ; i < RAMSTAKE_CODEWORD_NUMBER ; ++i )
+    {
+        if( rs_decode(seed, word + i*255) == 0 )
+        {
+            break;
+        }
+    }
+    if( i == RAMSTAKE_CODEWORD_NUMBER ) /* no word was decodable */
+    {
+        mpz_clear(g);
+        mpz_clear(p);
+        mpz_clear(s);
+        ramstake_public_key_destroy(pk);
+        return -1; /* decapsulation failure */
+    }
+
+    /* now we have the seed that generated the ciphertext, let's see
+     * if we can recreate the entire thing */
+    ramstake_ciphertext_init(&rec);
+    mpz_mul(pk.c, g, sk.a);
+    mpz_add(pk.c, pk.c, sk.b);
+    mpz_mod(pk.c, pk.c, p);
+    ramstake_encaps(&rec, key, pk, seed, kat);
+
+    /* decide whether the entire recreated ciphertext is identical */
+    if( mpz_cmp(rec.d, c.d) == 0 && strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 )
+    {
+        mpz_clear(g);
+        mpz_clear(p);
+        mpz_clear(s);
+        ramstake_public_key_destroy(pk);
+        ramstake_ciphertext_destroy(rec);
+        return 0; /* success */
+    }
+    else
+    {
+        mpz_clear(g);
+        mpz_clear(p);
+        mpz_clear(s);
+        ramstake_public_key_destroy(pk);
+        ramstake_ciphertext_destroy(rec);
+        return -2; /* forgery attempt */
+    }
 }
 
 /**
@@ -264,12 +334,28 @@ void ramstake_secret_key_init( ramstake_secret_key * sk )
     mpz_init(sk->a);
     mpz_init(sk->b);
 }
+void ramstake_secret_key_destroy( ramstake_secret_key sk )
+{
+    mpz_clear(sk.a);
+    mpz_clear(sk.b);
+}
 
-void ramstake_secret_key_destroy( ramstake_secret_key sk );
-void ramstake_public_key_init( ramstake_public_key * pk );
-void ramstake_public_key_destroy( ramstake_public_key pk );
-void ramstake_ciphertext_init( ramstake_ciphertext * c );
-void ramstake_ciphertext_destroy( ramstake_ciphertext c );
+void ramstake_public_key_init( ramstake_public_key * pk )
+{
+    mpz_init(pk->c);
+}
+void ramstake_public_key_destroy( ramstake_public_key pk )
+{
+    mpz_clear(pk.c);
+}
+void ramstake_ciphertext_init( ramstake_ciphertext * c )
+{
+    mpz_init(c->d);
+}
+void ramstake_ciphertext_destroy( ramstake_ciphertext c )
+{
+    mpz_clear(c.d);
+}
 
 void ramstake_export_secret_key( unsigned char * data, ramstake_secret_key sk );
 void ramstake_import_secret_key( ramstake_secret_key * sk, unsigned char * data );

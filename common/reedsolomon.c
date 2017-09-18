@@ -38,7 +38,7 @@ int rs_encode( unsigned char * dest, unsigned char * source )
     }
     gf256x_destroy(codeword);
 
-    return 1;
+    return 0;
 }
 
 /**
@@ -67,8 +67,7 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     }
     if( all_zero == 1 )
     {
-        rs_decode_error_free(dest, source);
-        return 1;
+        return rs_decode_error_free(dest, source);
     }
 
     /* convert syndrome to polynomial */
@@ -110,7 +109,7 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     gf256x_destroy(omega);
     gf256x_destroy(sigma_deriv);
 
-    return 1;
+    return 0;
 }
 
 /**
@@ -143,17 +142,21 @@ int rs_syndrome( unsigned char * syndrome, unsigned char * word )
         syndrome[i-1] = ev;
     }
 
-    return 1;
+    return 0;
 }
 
 /**
  * rs_decode_error_free
  * Decode a noise-free codeword.
+ * @returns:
+ *  * 0 if decoding succeeded; 1 otherwise (indicating the given word
+ *    was not a codeword)
  */
 int rs_decode_error_free( unsigned char * dest, unsigned char * source )
 {
     gf256x s, d;
     int i;
+    int ret;
 
     s = gf256x_init(RS_N-1);
     d = gf256x_init(RS_K);
@@ -163,7 +166,7 @@ int rs_decode_error_free( unsigned char * dest, unsigned char * source )
         s.data[i] = source[i];
     }
 
-    rs_decode_polynomial(&d, s);
+    ret = rs_decode_polynomial(&d, s);
 
     for( i = 0 ; i < RS_K ; ++i )
     {
@@ -173,7 +176,7 @@ int rs_decode_error_free( unsigned char * dest, unsigned char * source )
     gf256x_destroy(s);
     gf256x_destroy(d);
 
-    return 1;
+    return ret;
 }
 
 /**
@@ -240,7 +243,7 @@ int rs_interrupted_euclidean( gf256x * a, gf256x * b, gf256x x, gf256x y )
     gf256x_destroy(temp);
     gf256x_destroy(prod);
 
-    return 1;
+    return 0;
 }
 
 /**
@@ -269,7 +272,7 @@ int rs_formal_derivative( gf256x * Df, gf256x f )
         }
     }
 
-    return 1;
+    return 0;
 }
 
 /**
@@ -295,27 +298,32 @@ int rs_errors( unsigned char * errors, gf256x sigma, gf256x sigma_deriv, gf256x 
             errors[i] = 0;
         }
     }
+
+    return 0;
 }
 
 /**
  * rs_decode_polynomial
  * Decode a codeword-polynomial (with no noise) into a message-
  * polynomial.
+ * @returns:
+ *  * 0 if division was clean; 1 if there was a nonzero remainder.
  */
 int rs_decode_polynomial( gf256x * dest, gf256x codeword )
 {
     gf256x rem;
     gf256x generator;
+    int ret;
 
     rem = gf256x_init(0);
     generator.data = generator_data;
     generator.degree = generator_degree;
 
     gf256x_divide(dest, &rem, codeword, generator);
-
+    ret = !gf256x_is_zero(rem);
     gf256x_destroy(rem);
 
-    return 1;
+    return ret;
 }
 
 
