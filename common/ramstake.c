@@ -313,7 +313,11 @@ void ramstake_modulus_init( mpz_t p )
     mpz_init(difference);
 
     /* set modulus p to p = 2^bitsize - difference */
-    mpz_set_ui(difference, 311323);
+#if RAMSTAKE_MODULUS_BITSIZE == 22040 
+    mpz_set_ui(difference, 2325); 
+#elif RAMSTAKE_MODULUS_BITSIZE == 16352
+    mpz_set_ui(difference, 28169); 
+#endif
     mpz_set_ui(p, 1);
     mpz_mul_2exp(p, p, RAMSTAKE_MODULUS_BITSIZE);
     mpz_sub(p, p, difference);
