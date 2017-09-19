@@ -1,4 +1,29 @@
 load("reedsolomon.sage")
+from csprng import csprng
+
+RAMSTAKE_SEED_LENGTH = 32
+RAMSTAKE_KEY_LENGTH = 32
+RAMSTAKE_MODULUS_BITSIZE = 16352
+RAMSTAKE_SEEDENC_LENGTH = 1020
+RAMSTAKE_SECRET_BITSIZE = 12264
+RAMSTAKE_SECRET_SPARSITY = 23
+
+def ramstake_sample_small_sparse_integer( seed ):
+    rng = csprng()
+    rng.seed(bytearray(seed))
+
+    integer = 2^RAMSTAKE_SECRET_BITSIZE
+
+    for i in range(0, RAMSTAKE_SECRET_SPARSITY):
+        r = rng.generate(8)
+        uli = sum([256^i * r[i] for i in range(0,len(r))])
+        difference = 2^((uli >> 1) % RAMSTAKE_SECRET_BITSIZE)
+        if uli % 2 == 1:
+            integer -= difference
+        else:
+            integer += difference
+
+    return integer
 
 def Parameters( security_level ):
     kappa = 2*security_level

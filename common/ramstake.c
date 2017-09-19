@@ -16,8 +16,22 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
     unsigned char * data;
     mpz_t g, p;
 
+    mpz_init(p);
+    mpz_init(g);
+
     csprng_init(&rng);
     csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, random_seed);
+
+    if( kat == 1 )
+    {
+        printf("# ramstake_keygen\n");
+        printf("seed:  ");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+        {
+            printf("%02x", random_seed[i]);
+        }
+        printf("\n");
+    }
 
     /* record random seed into secret key */
     /* (In theory, the secret key need not contain any other data
@@ -29,7 +43,6 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
     }
 
     /* init modulus */
-    mpz_init(p);
     ramstake_modulus_init(p);
 
     /* generate randomness for g */
@@ -40,9 +53,21 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
     csprng_seed(&rng2, RAMSTAKE_SEED_LENGTH, pk->seed);
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
     csprng_generate(&rng2, RAMSTAKE_MODULUS_BITSIZE/8, data);
-    mpz_init(g);
     mpz_import(g, RAMSTAKE_MODULUS_BITSIZE/8, 1, sizeof(unsigned char), 1, 0, data);
     free(data);
+
+    if( kat == 1 )
+    {
+        printf("seed for generating g: ");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+        {
+            printf("%02x", pk->seed[i]);
+        }
+        printf("\n");
+        printf("g: ");
+        mpz_out_str(stdout, 10, g);
+        printf("\n");
+    }
 
     /* sample sk integers a and b */
     data = malloc(RAMSTAKE_SEED_LENGTH);
@@ -62,6 +87,7 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
 
     /* free remaining unfreed variables */
     mpz_clear(p);
+    mpz_clear(g);
 
     return 0;
 }
