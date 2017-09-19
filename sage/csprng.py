@@ -36,3 +36,10 @@ class csprng:
 
         return output
 
+    def generate_ulong( self ):
+        output = self.generate(8)
+        acc = 0
+        for i in range(0, 8):
+            acc = acc * 256 + output[8-1-i]
+        return acc
+
