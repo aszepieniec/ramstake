@@ -1,5 +1,6 @@
 load("reedsolomon.sage")
 from csprng import csprng
+from binascii import hexlify
 
 RAMSTAKE_SEED_LENGTH = 32
 RAMSTAKE_KEY_LENGTH = 32
@@ -24,6 +25,46 @@ def ramstake_sample_small_sparse_integer( seed ):
             integer += difference
 
     return integer
+
+def ramstake_generate_g( seed ):
+    rng = csprng()
+    rng.seed(bytearray(seed))
+    data = rng.generate(RAMSTAKE_MODULUS_BITSIZE/8)
+
+    g = 0
+    for i in range(0,len(data)):
+        g = 256*g + data[i]
+
+    print "got g."
+
+    return g
+
+def ramstake_keygen( random_seed, kat ):
+    rng = csprng()
+    rng.seed(random_seed)
+
+    if kat == 1:
+        print "# ramstake_keygen"
+        print "seed: ", hexlify(random_seed)
+
+    print "getting p ..."
+
+    p = 2^RAMSTAKE_MODULUS_BITSIZE
+    if RAMSTAKE_MODULUS_BITSIZE == 16352:
+        p -= 28169
+    elif RAMSTAKE_MODULUS_BITSIZE == 22040:
+        p -= 2325
+
+    print "got p; getting g"
+
+    seed = rng.generate(RAMSTAKE_SEED_LENGTH)
+    print "got seed for g"
+    g = ramstake_generate_g(seed)
+    if kat == 1:
+        print "seed for generating g:", hexlify(seed)
+        print "g:", g
+
+    return 0, 1
 
 def Parameters( security_level ):
     kappa = 2*security_level

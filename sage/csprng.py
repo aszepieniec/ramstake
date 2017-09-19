@@ -1,4 +1,5 @@
 from CompactFIPS202 import KeccakF1600
+from math import floor
 import binascii
 
 class csprng:
@@ -31,7 +32,7 @@ class csprng:
 
         # squeeze out remaining output blocks
         for j in range(0, length % self.gen_rate):
-            output[(length//self.gen_rate)*self.gen_rate + j] = self.state[j]
+            output[int(length//self.gen_rate)*self.gen_rate + j] = self.state[j]
         self.state = KeccakF1600(self.state)
 
         return output
