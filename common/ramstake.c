@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <keccak/SimpleFIPS202.h>
+#include <libkeccak.a.headers/SimpleFIPS202.h>
 #include "ramstake.h"
 #include "csprng.h"
 #include "reedsolomon.h"
