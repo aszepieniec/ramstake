@@ -4,7 +4,7 @@ class ReedSolomon:
         p = 2
         self.m = m
         self.n = p^m - 1
-        self.F = FiniteField(p^m, "z")
+        self.F = FiniteField(p^m, "z", "conway")
         self.z = self.F.gen()
 
         # get compatible polynomial ring
@@ -37,6 +37,27 @@ class ReedSolomon:
             coeffs.append(0)
 
         return coeffs
+
+    def CastField( self, byte ):
+        acc = self.F(0)
+        for i in range(0, 8):
+            if byte & (2^i) != 0:
+                acc += self.z^(i)
+        return acc
+
+    def CastByte( self, field ):
+        if field == 0:
+            return 0
+        coeffs = field.polynomial().coefficients(sparse=False)
+        acc = 0
+        for i in range(0, len(coeffs)):
+            acc += ZZ(coeffs[i]) * 2^(i)
+        return acc
+
+    def EncodeBytes( self, msg ):
+        msg_ = [self.CastField(m) for m in msg]
+        cdwd = self.Encode(msg_)
+        return bytearray([self.CastByte(c) for c in cdwd])
 
     def Reduce( self, L ):
         while True:
@@ -112,6 +133,9 @@ class ReedSolomon:
         poly = self.Fx(0)
         for i in range(0, len(codeword)):
             poly += codeword[i] * self.x^i
+        rem = poly % self.generator
+        if rem == 0:
+            return [self.F(0)] * self.k
         quo = poly // self.generator
         coeffs = [self.F(0) for i in range(0, self.k)]
         for i in range(0, quo.degree()+1):
@@ -128,4 +152,9 @@ class ReedSolomon:
         e = self.DecodeSyndrome(s)
         corrected = [received[i] + e[i] for i in range(0, self.n)]
         return self.DecodeErrorFree(corrected)
+
+    def DecodeBytes( self, received ):
+        rec_ = [self.CastField(r) for r in received]
+        word = self.Decode(rec_)
+        return [self.CastByte(w) for w in word]
 
