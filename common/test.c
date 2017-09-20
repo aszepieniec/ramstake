@@ -17,6 +17,9 @@ int main( int argc, char ** argv )
 
     ramstake_public_key pk;
     ramstake_secret_key sk;
+    ramstake_ciphertext c;
+    unsigned char key1[RAMSTAKE_KEY_LENGTH];
+    unsigned char key2[RAMSTAKE_KEY_LENGTH];
 
     if( argc != 2 || strlen(argv[1]) % 2 != 0 )
     {
@@ -39,14 +42,23 @@ int main( int argc, char ** argv )
 
     ramstake_public_key_init(&pk);
     ramstake_secret_key_init(&sk);
+    ramstake_ciphertext_init(&c);
 
     seed = malloc(RAMSTAKE_SEED_LENGTH);
     csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
     ramstake_keygen(&sk, &pk, seed, 1);
     free(seed);
 
+    seed = malloc(RAMSTAKE_SEED_LENGTH);
+    csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
+    ramstake_encaps(&c, key1, pk, seed, 1);
+    free(seed);
+
+    ramstake_decaps(key2, c, sk, 1);
+
     ramstake_public_key_destroy(pk);
     ramstake_secret_key_destroy(sk);
+    ramstake_ciphertext_destroy(c);
 
     return 0;
 }

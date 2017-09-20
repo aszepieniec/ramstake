@@ -36,7 +36,7 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
     /* record random seed into secret key */
     /* (In theory, the secret key need not contain any other data
      * because it can be generated from this seed. Nevertheless, we
-     * include it directly for faster computations.) */
+     * include the other data directly for faster computations.) */
     for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
     {
         sk->seed[i] = random_seed[i];
@@ -80,10 +80,28 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
     ramstake_sample_small_sparse_integer(sk->b, data);
     free(data);
 
+    if( kat == 1 )
+    {
+        printf("Sampled short and sparse integers a and b.\n");
+        printf("a: ");
+        mpz_out_str(stdout, 10, sk->a);
+        printf("\nb: ");
+        mpz_out_str(stdout, 10, sk->b);
+        printf("\n");
+    }
+
     /* compute pk integer c = ag + b mod p */
     mpz_mul(pk->c, g, sk->a);
     mpz_add(pk->c, pk->c, sk->b);
     mpz_mod(pk->c, pk->c, p);
+
+    if( kat == 1 )
+    {
+        printf("Computed c = ag + b mod p.\n");
+        printf("c: ");
+        mpz_out_str(stdout, 10, pk->c);
+        printf("\n");
+    }
 
     /* free remaining unfreed variables */
     mpz_clear(p);
@@ -113,6 +131,17 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     csprng_init(&rng);
     csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, randomness);
 
+    if( kat == 1 )
+    {
+        printf("# ramstake_encaps\n");
+        printf("seed: ");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+        {
+            printf("%02x", randomness[i]);
+        }
+        printf("\n");
+    }
+
     /* sample integers a, b */
     mpz_init(a);
     data = malloc(RAMSTAKE_SEED_LENGTH);
@@ -125,6 +154,15 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, data);
     ramstake_sample_small_sparse_integer(b, data);
     free(data);
+    if( kat == 1 )
+    {
+        printf("Sampled short and sparse integers a and b.\n");
+        printf("a: ");
+        mpz_out_str(stdout, 10, a);
+        printf("\nb: ");
+        mpz_out_str(stdout, 10, b);
+        printf("\n");
+    }
 
     /* re-generate g from pk seed */
     csprng_init(&rng2);
@@ -134,38 +172,92 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_init(g);
     mpz_import(g, RAMSTAKE_MODULUS_BITSIZE/8, 1, sizeof(unsigned char), 1, 0, data);
     free(data);
+    if( kat == 1 )
+    {
+        printf("Recreated g from public key seed.\n");
+        printf("g: ");
+        mpz_out_str(stdout, 10, g);
+        printf("\n");
+    }
 
     /* compute d = ag + b mod p */
     mpz_mul(c->d, a, g);
     mpz_add(c->d, c->d, b);
     mpz_mod(c->d, c->d, p);
+    if( kat == 1 )
+    {
+        printf("Computed d = ag + b mod p.\n");
+        printf("d: ");
+        mpz_out_str(stdout, 10, c->d);
+        printf("\n");
+    }
 
     /* compute local data stream integer s = ca mod p */
     mpz_init(s);
     mpz_mul(s, pk.c, a);
     mpz_mod(s, s, p);
+    if( kat == 1 )
+    {
+        printf("Computed noisy shared secret integer s = ac mod p.\n");
+        printf("pk.c: ");
+        mpz_out_str(stdout, 10, pk.c);
+        printf("\n");
+        printf("p: ");
+        mpz_out_str(stdout, 10, p);
+        printf("\n");
+        printf("s: ");
+        mpz_out_str(stdout, 10, s);
+        printf("\n");
+    }
 
     /* draw pseudorandom stream from integer */
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
     mpz_export(data, NULL, 1, 1, 1, 0, s);
-    /* we only care about the first (most significant) 1020 bytes. */
+    /* we only care about the first (most significant) SEEDENC_LENGTH bytes. */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+        c->e[i] = data[i];
     }
     free(data);
+    if( kat == 1 )
+    {
+        printf("Drew most significant %i bytes from s: ", RAMSTAKE_SEEDENC_LENGTH);
+        for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+        {
+            printf("%02x", c->e[i]);
+        }
+        printf("\n");
+    }
 
     /* encode seed using reed-solomon ecc */
     data = malloc(RS_N);
     rs_encode(data, randomness);
+    if( kat == 1 )
+    {
+        printf("Encoded randomness using Reed-Solomon ECC: ");
+        for( i = 0 ; i < RS_N ; ++i )
+        {
+            printf("%02x", data[i]);
+        }
+        printf("\n");
+    }
 
     /* xor encoded seed into pseudorandom data stream and loop until
      * no more stream left; seed is protected by one-time pad */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] ^= data[i % 255];
+        c->e[i] ^= data[i % RS_N];
     }
     free(data);
+    if( kat == 1 )
+    {
+        printf("Applied one-time pad to sequence of %i repetitions of the codeword.\ndata: ", RAMSTAKE_CODEWORD_NUMBER);
+        for( i = 0  ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+        {
+            printf("%02x", c->e[i]);
+        }
+        printf("\n");
+    }
 
     /* grab key by completing s and hashing it */
     mpz_add(s, s, b);
@@ -173,6 +265,16 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
     mpz_export(data, NULL, 1, 1, 1, 0, s);
     SHA3_256(key, data, RAMSTAKE_MODULUS_BITSIZE/8);
+    if( kat == 1 )
+    {
+        printf("Hashed s into key: ");
+        for( i = 0 ; i < RAMSTAKE_KEY_LENGTH ; ++i )
+        {
+            printf("%02x", key[i]);
+        }
+        printf("\n");
+    }
+    free(data);
 
     /* free unfreed variables */
     mpz_clear(p);
@@ -206,28 +308,49 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     /* recreate the csprng from keygen */
     csprng_init(&rng);
     csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, sk.seed);
+    data = malloc(RAMSTAKE_SEED_LENGTH);
+    csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, data);
+
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+    {
+        pk.seed[i] = data[i];
+    }
+    free(data);
+    if( kat == 1 )
+    {
+        printf("# ramstake_decaps\n");
+        printf("Recreated public key seed for g: ");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+        {
+            printf("%02x", pk.seed[i]);
+        }
+        printf("\n");
+    }
+
+    /* re-generate g from pk seed */
+    csprng_init(&rng2);
+    csprng_seed(&rng2, RAMSTAKE_SEED_LENGTH, pk.seed);
+    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
+    csprng_generate(&rng2, RAMSTAKE_MODULUS_BITSIZE/8, data);
+    mpz_init(g);
+    mpz_import(g, RAMSTAKE_MODULUS_BITSIZE/8, 1, sizeof(unsigned char), 1, 0, data);
+    free(data);
 
     /* initialize modulus */
     mpz_init(p);
     ramstake_modulus_init(p);
 
-    /* recreate g seed from sk seed */
-    mpz_init(g);
-    data = malloc(RAMSTAKE_SEED_LENGTH);
-    csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, data);
-    csprng_init(&rng2);
-    csprng_seed(&rng2, RAMSTAKE_SEED_LENGTH, data);
-    free(data);
-    
-    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
-    {
-        pk.seed[i] = data[i];
-    }
-
     /* generate data stream integer s = da mod p */
     mpz_init(s);
     mpz_mul(s, c.d, sk.a);
     mpz_mod(s, s, p);
+    if( kat == 1 )
+    {
+        printf("Computed noisy shared secret integer s = da mod p.\n");
+        printf("s: ");
+        mpz_out_str(stdout, 10, s);
+        printf("\n");
+    }
     
     /* turn noisy-shared integer s into noisy-shared data stream */
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
@@ -235,14 +358,33 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
 
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+        //word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+        word[i] = data[i];
     }
     free(data);
+    if( kat == 1 )
+    {
+        printf("Drew most significant %i bytes from s: ", RAMSTAKE_SEEDENC_LENGTH);
+        for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+        {
+            printf("%02x", word[i]);
+        }
+        printf("\n");
+    }
 
     /* xor encoded string e into our noisy codeword */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
         word[i] ^= c.e[i];
+    }
+    if( kat == 1 )
+    {
+        printf("Undid one-time pad: ");
+        for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+        {
+            printf("%02x", word[i]);
+        }
+        printf("\n");
     }
 
     /* decode any one of the codewords */
@@ -250,7 +392,15 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     {
         if( rs_decode(seed, word + i*255) == 0 )
         {
+            if( kat == 1 )
+            {
+                printf("Received word #%i lead to successful decoding.\n", i);
+            }
             break;
+        }
+        else if( kat == 1 )
+        {
+            printf("Received word #%i was not decodable.\n", i);
         }
     }
     if( i == RAMSTAKE_CODEWORD_NUMBER ) /* no word was decodable */
@@ -259,8 +409,19 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
         mpz_clear(p);
         mpz_clear(s);
         ramstake_public_key_destroy(pk);
+        if( kat == 1 )
+        {
+            printf("None of the received words were decodable.\n");
+        }
         return -1; /* decapsulation failure */
     }
+
+    printf("decoded: ");
+    for( i = 0 ; i < RS_K ; ++i )
+    {
+        printf("%02x", seed[i]);
+    }
+    printf("\n");
 
     /* now we have the seed that generated the ciphertext, let's see
      * if we can recreate the entire thing */
@@ -268,7 +429,21 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     mpz_mul(pk.c, g, sk.a);
     mpz_add(pk.c, pk.c, sk.b);
     mpz_mod(pk.c, pk.c, p);
-    ramstake_encaps(&rec, key, pk, seed, kat);
+    ramstake_encaps(&rec, key, pk, seed, 0);
+
+    if( kat == 1 )
+    {
+        printf("Re-encapsulating ciphertext from transmitted seed.\n");
+        printf("d: ");
+        mpz_out_str(stdout, 10, rec.d);
+        printf("\n");
+        printf("e: ");
+        for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
+        {
+            printf("%02x", rec.e[i]);
+        }
+        printf("\n");
+    }
 
     /* decide whether the entire recreated ciphertext is identical */
     if( mpz_cmp(rec.d, c.d) == 0 && strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 )
