@@ -11,6 +11,8 @@ RAMSTAKE_SECRET_SPARSITY = 23
 RAMSTAKE_CODEWORD_NUMBER = 4
 RAMSTAKE_CODEWORD_LENGTH = 255
 RAMSTAKE_SEEDENC_LENGTH = (RAMSTAKE_CODEWORD_NUMBER * RAMSTAKE_CODEWORD_LENGTH)
+RAMSTAKE_DECAPSULATION_FAILURE = -1
+RAMSTAKE_INTEGRITY_FAILURE = -2
 
 class ramstake_public_key:
     def __init__( self ):
@@ -59,7 +61,7 @@ def ramstake_keygen( random_seed, kat ):
     rng = csprng()
     rng.seed(random_seed)
 
-    if kat == 1:
+    if kat >= 1:
         print "# ramstake_keygen"
         print "seed:", hexlify(random_seed)
 
@@ -74,7 +76,7 @@ def ramstake_keygen( random_seed, kat ):
     pk = ramstake_public_key()
     pk.seed = rng.generate(RAMSTAKE_SEED_LENGTH)
     g = ramstake_generate_g(pk.seed)
-    if kat == 1:
+    if kat >= 2:
         print "seed for generating g:", hexlify(pk.seed)
         print "g:", g
 
@@ -83,14 +85,14 @@ def ramstake_keygen( random_seed, kat ):
     sk.seed = copy(random_seed)
     sk.a = ramstake_sample_small_sparse_integer(rng.generate(RAMSTAKE_SEED_LENGTH))
     sk.b = ramstake_sample_small_sparse_integer(rng.generate(RAMSTAKE_SEED_LENGTH))
-    if kat == 1:
+    if kat >= 2:
         print "Sampled short and sparse integers a and b."
         print "a:", sk.a
         print "b:", sk.b
 
     # compute c = ag + b mod p
     pk.c = (g * sk.a + sk.b) % p
-    if kat == 1:
+    if kat >= 2:
         print "Computed c = ag + b mod p."
         print "c:", pk.c
 
@@ -101,21 +103,23 @@ def ramstake_encaps( random_seed, pk, kat ):
     rng = csprng()
     rng.seed(random_seed)
 
-    if kat == 1:
+    if kat >= 1:
         print "# ramstake_encaps"
         print "seed:", hexlify(random_seed)
 
     # sample secret integers a and b
-    a = ramstake_sample_small_sparse_integer(rng.generate(RAMSTAKE_SEED_LENGTH))
-    b = ramstake_sample_small_sparse_integer(rng.generate(RAMSTAKE_SEED_LENGTH))
-    if kat == 1:
+    seeda = rng.generate(RAMSTAKE_SEED_LENGTH)
+    seedb = rng.generate(RAMSTAKE_SEED_LENGTH)
+    a = ramstake_sample_small_sparse_integer(seeda)
+    b = ramstake_sample_small_sparse_integer(seedb)
+    if kat >= 2:
         print "Sampled short and sparse integers a and b."
         print "a:", a
         print "b:", b
 
     # recreate g from pk seed
     g = ramstake_generate_g(pk.seed)
-    if kat == 1:
+    if kat >= 2:
         print "Recreated g from public key seed."
         print "g:", g
 
@@ -129,13 +133,13 @@ def ramstake_encaps( random_seed, pk, kat ):
     # compute d = ag + b mod p
     c = ramstake_ciphertext()
     c.d = (a*g + b) % p
-    if kat == 1:
+    if kat >= 2:
         print "Computed d = ag + b mod p."
         print "d:", c.d
 
     # compute s = ac mod p
     s = (a*pk.c) % p
-    if kat == 1:
+    if kat >= 2:
         print "Computed noisy shared secret integer s = ac mod p."
         print "pk.c:", pk.c
         print "p:", p
@@ -143,27 +147,27 @@ def ramstake_encaps( random_seed, pk, kat ):
 
     # draw most significant SEEDENC_LENGTH bytes from s
     c.e = bytearray(hex(s)[0:(2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
-    if kat == 1:
+    if kat >= 1:
         print "Drew most significant", RAMSTAKE_SEEDENC_LENGTH, "bytes from s:", hexlify(c.e)
 
     # encode randomness seed
     rs = ReedSolomon(8, 224)
     data = rs.EncodeBytes(random_seed)
-    if kat == 1:
+    if kat >= 1:
         print "Encoded randomness using Reed-Solomon ECC:", hexlify(data)
 
     # apply otp to codeword sequence
     for i in range(0, RAMSTAKE_CODEWORD_NUMBER):
         for j in range(0, rs.n):
             c.e[i*rs.n + j] = c.e[i*rs.n + j] ^^ data[j]
-    if kat == 1:
+    if kat >= 1:
         print "Applied one-time pad to sequence of", RAMSTAKE_CODEWORD_NUMBER, "repetitions of the codeword."
         print "data:", hexlify(c.e)
 
     # complete s and hash it to obtain key
     s_ = bytearray(hex((s + b) % p).decode("hex"))
     key = SHA3_256(s_)
-    if kat == 1:
+    if kat >= 1:
         print "Hashed s into key:", hexlify(key)
 
     return c, key
@@ -174,7 +178,7 @@ def ramstake_decaps( c, sk, kat ):
     rng = csprng()
     rng.seed(sk.seed)
     pk.seed = rng.generate(RAMSTAKE_SEED_LENGTH)
-    if kat == 1:
+    if kat >= 1:
         print "# ramstake_decaps"
         print "Recreated public key seed for g:", hexlify(pk.seed)
 
@@ -190,51 +194,66 @@ def ramstake_decaps( c, sk, kat ):
 
     # compute s = da mod p
     s = (c.d * sk.a) % p
-    if kat == 1:
+    if kat >= 2:
         print "Computed noisy shared secret integer s = da mod p."
         print "s:", s
 
     # draw SEEDENC bytes from s
     word = bytearray(hex(s)[0:(2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
-    if kat == 1:
+    if kat >= 1:
         print "Drew most significant", RAMSTAKE_SEEDENC_LENGTH, "bytes from s:", hexlify(word)
 
     # undo OTP
     for i in range(0, len(word)):
         word[i] = word[i] ^^ c.e[i]
-    if kat == 1:
+    if kat >= 1:
         print "Undid one-time pad:", hexlify(word)
 
     # try to decode
     rs = ReedSolomon(8, 224)
     for i in range(0, RAMSTAKE_CODEWORD_NUMBER):
         decoded = bytearray(rs.DecodeBytes(word[(i*RAMSTAKE_CODEWORD_LENGTH):((i+1)*RAMSTAKE_CODEWORD_LENGTH)]))
-        if decoded != [0]*rs.k:
-            if kat == 1:
+        if decoded != bytearray([0]*rs.k):
+            if kat >= 1:
                 print "Received word #%i lead to successful decoding." % i
             break
-        elif kat == 1:
+        elif kat >= 1:
             print "Received word #%i was not decodable." % i
 
-    if decoded == [0]*rs.k:
+    if decoded == bytearray([0]*rs.k):
         if kat == 1:
             print "None of the received words were decodable."
-        return -1
-
-    print "decoded:", hexlify(decoded)
+        return RAMSTAKE_DECAPSULATION_FAILURE
 
     # re-create ciphertext
     pk.c = (sk.a * g + sk.b) % p
     rec, key = ramstake_encaps(decoded, pk, 0)
-    if kat == 1:
+    if kat >= 2:
         print "Re-encapsulating ciphertext from transmitted seed."
         print "d:", rec.d
         print "e:", hexlify(rec.e)
 
-    if rec.d != c.d or red.e != c.e:
-        return -2
+    if rec.d != c.d or rec.e != c.e:
+        print "integrity failure"
+        if rec.d != c.d:
+            print "rec.d != c.d"
+            #print "rec.d:", rec.d
+            #print "  c.d:", c.d
+        elif rec.e != c.e:
+            print "rec.e != c.e"
+            #print "rec.e:", hexlify(rec.e)
+            #print "  c.e:", hexlify(c.e)
+        return RAMSTAKE_INTEGRITY_FAILURE
 
-    return 0
+    return key
+
+def ramstake_export_secret_key( sk ):
+    ret = sk.seed
+    print "a:", hex(sk.a + 2^(RAMSTAKE_MODULUS_BITSIZE+7))
+    print "b:", hex(sk.b + 2^(RAMSTAKE_MODULUS_BITSIZE+7))
+    ret.extend(bytearray(hex(sk.a).decode("hex")))
+    ret.extend(bytearray(hex(sk.b).decode("hex")))
+    return ret
 
 def Parameters( security_level ):
     kappa = 2*security_level

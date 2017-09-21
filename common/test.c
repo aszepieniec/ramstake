@@ -14,10 +14,14 @@ int main( int argc, char ** argv )
     csprng rng;
     unsigned char data[RAMSTAKE_SEED_LENGTH];
     int i;
+    int equals;
 
     ramstake_public_key pk;
     ramstake_secret_key sk;
     ramstake_ciphertext c;
+    unsigned char pk_bytes[RAMSTAKE_PUBLIC_KEY_LENGTH];
+    unsigned char sk_bytes[RAMSTAKE_SECRET_KEY_LENGTH];
+    unsigned char c_bytes[RAMSTAKE_CIPHERTEXT_LENGTH];
     unsigned char key1[RAMSTAKE_KEY_LENGTH];
     unsigned char key2[RAMSTAKE_KEY_LENGTH];
 
@@ -48,13 +52,29 @@ int main( int argc, char ** argv )
     csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
     ramstake_keygen(&sk, &pk, seed, 1);
     free(seed);
+    ramstake_export_public_key(pk_bytes, pk);
+    ramstake_export_secret_key(sk_bytes, sk);
 
+    ramstake_import_public_key(&pk, pk_bytes);
     seed = malloc(RAMSTAKE_SEED_LENGTH);
     csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
     ramstake_encaps(&c, key1, pk, seed, 1);
     free(seed);
+    ramstake_export_ciphertext(c_bytes, c);
 
+    ramstake_import_ciphertext(&c, c_bytes);
+    //ramstake_import_secret_key(&sk, sk_bytes);
     ramstake_decaps(key2, c, sk, 1);
+
+    equals = 1;
+    for( i = 0 ; i < RAMSTAKE_KEY_LENGTH ; ++i )
+    {
+        equals &= (key1[i] == key2[i]);
+    }
+    if( equals == 1 )
+    {
+        printf("success! k1 == k2 \\o/\n");
+    }
 
     ramstake_public_key_destroy(pk);
     ramstake_secret_key_destroy(sk);

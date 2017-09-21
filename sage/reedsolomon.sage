@@ -125,7 +125,11 @@ class ReedSolomon:
         num_errors = 0
         for i in range(0, self.n):
             if sigma(self.z^-i) == self.F(0):
+                num_errors += 1
                 errors[i] = omega(self.z^-i)/ sigma_deriv(self.z^-i)
+
+        if num_errors > (self.delta-1)/2:
+            return [0] * self.n
 
         return errors
 
@@ -134,7 +138,7 @@ class ReedSolomon:
         for i in range(0, len(codeword)):
             poly += codeword[i] * self.x^i
         rem = poly % self.generator
-        if rem == 0:
+        if rem != 0:
             return [self.F(0)] * self.k
         quo = poly // self.generator
         coeffs = [self.F(0) for i in range(0, self.k)]

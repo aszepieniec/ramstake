@@ -44,11 +44,15 @@ int rs_encode( unsigned char * dest, unsigned char * source )
 /**
  * rs_decode
  * Decode a possibly noisy received word.
+ * @returns:
+ *  * 1 if decoding succeeded; 0 otherwise
  */
 int rs_decode( unsigned char * dest, unsigned char * source )
 {
     int i;
     int all_zero;
+    int num_errors;
+    int success;
     unsigned char syndrome[RS_DELTA-1];
     unsigned char errors[RS_N];
     unsigned char codeword[RS_N];
@@ -57,14 +61,9 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     gf256x sigma_deriv;
 
     /* get syndrome */
-    rs_syndrome(syndrome, source);
+    all_zero = rs_syndrome(syndrome, source);
 
     /* test for zero (no errors) */
-    all_zero = 1;
-    for( i = 0 ; i < RS_DELTA - 1 && all_zero == 1 ; ++i )
-    {
-        all_zero &= (syndrome[i] == 0);
-    }
     if( all_zero == 1 )
     {
         return rs_decode_error_free(dest, source);
@@ -72,10 +71,8 @@ int rs_decode( unsigned char * dest, unsigned char * source )
 
     /* convert syndrome to polynomial */
     s = gf256x_init(RS_DELTA-2);
-    //s.data[0] = 0;
     for( i = 0 ; i <= RS_DELTA-2 ; ++i )
     {
-        //s.data[i+1] = syndrome[i];
         s.data[i] = syndrome[i];
     }
 
@@ -92,7 +89,9 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     rs_formal_derivative(&sigma_deriv, sigma);
 
     /* find and decode errors already */
-    rs_errors(errors, sigma, sigma_deriv, omega);
+    num_errors = rs_errors(errors, sigma, sigma_deriv, omega);
+
+    /* maybe quit if num_errors == 0? */
 
     /* use errors to correct */
     for( i = 0 ; i < RS_N ; ++i )
@@ -101,23 +100,29 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     }
 
     /* decode error-free */
-    rs_decode_error_free(dest, codeword);
+    success = rs_decode_error_free(dest, codeword);
 
     /* clean up */
+    gf256x_destroy(s);
     gf256x_destroy(g);
     gf256x_destroy(sigma);
     gf256x_destroy(omega);
     gf256x_destroy(sigma_deriv);
 
-    return 0;
+    return success;
 }
 
 /**
  * rs_syndrome
  * Compute the syndrome from the received word.
+ * @returns:
+ *  * 1 if the syndrome is zero everywhere (indicating the received
+ *    word is a codeword), or 0 otherwise (indicating the presence
+ *    of noisy).
  */
 int rs_syndrome( unsigned char * syndrome, unsigned char * word )
 {
+    int is_all_zero;
     int i, j, k;
     unsigned char z, zi, zij, ev;
 
@@ -126,6 +131,7 @@ int rs_syndrome( unsigned char * syndrome, unsigned char * word )
     {
         syndrome[i] = 0;
     }
+    is_all_zero = 1;
 
     /* evaluate received polynomial in ith support element, where i
      * goes from 1 to (and excluding) delta */
@@ -140,9 +146,11 @@ int rs_syndrome( unsigned char * syndrome, unsigned char * word )
             ev ^= gf256_multiply(word[j], zij);
         }
         syndrome[i-1] = ev;
+
+        is_all_zero = is_all_zero & (ev == 0);
     }
 
-    return 0;
+    return is_all_zero;
 }
 
 /**
@@ -278,17 +286,22 @@ int rs_formal_derivative( gf256x * Df, gf256x f )
 /**
  * rs_errors
  * Find the errors using Chien search and correct them.
+ * @returns:
+ *  * the number of found (and corrected) errors
  */
 int rs_errors( unsigned char * errors, gf256x sigma, gf256x sigma_deriv, gf256x omega )
 {
     int i;
+    int num_errors;
     unsigned char sdzmi;
     unsigned char zmi;
 
+    num_errors = 0;
     for( i = 0 ; i < RS_N ; ++i )
     {
         if( gf256x_eval(sigma, gf256_exp(2, -i)) == 0 )
         {
+            num_errors = num_errors + 1;
             zmi = gf256_exp(2, -i);
             sdzmi = gf256_inverse(gf256x_eval(sigma_deriv, zmi));
             errors[i] = gf256_multiply(gf256x_eval(omega, zmi), sdzmi);
@@ -299,7 +312,7 @@ int rs_errors( unsigned char * errors, gf256x sigma, gf256x sigma_deriv, gf256x 
         }
     }
 
-    return 0;
+    return num_errors;
 }
 
 /**
