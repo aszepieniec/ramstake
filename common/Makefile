@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I../../KeccakCodePackage/bin/generic64/
+CFLAGS=-I../../KeccakCodePackage/bin/generic64/ -O3
 LFLAGS=-L../../KeccakCodePackage/bin/generic64/ -lgmp -lkeccak
 DEPS = *.h
 OBJ = *.o 

@@ -62,7 +62,7 @@ def ramstake_keygen( random_seed, kat ):
     rng.seed(random_seed)
 
     if kat >= 1:
-        print "# ramstake_keygen"
+        print "\n# ramstake_keygen"
         print "seed:", hexlify(random_seed)
 
     # obtain modulus
@@ -104,7 +104,7 @@ def ramstake_encaps( random_seed, pk, kat ):
     rng.seed(random_seed)
 
     if kat >= 1:
-        print "# ramstake_encaps"
+        print "\n# ramstake_encaps"
         print "seed:", hexlify(random_seed)
 
     # sample secret integers a and b
@@ -179,7 +179,8 @@ def ramstake_decaps( c, sk, kat ):
     rng.seed(sk.seed)
     pk.seed = rng.generate(RAMSTAKE_SEED_LENGTH)
     if kat >= 1:
-        print "# ramstake_decaps"
+        print "\n# ramstake_decaps"
+        print "secret key seed:", hexlify(sk.seed)
         print "Recreated public key seed for g:", hexlify(pk.seed)
 
     # recreate g
@@ -197,6 +198,7 @@ def ramstake_decaps( c, sk, kat ):
     if kat >= 2:
         print "Computed noisy shared secret integer s = da mod p."
         print "s:", s
+        print "from sk.a:", sk.a
 
     # draw SEEDENC bytes from s
     word = bytearray(hex(s)[0:(2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
@@ -228,8 +230,9 @@ def ramstake_decaps( c, sk, kat ):
     # re-create ciphertext
     pk.c = (sk.a * g + sk.b) % p
     rec, key = ramstake_encaps(decoded, pk, 0)
-    if kat >= 2:
+    if kat >= 3:
         print "Re-encapsulating ciphertext from transmitted seed."
+        print "seed:", hexlify(decoded)
         print "d:", rec.d
         print "e:", hexlify(rec.e)
 
@@ -237,6 +240,7 @@ def ramstake_decaps( c, sk, kat ):
         print "integrity failure"
         if rec.d != c.d:
             print "rec.d != c.d"
+            print type(rec.d), "versus", type(c.d)
             #print "rec.d:", rec.d
             #print "  c.d:", c.d
         elif rec.e != c.e:
@@ -248,11 +252,21 @@ def ramstake_decaps( c, sk, kat ):
     return key
 
 def ramstake_export_secret_key( sk ):
-    ret = sk.seed
-    print "a:", hex(sk.a + 2^(RAMSTAKE_MODULUS_BITSIZE+7))
-    print "b:", hex(sk.b + 2^(RAMSTAKE_MODULUS_BITSIZE+7))
-    ret.extend(bytearray(hex(sk.a).decode("hex")))
-    ret.extend(bytearray(hex(sk.b).decode("hex")))
+    ret = copy(sk.seed)
+    hexa = hex(sk.a)
+    hexb = hex(sk.b)
+    if len(hexa) % 2 == 1:
+        hexa = "0" + hexa
+    if len(hexb) % 2 == 1:
+        hexb = "0" + hexb
+    bytesa = bytearray(list(hexa.decode("hex")))
+    bytesb = bytearray(list(hexb.decode("hex")))
+    while len(bytesa) != RAMSTAKE_MODULUS_BITSIZE/8:
+        bytesa.append(0)
+    while len(bytesb) != RAMSTAKE_MODULUS_BITSIZE/8:
+        bytesb.append(0)
+    ret.extend(bytesa)
+    ret.extend(bytesb)
     return ret
 
 def Parameters( security_level ):
