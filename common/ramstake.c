@@ -298,14 +298,12 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     csprng rng;
     csprng rng2;
     int i, j;
-    int decoded_codeword;
-    int decodable[RAMSTAKE_CODEWORD_NUMBER];
     int all_fail;
     mpz_t g, p;
     mpz_t s;
     unsigned char * data;
     unsigned char word[RAMSTAKE_SEEDENC_LENGTH];
-    unsigned char decoded[RAMSTAKE_SEED_LENGTH * RAMSTAKE_CODEWORD_NUMBER];
+    unsigned char decoded[RAMSTAKE_SEED_LENGTH];
     ramstake_public_key pk;
     ramstake_ciphertext rec;
 
@@ -406,34 +404,8 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
         printf("\n");
     }
 
-    /* decode any one of the codewords */
-    for( i = 0 ; i < RAMSTAKE_CODEWORD_NUMBER ; ++i )
-    {
-        if( rs_decode(decoded + i*RAMSTAKE_SEED_LENGTH, word + i*255) == 0 )
-        {
-            if( kat >= 1 )
-            {
-                printf("Received word #%i lead to successful decoding.\n", i);
-            }
-            decodable[i] = 1;
-            //break;
-        }
-        else if( kat >= 1 )
-        {
-            printf("Received word #%i was not decodable.\n", i);
-            decodable[i] = 0;
-        }
-        else
-        {
-            decodable[i] = 0;
-        }
-    }
-    all_fail = 0;
-    for( i = 0 ; i < RAMSTAKE_CODEWORD_NUMBER ; ++i )
-    {
-        all_fail = all_fail + decodable[i];
-    }
-    if( all_fail == 0 ) /* no word was decodable */
+    /* decode the sequence of codewords */
+    if( rs_decode_multiple(decoded, word, RAMSTAKE_CODEWORD_NUMBER) == -1 )
     {
         mpz_clear(g);
         mpz_clear(p);
@@ -446,52 +418,45 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
         return RAMSTAKE_DECODING_FAILURE; /* decapsulation failure */
     }
 
-    /* now we have candidates for the seed that generated the ciphertext, let's see
+    /* now we have the seed that generated the ciphertext, let's see
      * if we can recreate the entire thing */
-    for( i = 0 ; i < RAMSTAKE_CODEWORD_NUMBER ; ++i )
+    ramstake_ciphertext_init(&rec);
+    mpz_mul(pk.c, g, sk.a);
+    mpz_add(pk.c, pk.c, sk.b);
+    mpz_mod(pk.c, pk.c, p);
+    ramstake_encaps(&rec, key, pk, decoded, 0);
+
+    if( kat >= 2 )
     {
-        if( decodable[i] == 0 )
+        printf("Re-encapsulating ciphertext from transmitted seed.\n");
+        printf("seed: ");
+        for( j = 0 ; j < RAMSTAKE_SEED_LENGTH ; ++j )
         {
-            continue;
+            printf("%02x", decoded[j]);
         }
-
-        ramstake_ciphertext_init(&rec);
-        mpz_mul(pk.c, g, sk.a);
-        mpz_add(pk.c, pk.c, sk.b);
-        mpz_mod(pk.c, pk.c, p);
-        ramstake_encaps(&rec, key, pk, decoded + i*RAMSTAKE_SEED_LENGTH, 0);
-
-        if( kat >= 2 )
+        printf("\n");
+        printf("d: ");
+        mpz_out_str(stdout, 10, rec.d);
+        printf("\n");
+        printf("e: ");
+        for( j = 0 ; j < RAMSTAKE_SEEDENC_LENGTH ; ++j )
         {
-            printf("Re-encapsulating ciphertext from transmitted seed.\n");
-            printf("seed: ");
-            for( j = 0 ; j < RAMSTAKE_SEED_LENGTH ; ++j )
-            {
-                printf("%02x", decoded[i*RAMSTAKE_SEED_LENGTH + j]);
-            }
-            printf("\n");
-            printf("d: ");
-            mpz_out_str(stdout, 10, rec.d);
-            printf("\n");
-            printf("e: ");
-            for( j = 0 ; j < RAMSTAKE_SEEDENC_LENGTH ; ++j )
-            {
-                printf("%02x", rec.e[j]);
-            }
-            printf("\n");
+            printf("%02x", rec.e[j]);
         }
-
-        /* decide whether the entire recreated ciphertext is identical */
-        if( mpz_cmp(rec.d, c.d) == 0 && strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 )
-        {
-            mpz_clear(g);
-            mpz_clear(p);
-            mpz_clear(s);
-            ramstake_public_key_destroy(pk);
-            ramstake_ciphertext_destroy(rec);
-            return decoded_codeword; /* success */
-        }
+        printf("\n");
     }
+
+    /* decide whether the entire recreated ciphertext is identical */
+    if( mpz_cmp(rec.d, c.d) == 0 && strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 )
+    {
+        mpz_clear(g);
+        mpz_clear(p);
+        mpz_clear(s);
+        ramstake_public_key_destroy(pk);
+        ramstake_ciphertext_destroy(rec);
+        return 0; /* success */
+    }
+
     mpz_clear(g);
     mpz_clear(p);
     mpz_clear(s);

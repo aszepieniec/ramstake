@@ -1,6 +1,6 @@
 #include "reedsolomon.h"
 #include <stdio.h>
-
+#include <stdlib.h>
 
 /* reversed order! I.e. the least significant coefficient comes last. */
 unsigned char generator_data[RS_DELTA] = 
@@ -45,7 +45,7 @@ int rs_encode( unsigned char * dest, unsigned char * source )
  * rs_decode
  * Decode a possibly noisy received word.
  * @returns:
- *  * 1 if decoding succeeded; 0 otherwise
+ *  * the number of corrected symbols on success; -1 on failure
  */
 int rs_decode( unsigned char * dest, unsigned char * source )
 {
@@ -109,7 +109,14 @@ int rs_decode( unsigned char * dest, unsigned char * source )
     gf256x_destroy(omega);
     gf256x_destroy(sigma_deriv);
 
-    return success;
+    if( success == 1 )
+    {
+        return num_errors;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 /**
@@ -157,8 +164,8 @@ int rs_syndrome( unsigned char * syndrome, unsigned char * word )
  * rs_decode_error_free
  * Decode a noise-free codeword.
  * @returns:
- *  * 0 if decoding succeeded; 1 otherwise (indicating the given word
- *    was not a codeword)
+ *  * 1 if decoding succeeded; 0 otherwise (indicating the given word
+ *    was clean not a codeword)
  */
 int rs_decode_error_free( unsigned char * dest, unsigned char * source )
 {
@@ -174,7 +181,7 @@ int rs_decode_error_free( unsigned char * dest, unsigned char * source )
         s.data[i] = source[i];
     }
 
-    ret = rs_decode_polynomial(&d, s);
+    ret = !rs_decode_polynomial(&d, s);
 
     for( i = 0 ; i < RS_K ; ++i )
     {
@@ -339,4 +346,89 @@ int rs_decode_polynomial( gf256x * dest, gf256x codeword )
     return ret;
 }
 
+/**
+ * rs_encode_muliple
+ * Encode a single message of k bytes contained in source into a
+ * sequence of multiplicity codewords of n bytes to be put into dest.
+ */
+int rs_encode_multiple( unsigned char * dest, unsigned char * source, int multiplicity )
+{
+    int i;
+    for( i = 0 ; i < multiplicity ; ++i )
+    {
+        rs_encode(dest + i*RS_N, source);
+    }
+
+    return 0;
+}
+
+/**
+ * rs_decode_multiple
+ * Decode a sequence-of-multiplicity-codewords of length n bytes
+ * each, into a single message of k bytes. Strategy: decode each
+ * word separately and then pick the best candidate (ie the one with
+ * fewest errors).
+ */
+int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multiplicity )
+{
+    int i, j;
+    unsigned char * decoded;
+    unsigned char * recoded;
+    char diff;
+    int * num_errors, winner_errors;
+    int winner, have_winner;
+
+    decoded = malloc(RS_K * multiplicity);
+    recoded = malloc(RS_N * multiplicity);
+    num_errors = malloc(sizeof(int) * multiplicity);
+
+    /* decode each chunk */
+    for( i = 0 ; i < multiplicity ; ++i )
+    {
+        num_errors[i] = rs_decode(decoded + i*RS_K, source + i*RS_N);
+    }
+
+    /* determine winner */
+    winner = 0;
+    have_winner = 0;
+    for( i = 0 ; i < multiplicity ; ++i )
+    {
+        if( num_errors[i] != -1 )
+        {
+            rs_encode_multiple(recoded, decoded + i*RS_K, multiplicity);
+            num_errors[i] = 0;
+            for( j = 0 ; j < RS_N*multiplicity ; ++j )
+            {
+                diff = source[j] ^ recoded[j];
+                num_errors[i] += RS_HW(diff);
+            }
+            if( have_winner == 1 && num_errors[i] < num_errors[winner] )
+            {
+                winner = i;
+            }
+            else if( have_winner == 0 )
+            {
+                winner = i;
+                have_winner = 1;
+            }
+        }
+        
+    }
+
+    /* copy winner data */
+    winner_errors = num_errors[winner];
+    if( num_errors[winner] != -1 )
+    {
+        for( i = 0 ; i < RS_K ; ++i )
+        {
+            dest[i] = decoded[winner*RS_K + i];
+        }
+    }
+
+    free(decoded);
+    free(recoded);
+    free(num_errors);
+
+    return winner_errors;
+}
 
