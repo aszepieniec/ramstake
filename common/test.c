@@ -69,16 +69,8 @@ int main( int argc, char ** argv )
 
         seed = malloc(RAMSTAKE_SEED_LENGTH);
         csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
-     
-        if( trial_index == 781 )
-        {
-            printf("trial 781, seed: ");
-            for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
-            {
-                printf("\\x%02x", seed[i]);
-            }
-            printf("\n");
-        }   ramstake_keygen(&sk, &pk, seed, 0);
+    
+        ramstake_keygen(&sk, &pk, seed, 2*(num_trials == 1));
 
         free(seed);
         ramstake_export_public_key(pk_bytes, pk);
@@ -87,13 +79,13 @@ int main( int argc, char ** argv )
         ramstake_import_public_key(&pk, pk_bytes);
         seed = malloc(RAMSTAKE_SEED_LENGTH);
         csprng_generate(&rng, RAMSTAKE_SEED_LENGTH, seed);
-        ramstake_encaps(&c, key1, pk, seed, 0);
+        ramstake_encaps(&c, key1, pk, seed, 2*(num_trials == 1));
         free(seed);
         ramstake_export_ciphertext(c_bytes, c);
 
         ramstake_import_ciphertext(&c, c_bytes);
         ramstake_import_secret_key(&sk, sk_bytes);
-        decaps_value = ramstake_decaps(key2, c, sk, 1*(num_trials == 1));
+        decaps_value = ramstake_decaps(key2, c, sk, 2*(num_trials == 1));
 
         histogram[2+decaps_value] += 1;
 
@@ -118,6 +110,7 @@ int main( int argc, char ** argv )
     printf(" * %i decoding errors\n", histogram[1]);
     printf(" * %i integrity errors\n", histogram[0]);
     printf("Successes:\n");
+    printf(" * %i total successes\n", num_successes);
 
     return 0;
 }
