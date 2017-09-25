@@ -20,6 +20,7 @@ int main( int argc, char ** argv )
     int num_successes;
     int num_failures;
     int decaps_value;
+    unsigned char byte;
 
     ramstake_public_key pk;
     ramstake_secret_key sk;
@@ -38,14 +39,18 @@ int main( int argc, char ** argv )
 
     /* grab randomness */
     csprng_init(&rng);
+
     seed = malloc(strlen(argv[2])/2);
     for( i = 0 ; i < strlen(argv[2])/2 ; ++i )
     {
         sscanf(argv[2] + 2*i, "%2hhx", &seed[i]);
     }
-    csprng_seed(&rng, strlen(argv[1])/2, seed);
+    csprng_seed(&rng, strlen(argv[2])/2, seed);
     free(seed);
-   
+
+    csprng_generate(&rng, 1, &byte);
+    printf("randomness byte: %02x\n", byte);
+
     randomness = csprng_generate_ulong(&rng);
 
     printf("randomness: %lu\n", randomness);

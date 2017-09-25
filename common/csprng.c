@@ -1,5 +1,6 @@
 #include "csprng.h"
 #include <libkeccak.a.headers/KeccakHash.h>
+#include <stdio.h>
 
 /*
  * void KeccakF1600_StatePermute(void *state);
@@ -98,6 +99,7 @@ unsigned long int csprng_generate_ulong( csprng * rng )
     This line is wrong because it relies on the endianness of the
     system. We want endianness-independence.
     */
+
     int i;
     unsigned char data[sizeof(unsigned long int)];
 
@@ -110,3 +112,12 @@ unsigned long int csprng_generate_ulong( csprng * rng )
     return ulong;
 }
 
+void csprng_print_state( csprng rng )
+{
+    int i;
+    for( i = 0 ; i < 200 ; ++i )
+    {
+        printf("%02x", rng.state[i]);
+    }
+    printf("\n");
+}

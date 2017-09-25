@@ -24,7 +24,7 @@ int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigne
 
     if( kat >= 1 )
     {
-        printf("# ramstake_keygen\n");
+        printf("\n# ramstake_keygen\n");
         printf("seed: ");
         for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
         {
@@ -133,7 +133,7 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
 
     if( kat >= 1 )
     {
-        printf("# ramstake_encaps\n");
+        printf("\n# ramstake_encaps\n");
         printf("seed: ");
         for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
         {
@@ -211,16 +211,18 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     }
 
     /* draw pseudorandom stream from integer */
-    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
-    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 ; ++i )
+    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8 + 1);
+    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 + 1 ; ++i )
     {
         data[i] = 0;
     }
-    mpz_export(data, NULL, -1, 1, 1, 0, s);
+    mpz_setbit(s, RAMSTAKE_MODULUS_BITSIZE);
+    mpz_export(data, NULL, 1, 1, 1, 0, s);
     /* we only care about the last (most significant) SEEDENC_LENGTH bytes. */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] = data[RAMSTAKE_MODULUS_BITSIZE/8-RAMSTAKE_SEEDENC_LENGTH+i];
+        //c->e[i] = data[RAMSTAKE_MODULUS_BITSIZE/8-RAMSTAKE_SEEDENC_LENGTH+i];
+        c->e[i] = data[1+i];
     }
     free(data);
     if( kat >= 1 )
@@ -234,12 +236,12 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     }
 
     /* encode seed using reed-solomon ecc */
-    data = malloc(RS_N);
-    rs_encode(data, randomness);
+    data = malloc(RS_N * RAMSTAKE_CODEWORD_NUMBER);
+    rs_encode_multiple(data, randomness, RAMSTAKE_CODEWORD_NUMBER);
     if( kat >= 1 )
     {
         printf("Encoded randomness using Reed-Solomon ECC: ");
-        for( i = 0 ; i < RS_N ; ++i )
+        for( i = 0 ; i < RS_N * RAMSTAKE_CODEWORD_NUMBER ; ++i )
         {
             printf("%02x", data[i]);
         }
@@ -250,7 +252,7 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
      * no more stream left; seed is protected by one-time pad */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] ^= data[i % RS_N];
+        c->e[i] ^= data[i];
     }
     free(data);
     if( kat >= 1 )
@@ -367,16 +369,18 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     }
     
     /* turn noisy-shared integer s into noisy-shared data stream */
-    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
-    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 ; ++i )
+    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8 + 1);
+    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 + 1; ++i )
     {
         data[i] = 0;
     }
-    mpz_export(data, NULL, -1, 1, 1, 0, s);
+    mpz_setbit(s, RAMSTAKE_MODULUS_BITSIZE);
+    mpz_export(data, NULL, 1, 1, 1, 0, s);
 
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+        //word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
+        word[i] = data[1 + i];
     }
     free(data);
     if( kat >= 1 )
