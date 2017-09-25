@@ -5,10 +5,17 @@ from CompactFIPS202 import SHA3_256
 
 RAMSTAKE_SEED_LENGTH = 32
 RAMSTAKE_KEY_LENGTH = 32
-RAMSTAKE_MODULUS_BITSIZE = 16352
-RAMSTAKE_SECRET_BITSIZE = 12264
-RAMSTAKE_SECRET_SPARSITY = 23
-RAMSTAKE_CODEWORD_NUMBER = 4
+
+#define RAMSTAKE_MODULUS_BITSIZE 16352
+#define RAMSTAKE_SECRET_BITSIZE 12264
+#define RAMSTAKE_SECRET_SPARSITY 23
+#define RAMSTAKE_CODEWORD_NUMBER 4
+
+RAMSTAKE_MODULUS_BITSIZE = 22040
+RAMSTAKE_CODEWORD_NUMBER = 5
+RAMSTAKE_SECRET_BITSIZE = 16530 
+RAMSTAKE_SECRET_SPARSITY = 22
+
 RAMSTAKE_CODEWORD_LENGTH = 255
 RAMSTAKE_SEEDENC_LENGTH = (RAMSTAKE_CODEWORD_NUMBER * RAMSTAKE_CODEWORD_LENGTH)
 RAMSTAKE_DECAPSULATION_FAILURE = -1
@@ -152,20 +159,19 @@ def ramstake_encaps( random_seed, pk, kat ):
 
     # encode randomness seed
     rs = ReedSolomon(8, 224)
-    data = rs.EncodeBytes(random_seed)
+    data = rs.EncodeBytesMultiple(random_seed, RAMSTAKE_CODEWORD_NUMBER)
     if kat >= 1:
         print "Encoded randomness using Reed-Solomon ECC:", hexlify(data)
 
     # apply otp to codeword sequence
-    for i in range(0, RAMSTAKE_CODEWORD_NUMBER):
-        for j in range(0, rs.n):
-            c.e[i*rs.n + j] = c.e[i*rs.n + j] ^^ data[j]
+    for i in range(0, rs.n * RAMSTAKE_CODEWORD_NUMBER):
+        c.e[i] = c.e[i] ^^ data[i]
     if kat >= 1:
         print "Applied one-time pad to sequence of", RAMSTAKE_CODEWORD_NUMBER, "repetitions of the codeword."
         print "data:", hexlify(c.e)
 
     # complete s and hash it to obtain key
-    s_ = bytearray(hex((s + b) % p).decode("hex"))
+    s_ = bytearray(hex(((s + b) % p) + 2^RAMSTAKE_MODULUS_BITSIZE)[1:].decode("hex"))
     key = SHA3_256(s_)
     if kat >= 1:
         print "Hashed s into key:", hexlify(key)
@@ -201,7 +207,7 @@ def ramstake_decaps( c, sk, kat ):
         print "from sk.a:", sk.a
 
     # draw SEEDENC bytes from s
-    word = bytearray(hex(s)[0:(2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
+    word = bytearray(hex(s + 2^RAMSTAKE_MODULUS_BITSIZE)[1:(1+2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
     if kat >= 1:
         print "Drew most significant", RAMSTAKE_SEEDENC_LENGTH, "bytes from s:", hexlify(word)
 
@@ -213,40 +219,22 @@ def ramstake_decaps( c, sk, kat ):
 
     # try to decode
     rs = ReedSolomon(8, 224)
-    for i in range(0, RAMSTAKE_CODEWORD_NUMBER):
-        decoded = bytearray(rs.DecodeBytes(word[(i*RAMSTAKE_CODEWORD_LENGTH):((i+1)*RAMSTAKE_CODEWORD_LENGTH)]))
-        if decoded != bytearray([0]*rs.k):
-            if kat >= 1:
-                print "Received word #%i lead to successful decoding." % i
-            break
-        elif kat >= 1:
-            print "Received word #%i was not decodable." % i
-
+    decoded = rs.DecodeBytesMultiple(word, RAMSTAKE_CODEWORD_NUMBER)
     if decoded == bytearray([0]*rs.k):
-        if kat == 1:
+        if kat >= 1:
             print "None of the received words were decodable."
         return RAMSTAKE_DECAPSULATION_FAILURE
 
     # re-create ciphertext
     pk.c = (sk.a * g + sk.b) % p
     rec, key = ramstake_encaps(decoded, pk, 0)
-    if kat >= 3:
+    if kat >= 2:
         print "Re-encapsulating ciphertext from transmitted seed."
-        print "seed:", hexlify(decoded)
+        print "seed:", hexlify(bytearray(decoded))
         print "d:", rec.d
         print "e:", hexlify(rec.e)
 
     if rec.d != c.d or rec.e != c.e:
-        print "integrity failure"
-        if rec.d != c.d:
-            print "rec.d != c.d"
-            print type(rec.d), "versus", type(c.d)
-            #print "rec.d:", rec.d
-            #print "  c.d:", c.d
-        elif rec.e != c.e:
-            print "rec.e != c.e"
-            #print "rec.e:", hexlify(rec.e)
-            #print "  c.e:", hexlify(c.e)
         return RAMSTAKE_INTEGRITY_FAILURE
 
     return key

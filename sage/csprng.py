@@ -37,6 +37,9 @@ class csprng:
 
         return output
 
+    def print_state( self ):
+        print binascii.hexlify(self.state)
+
     def generate_ulong( self ):
         output = self.generate(8)
         acc = 0

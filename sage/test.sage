@@ -4,9 +4,10 @@ from csprng import csprng
 
 def test( num_trials, seed ):
 
+
     rng = csprng()
     rng.seed(seed)
-
+    print "randomness byte:", hexlify(rng.generate(1))
     print "randomness:", rng.generate_ulong()
 
     print "num trials:", num_trials
@@ -44,5 +45,6 @@ def test( num_trials, seed ):
 if len(sys.argv) != 3 or len(sys.argv[2]) % 2 != 0:
     print "usage: sage test [num trials, eg 13] [random seed in hex, eg d13d13deadbeef]"
 else:
-    test(int(sys.argv[1]), bytearray(sys.argv[2].decode('hex')))
+    arg2 = bytearray(sys.argv[2].decode('hex'))
+    test(int(sys.argv[1]), bytearray(arg2))
 

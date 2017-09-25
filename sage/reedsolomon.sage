@@ -59,6 +59,9 @@ class ReedSolomon:
         cdwd = self.Encode(msg_)
         return bytearray([self.CastByte(c) for c in cdwd])
 
+    def EncodeBytesMultiple( self, msg, multiplicity ):
+        return bytearray(list(self.EncodeBytes(msg)) * multiplicity)# got to love python one-liners
+
     def Reduce( self, L ):
         while True:
             quo = L[1,0] // L[0,0]
@@ -161,4 +164,32 @@ class ReedSolomon:
         rec_ = [self.CastField(r) for r in received]
         word = self.Decode(rec_)
         return [self.CastByte(w) for w in word]
+
+    def HW( self, byte ):
+        return (byte & 1)  + ((byte >> 1) & 1) + ((byte >> 2) & 1) + ((byte >> 3) & 1) + ((byte >> 4) & 1) + ((byte >> 5) & 1) + ((byte >> 6) & 1) + ((byte >> 7) & 1)
+
+    def DecodeBytesMultiple( self, received, multiplicity ):
+        # decode each chunk
+        decoded = [self.DecodeBytes(received[(self.n*i):(self.n*(i+1))]) for i in range(0, multiplicity)]
+
+        # determine error counts
+        num_errors = [-1]*multiplicity
+        for i in range(0, multiplicity):
+            stream = self.EncodeBytesMultiple(decoded[i], multiplicity)
+            for j in range(0, len(stream)):
+                stream[j] = stream[j] ^^ received[j]
+                num_errors[i] += self.HW(stream[j])
+
+        # determine winner
+        have_winner = False
+        winner = 0
+        for i in range(0, multiplicity):
+            if have_winner == False and num_errors[i] != -1:
+                have_winner = True
+                winner = i
+            elif have_winner == True and num_errors[i] < num_errors[winner]:
+                winner = i
+
+        # return winner data
+        return decoded[winner]
 
