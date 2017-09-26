@@ -64,11 +64,11 @@ void ramstake_ciphertext_init( ramstake_ciphertext * c );
 void ramstake_ciphertext_destroy( ramstake_ciphertext c );
 
 void ramstake_export_secret_key( unsigned char * data, ramstake_secret_key sk );
-void ramstake_import_secret_key( ramstake_secret_key * sk, unsigned char * data );
+void ramstake_import_secret_key( ramstake_secret_key * sk, const unsigned char * data );
 void ramstake_export_public_key( unsigned char * data, ramstake_public_key sk );
-void ramstake_import_public_key( ramstake_public_key * sk, unsigned char * data );
+void ramstake_import_public_key( ramstake_public_key * sk, const unsigned char * data );
 void ramstake_export_ciphertext( unsigned char * data, ramstake_ciphertext sk );
-void ramstake_import_ciphertext( ramstake_ciphertext * sk, unsigned char * data );
+void ramstake_import_ciphertext( ramstake_ciphertext * sk, const unsigned char * data );
 
 
 #endif

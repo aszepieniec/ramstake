@@ -221,7 +221,6 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     /* we only care about the last (most significant) SEEDENC_LENGTH bytes. */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        //c->e[i] = data[RAMSTAKE_MODULUS_BITSIZE/8-RAMSTAKE_SEEDENC_LENGTH+i];
         c->e[i] = data[1+i];
     }
     free(data);
@@ -269,6 +268,10 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_add(s, s, b);
     mpz_mod(s, s, p);
     data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
+    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 ; ++i )
+    {
+        data[i] = 0;
+    }
     mpz_export(data, NULL, 1, 1, 1, 0, s);
     SHA3_256(key, data, RAMSTAKE_MODULUS_BITSIZE/8);
     if( kat >= 1 )
@@ -301,6 +304,7 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     csprng rng2;
     int i, j;
     int all_fail;
+    int num_errors;
     mpz_t g, p;
     mpz_t s;
     unsigned char * data;
@@ -379,7 +383,6 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
 
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        //word[i] = data[RAMSTAKE_MODULUS_BITSIZE/8 - RAMSTAKE_SEEDENC_LENGTH + i];
         word[i] = data[1 + i];
     }
     free(data);
@@ -409,7 +412,8 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     }
 
     /* decode the sequence of codewords */
-    if( rs_decode_multiple(decoded, word, RAMSTAKE_CODEWORD_NUMBER) == -1 )
+    num_errors = rs_decode_multiple(decoded, word, RAMSTAKE_CODEWORD_NUMBER);
+    if( num_errors == -1 )
     {
         mpz_clear(g);
         mpz_clear(p);
@@ -618,7 +622,7 @@ void ramstake_export_secret_key( unsigned char * data, ramstake_secret_key sk )
  * ramstake_import_secret_key
  * Turn a string of bytes into a ramstake secret key.
  */
-void ramstake_import_secret_key( ramstake_secret_key * sk, unsigned char * data )
+void ramstake_import_secret_key( ramstake_secret_key * sk, const unsigned char * data )
 {
     int i;
 
@@ -663,7 +667,7 @@ void ramstake_export_public_key( unsigned char * data, ramstake_public_key pk )
  * ramstake_import_public_key
  * Turn a string of bytes into a ramstake public key.
  */
-void ramstake_import_public_key( ramstake_public_key * pk, unsigned char * data )
+void ramstake_import_public_key( ramstake_public_key * pk, const unsigned char * data )
 {
     int i;
 
@@ -707,7 +711,7 @@ void ramstake_export_ciphertext( unsigned char * data, ramstake_ciphertext c )
  * ramstake_import_ciphertext
  * Turn a string of bytes into a ramstake ciphertext object.
  */
-void ramstake_import_ciphertext( ramstake_ciphertext * c, unsigned char * data )
+void ramstake_import_ciphertext( ramstake_ciphertext * c, const unsigned char * data )
 {
     int i;
 

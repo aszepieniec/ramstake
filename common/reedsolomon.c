@@ -1,4 +1,5 @@
 #include "reedsolomon.h"
+#include "gf256x.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -375,12 +376,15 @@ int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multip
     unsigned char * decoded;
     unsigned char * recoded;
     char diff;
-    int * num_errors, winner_errors;
+    int * num_errors;
+    int winner_errors;
+    int * byte_errors;
     int winner, have_winner;
 
     decoded = malloc(RS_K * multiplicity);
     recoded = malloc(RS_N * multiplicity);
     num_errors = malloc(sizeof(int) * multiplicity);
+    byte_errors = malloc(sizeof(int) * multiplicity);
 
     /* decode each chunk */
     for( i = 0 ; i < multiplicity ; ++i )
@@ -397,10 +401,12 @@ int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multip
         {
             rs_encode_multiple(recoded, decoded + i*RS_K, multiplicity);
             num_errors[i] = 0;
+            byte_errors[i] = 0;
             for( j = 0 ; j < RS_N*multiplicity ; ++j )
             {
                 diff = source[j] ^ recoded[j];
                 num_errors[i] += RS_HW(diff);
+                byte_errors[i] += (diff != 0);
             }
             if( have_winner == 1 && num_errors[i] < num_errors[winner] )
             {
@@ -425,6 +431,7 @@ int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multip
         }
     }
 
+    free(byte_errors);
     free(decoded);
     free(recoded);
     free(num_errors);
