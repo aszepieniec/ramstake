@@ -122,6 +122,7 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_t p;
     mpz_t g;
     mpz_t s;
+    mpz_t ff;
     int i;
     unsigned char * data;
 
@@ -216,7 +217,10 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     {
         data[i] = 0;
     }
-    mpz_setbit(s, RAMSTAKE_MODULUS_BITSIZE);
+    mpz_init(ff);
+    mpz_set_ui(ff, 255);
+    mpz_mul_2exp(ff, ff, RAMSTAKE_MODULUS_BITSIZE);
+    mpz_add(s, s, ff);
     mpz_export(data, NULL, 1, 1, 1, 0, s);
     /* we only care about the last (most significant) SEEDENC_LENGTH bytes. */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
@@ -224,6 +228,7 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
         c->e[i] = data[1+i];
     }
     free(data);
+    mpz_sub(s, s, ff);
     if( kat >= 1 )
     {
         printf("Drew most significant %i bytes from s: ", RAMSTAKE_SEEDENC_LENGTH);
@@ -265,15 +270,19 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     }
 
     /* grab key by completing s and hashing it */
+    /* s = a c + b mod p */
+    /* but add prepend ff to the byte expansion before grabbing the bytes */
     mpz_add(s, s, b);
     mpz_mod(s, s, p);
-    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8);
-    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 ; ++i )
+    mpz_add(s, s, ff);
+    mpz_clear(ff);
+    data = malloc(RAMSTAKE_MODULUS_BITSIZE/8 + 1);
+    for( i = 0 ; i < RAMSTAKE_MODULUS_BITSIZE/8 + 1; ++i )
     {
         data[i] = 0;
     }
     mpz_export(data, NULL, 1, 1, 1, 0, s);
-    SHA3_256(key, data, RAMSTAKE_MODULUS_BITSIZE/8);
+    SHA3_256(key, data+1, RAMSTAKE_MODULUS_BITSIZE/8);
     if( kat >= 1 )
     {
         printf("Hashed s into key: ");
@@ -282,6 +291,12 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
             printf("%02x", key[i]);
         }
         printf("\n");
+        if( kat >= 2 )
+        {
+            printf("From s: ");
+            mpz_out_str(stdout, 10, s);
+            printf("\n");
+        }
     }
     free(data);
 
@@ -490,13 +505,19 @@ void ramstake_sample_small_sparse_integer( mpz_t integer, unsigned char * random
     csprng_seed(&rng, RAMSTAKE_SEED_LENGTH, random_seed);
     
     mpz_set_ui(integer, 1);
-    mpz_mul_2exp(integer, integer, RAMSTAKE_SECRET_BITSIZE);
+    uli = csprng_generate_ulong(&rng);
+    if( uli % 2 == 1 )
+    {
+        mpz_neg(integer, integer);
+    }
+
+    mpz_mul_2exp(integer, integer, 3*RAMSTAKE_MODULUS_BITSIZE/4 - ((uli >> 1) % (RAMSTAKE_MODULUS_BITSIZE / 4)) );
 
     for( i = 0 ; i < RAMSTAKE_SECRET_SPARSITY ; ++i )
     {
         uli = csprng_generate_ulong(&rng);
         mpz_set_ui(difference, 1);
-        mpz_mul_2exp(difference, difference, (uli >> 1) % RAMSTAKE_SECRET_BITSIZE);
+        mpz_mul_2exp(difference, difference, (uli >> 1) % (3 * RAMSTAKE_MODULUS_BITSIZE / 4));
         if( uli % 2 == 1 )
         {
             mpz_sub(integer, integer, difference);
@@ -505,6 +526,11 @@ void ramstake_sample_small_sparse_integer( mpz_t integer, unsigned char * random
         {
             mpz_add(integer, integer, difference);
         }
+    }
+
+    if( mpz_cmp_si(integer, 0) < 0 )
+    {
+        mpz_neg(integer, integer);
     }
 
     mpz_clear(difference);
@@ -521,11 +547,7 @@ void ramstake_modulus_init( mpz_t p )
     mpz_init(difference);
 
     /* set modulus p to p = 2^bitsize - difference */
-#if RAMSTAKE_MODULUS_BITSIZE == 22040 
-    mpz_set_ui(difference, 2325); 
-#elif RAMSTAKE_MODULUS_BITSIZE == 16352
-    mpz_set_ui(difference, 28169); 
-#endif
+    mpz_set_ui(difference, RAMSTAKE_MODULUS_TAIL);
     mpz_set_ui(p, 1);
     mpz_mul_2exp(p, p, RAMSTAKE_MODULUS_BITSIZE);
     mpz_sub(p, p, difference);

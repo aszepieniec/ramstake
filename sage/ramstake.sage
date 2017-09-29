@@ -7,13 +7,11 @@ RAMSTAKE_SEED_LENGTH = 32
 RAMSTAKE_KEY_LENGTH = 32
 
 #define RAMSTAKE_MODULUS_BITSIZE 16352
-#define RAMSTAKE_SECRET_BITSIZE 12264
 #define RAMSTAKE_SECRET_SPARSITY 23
 #define RAMSTAKE_CODEWORD_NUMBER 4
 
 RAMSTAKE_MODULUS_BITSIZE = 22040
 RAMSTAKE_CODEWORD_NUMBER = 5
-RAMSTAKE_SECRET_BITSIZE = 16530 
 RAMSTAKE_SECRET_SPARSITY = 22
 
 RAMSTAKE_CODEWORD_LENGTH = 255
@@ -39,18 +37,27 @@ def ramstake_sample_small_sparse_integer( seed ):
     rng = csprng()
     rng.seed(bytearray(seed))
 
-    integer = 2^RAMSTAKE_SECRET_BITSIZE
+    r = rng.generate(8)
+    uli = sum([256^i * r[i] for i in range(0,len(r))])
+    if uli % 2 == 1:
+        integer = -1
+    else:
+        integer = 1
+    integer = integer * 2^((3 * RAMSTAKE_MODULUS_BITSIZE / 4) - ((uli >> 1) % (RAMSTAKE_MODULUS_BITSIZE / 4)))
 
     for i in range(0, RAMSTAKE_SECRET_SPARSITY):
         r = rng.generate(8)
         uli = sum([256^i * r[i] for i in range(0,len(r))])
-        difference = 2^((uli >> 1) % RAMSTAKE_SECRET_BITSIZE)
+        difference = 2^((uli >> 1) % (3*RAMSTAKE_MODULUS_BITSIZE/4))
         if uli % 2 == 1:
             integer -= difference
         else:
             integer += difference
 
-    return integer
+    if integer < 0:
+        return -integer
+    else:
+        return integer
 
 def ramstake_generate_g( seed ):
     rng = csprng()
@@ -171,10 +178,12 @@ def ramstake_encaps( random_seed, pk, kat ):
         print "data:", hexlify(c.e)
 
     # complete s and hash it to obtain key
-    s_ = bytearray(hex(((s + b) % p) + 2^RAMSTAKE_MODULUS_BITSIZE)[1:].decode("hex"))
+    s_ = bytearray(hex(((s + b) % p) + 255*2^RAMSTAKE_MODULUS_BITSIZE)[2:].decode("hex"))
     key = SHA3_256(s_)
     if kat >= 1:
         print "Hashed s into key:", hexlify(key)
+        if kat >= 2:
+            print "From s:", (((s+b)%p) + 255*2^RAMSTAKE_MODULUS_BITSIZE)
 
     return c, key
 
