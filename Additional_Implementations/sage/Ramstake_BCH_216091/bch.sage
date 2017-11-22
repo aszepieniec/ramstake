@@ -194,19 +194,6 @@ class BCH:
             coeffs[i] = quo.coefficients(sparse=False)[i]
         return coeffs
 
-    def gf655362str( self, e ):
-        coeffs = self.Coefficients(e)
-        integer = 0
-        for i in range(0, len(coeffs)):
-            integer += 2^i * ZZ(coeffs[i])
-        h = hex(integer)
-        while len(h) != 4:
-            h = '0' + h
-        return h
-
-    def gf65536x2str( self, p ):
-        return ''.join(self.gf655362str(c) for c in p.coefficients(sparse=False))
-
     def Decode( self, received ):
         #poly = self.Ex(0)
         #for i in range(0,len(received)):

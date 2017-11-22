@@ -168,7 +168,14 @@ class ReedSolomon:
     def HW( self, byte ):
         return (byte & 1)  + ((byte >> 1) & 1) + ((byte >> 2) & 1) + ((byte >> 3) & 1) + ((byte >> 4) & 1) + ((byte >> 5) & 1) + ((byte >> 6) & 1) + ((byte >> 7) & 1)
 
-    def DecodeBytesMultiple( self, received, multiplicity ):
+    def DecodeBytesMultiple( self, received, multiplicity, helper=False ):
+        # if we have helper info, use it
+        if helper != False:
+            for i in range(0, multiplicity):
+                decoded = self.DecodeBytes(received[(self.n*i):(self.n*(i+1))])
+                if SHA3_256(decoded) == helper:
+                    return decoded
+
         # decode each chunk
         decoded = [self.DecodeBytes(received[(self.n*i):(self.n*(i+1))]) for i in range(0, multiplicity)]
 

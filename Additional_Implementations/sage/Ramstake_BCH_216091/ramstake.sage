@@ -1,24 +1,20 @@
-load("reedsolomon.sage")
+load("codec_bch.sage")
 from csprng import csprng
 from binascii import hexlify
-from CompactFIPS202 import SHA3_256
+from CompactFIPS202 import SHA3_256, SHAKE256
 
 RAMSTAKE_SEED_LENGTH = 32
 RAMSTAKE_KEY_LENGTH = 32
 
-#define RAMSTAKE_MODULUS_BITSIZE 16352
-#define RAMSTAKE_SECRET_SPARSITY 23
-#define RAMSTAKE_CODEWORD_NUMBER 4
+RAMSTAKE_MODULUS_BITSIZE = 216091
+RAMSTAKE_ADDITIVE_SPARSITY = 238
+RAMSTAKE_MULTIPLICATIVE_SPARSITY = 18
 
-RAMSTAKE_MODULUS_BITSIZE = 22040
-RAMSTAKE_CODEWORD_NUMBER = 5
-RAMSTAKE_SECRET_SPARSITY = 22
-
-RAMSTAKE_CODEWORD_LENGTH = 255
-RAMSTAKE_SEEDENC_LENGTH = (RAMSTAKE_CODEWORD_NUMBER * RAMSTAKE_CODEWORD_LENGTH)
 RAMSTAKE_DECAPSULATION_FAILURE = -1
 RAMSTAKE_INTEGRITY_FAILURE = -2
 RAMSTAKE_ULONG_LENGTH = 8
+RAMSTAKE_ENCAPS_RANDOM_BYTES = RAMSTAKE_ULONG_LENGTH * (RAMSTAKE_ADDITIVE_SPARSITY + RAMSTAKE_MULTIPLICATIVE_SPARSITY)
+RAMSTAKE_KEYGEN_RANDOM_BYTES = RAMSTAKE_ULONG_LENGTH * (RAMSTAKE_ADDITIVE_SPARSITY + RAMSTAKE_MULTIPLICATIVE_SPARSITY) + RAMSTAKE_SEED_LENGTH
 
 class ramstake_public_key:
     def __init__( self ):
@@ -33,6 +29,7 @@ class ramstake_ciphertext:
     def __init__( self ):
         self.d = 0
         self.e = bytearray([])
+        self.h = bytearray([])
 
 def ramstake_sample_sparse_integer( buff, sparsity ):
     integer = 0
@@ -44,13 +41,11 @@ def ramstake_sample_sparse_integer( buff, sparsity ):
     return integer
 
 def ramstake_generate_g( seed ):
-    rng = csprng()
-    rng.seed(bytearray(seed))
-    data = rng.generate(RAMSTAKE_MODULUS_BITSIZE/8)
+    data = SHAKE256(bytearray(seed), ceil(RAMSTAKE_MODULUS_BITSIZE/8))
 
     g = 0
     for i in range(0,len(data)):
-        g = 256*g + data[i]
+        g = 256*g + int(data[i])
 
     return g
 
@@ -63,23 +58,31 @@ def ramstake_keygen( random_seed, kat ):
         print "\n# ramstake_keygen"
         print "seed:", hexlify(random_seed)
 
-    # generate seed for g
+    # expand randomness
+    randomness_index = 0
+    randomness = rng.generate(RAMSTAKE_KEYGEN_RANDOM_BYTES)
+
+    # grab seed for g
     pk = ramstake_public_key()
-    pk.seed = rng.generate(RAMSTAKE_SEED_LENGTH)
+    pk.seed = randomness[randomness_index:(randomness_index+RAMSTAKE_SEED_LENGTH)]
+    randomness_index += RAMSTAKE_SEED_LENGTH
     g = ramstake_generate_g(pk.seed)
-    if kat >= 2:
+    if kat >= 1:
         print "seed for generating g:", hexlify(pk.seed)
+    if kat >= 3:
         print "g:", g
 
     # sample secret integers a and b
     sk = ramstake_secret_key()
     sk.seed = copy(random_seed)
     # sample sparse secret integers
-    buff = rng.generate(RAMSTAKE_ULONG_LENGTH * RAMSTAKE_SECRET_SPARSITY)
-    sk.a = ramstake_sample_sparse_integer(buff, RAMSTAKE_SECRET_SPARSITY)
-    buff = rng.generate(RAMSTAKE_ULONG_LENGTH * RAMSTAKE_SECRET_SPARSITY)
-    sk.b = ramstake_sample_sparse_integer(buff, RAMSTAKE_SECRET_SPARSITY)
-    if kat >= 2:
+    buff = randomness[randomness_index:(randomness_index + RAMSTAKE_MULTIPLICATIVE_SPARSITY*RAMSTAKE_ULONG_LENGTH)]
+    randomness_index += RAMSTAKE_MULTIPLICATIVE_SPARSITY * RAMSTAKE_ULONG_LENGTH
+    sk.a = ramstake_sample_sparse_integer(buff, RAMSTAKE_MULTIPLICATIVE_SPARSITY)
+    buff = randomness[randomness_index:(randomness_index + RAMSTAKE_ADDITIVE_SPARSITY*RAMSTAKE_ULONG_LENGTH)]
+    randomness_index += RAMSTAKE_ADDITIVE_SPARSITY * RAMSTAKE_ULONG_LENGTH
+    sk.b = ramstake_sample_sparse_integer(buff, RAMSTAKE_ADDITIVE_SPARSITY)
+    if kat >= 3:
         print "Sampled short and sparse integers a and b."
         print "a:", sk.a
         print "b:", sk.b
@@ -89,7 +92,7 @@ def ramstake_keygen( random_seed, kat ):
 
     # compute c = ag + b mod p
     pk.c = (g * sk.a + sk.b) % p
-    if kat >= 2:
+    if kat >= 3:
         print "Computed c = ag + b mod p."
         print "c:", pk.c
 
@@ -100,15 +103,21 @@ def ramstake_encaps( random_seed, pk, kat ):
     rng = csprng()
     rng.seed(random_seed)
 
-    if kat >= 0:
+    if kat >= 1:
         print "\n# ramstake_encaps"
         print "seed:", hexlify(random_seed)
 
+    # expand randomness
+    randomness_index = 0
+    randomness = SHAKE256(random_seed, RAMSTAKE_KEYGEN_RANDOM_BYTES)
+
     # sample secret integers a and b
-    buff = rng.generate(RAMSTAKE_ULONG_LENGTH * RAMSTAKE_SECRET_SPARSITY)
-    a = ramstake_sample_sparse_integer(buff, RAMSTAKE_SECRET_SPARSITY)
-    buff = rng.generate(RAMSTAKE_ULONG_LENGTH * RAMSTAKE_SECRET_SPARSITY)
-    b = ramstake_sample_sparse_integer(buff, RAMSTAKE_SECRET_SPARSITY)
+    buff = randomness[randomness_index:(randomness_index + RAMSTAKE_MULTIPLICATIVE_SPARSITY*RAMSTAKE_ULONG_LENGTH)]
+    randomness_index += RAMSTAKE_MULTIPLICATIVE_SPARSITY * RAMSTAKE_ULONG_LENGTH
+    a = ramstake_sample_sparse_integer(buff, RAMSTAKE_MULTIPLICATIVE_SPARSITY)
+    buff = randomness[randomness_index:(randomness_index + RAMSTAKE_ADDITIVE_SPARSITY*RAMSTAKE_ULONG_LENGTH)]
+    randomness_index += RAMSTAKE_ADDITIVE_SPARSITY * RAMSTAKE_ULONG_LENGTH
+    b = ramstake_sample_sparse_integer(buff, RAMSTAKE_ADDITIVE_SPARSITY)
     if kat >= 3:
         print "Sampled short and sparse integers a and b."
         print "a:", a
@@ -138,30 +147,43 @@ def ramstake_encaps( random_seed, pk, kat ):
         print "p:", p
         print "s:", s
 
-    # draw most significant SEEDENC_LENGTH bytes from s
-    c.e = bytearray(hex(s)[0:(2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
+    # draw appropriate number of most significant bytes from s
+    string = hex(s)
+    if len(string) % 2 == 1:
+        string = '0' + string
+    c.e = bytearray(string[0:(2*floor(RAMSTAKE_MODULUS_BITSIZE/8)*8)].decode("hex"))
     if kat >= 3:
-        print "Drew most significant", RAMSTAKE_SEEDENC_LENGTH, "bytes from s:", hexlify(c.e)
+        print "Drew most significant", floor(RAMSTAKE_MODULUS_BITSIZE/8)*8, "bytes from s:", hexlify(c.e)
 
     # encode randomness seed
-    rs = ReedSolomon(8, 224)
-    data = rs.EncodeBytesMultiple(random_seed, RAMSTAKE_CODEWORD_NUMBER)
+    codec = CODEC(256, floor(RAMSTAKE_MODULUS_BITSIZE/8)*8)
+    data = codec.encode(random_seed)
+    if kat >= 2:
+        print "Encoded randomness using repetition of", codec.repetitions, "codewords of length", floor(codec.n / codec.repetitions)
     if kat >= 3:
-        print "Encoded randomness using Reed-Solomon ECC:", hexlify(data)
+        print "codeword sequence: ", hexlify(data)
 
     # apply otp to codeword sequence
-    for i in range(0, rs.n * RAMSTAKE_CODEWORD_NUMBER):
+    for i in range(0, len(data)):
         c.e[i] = c.e[i] ^^ data[i]
     if kat >= 3:
-        print "Applied one-time pad to sequence of", RAMSTAKE_CODEWORD_NUMBER, "repetitions of the codeword."
+        print "Applied one-time pad to repetition codeword."
         print "data:", hexlify(c.e)
 
-    # complete s and hash it to obtain key
-    s_ = bytearray(hex(((s + b) % p) + 255*2^RAMSTAKE_MODULUS_BITSIZE)[2:].decode("hex"))
-    key = SHA3_256(s_)
+    # add hash of seed to ciphertext
+    c.h = SHA3_256(random_seed)
+    if kat >= 1:
+        print "Hash of seed in ciphertext:", hexlify(c.h)
+
+    # obtain symmetric key as k = H(randomness || pk)
+    string = hex(pk.c + 255*2^RAMSTAKE_MODULUS_BITSIZE)
+    if len(string)%2 == 1:
+        string = '0'+string
+    string = randomness + bytearray(string.decode("hex"))
+    key = SHA3_256(string)
     if kat >= 1:
         print "Hashed s into key:", hexlify(key)
-        if kat >= 2:
+        if kat >= 3:
             print "From s:", (((s+b)%p) + 255*2^RAMSTAKE_MODULUS_BITSIZE)
 
     return c, key
@@ -190,10 +212,13 @@ def ramstake_decaps( c, sk, kat ):
         print "s:", s
         print "from sk.a:", sk.a
 
-    # draw SEEDENC bytes from s
-    word = bytearray(hex(s + 2^RAMSTAKE_MODULUS_BITSIZE)[1:(1+2*RAMSTAKE_SEEDENC_LENGTH)].decode("hex"))
+    # draw appropriate number of bytes from s
+    string = hex(s)
+    if len(string) % 2 == 1:
+        string = '0' + string
+    word = bytearray(string[0:(2*floor(RAMSTAKE_MODULUS_BITSIZE/8)*8)].decode("hex"))
     if kat >= 3:
-        print "Drew most significant", RAMSTAKE_SEEDENC_LENGTH, "bytes from s:", hexlify(word)
+        print "Drew most significant", floor(RAMSTAKE_MODULUS_BITSIZE/8)*8, "bytes from s:", hexlify(word)
 
     # undo OTP
     for i in range(0, len(word)):
@@ -202,11 +227,11 @@ def ramstake_decaps( c, sk, kat ):
         print "Undid one-time pad:", hexlify(word)
 
     # try to decode
-    rs = ReedSolomon(8, 224)
-    decoded = rs.DecodeBytesMultiple(word, RAMSTAKE_CODEWORD_NUMBER)
-    if decoded == bytearray([0]*rs.k):
+    codec = CODEC(256, floor(RAMSTAKE_MODULUS_BITSIZE/8)*8)
+    decoded = codec.decode(word, c.h)
+    if decoded == bytearray([0]*len(decoded)):
         if kat >= 1:
-            print "None of the received words were decodable."
+            print "Received word was not decodable."
         return RAMSTAKE_DECAPSULATION_FAILURE
 
     # re-create ciphertext
@@ -219,11 +244,13 @@ def ramstake_decaps( c, sk, kat ):
         print "d:", rec.d
         print "e:", hexlify(rec.e)
 
-    if rec.d != c.d or rec.e != c.e:
+    if rec.d != c.d or rec.e != c.e or rec.h != c.h:
         if rec.d != c.d:
             print "recreated d =/= ciphertext d"
         if rec.e != c.e:
             print "recreated e =/= ciphertext e"
+        if rec.h != c.h:
+            print "recreated h =/= ciphertext h"
         return RAMSTAKE_INTEGRITY_FAILURE
 
     return key
@@ -238,9 +265,9 @@ def ramstake_export_secret_key( sk ):
         hexb = "0" + hexb
     bytesa = bytearray(list(hexa.decode("hex")))
     bytesb = bytearray(list(hexb.decode("hex")))
-    while len(bytesa) != RAMSTAKE_MODULUS_BITSIZE/8:
+    while len(bytesa) <= RAMSTAKE_MODULUS_BITSIZE/8:
         bytesa.append(0)
-    while len(bytesb) != RAMSTAKE_MODULUS_BITSIZE/8:
+    while len(bytesb) <= RAMSTAKE_MODULUS_BITSIZE/8:
         bytesb.append(0)
     ret.extend(bytesa)
     ret.extend(bytesb)
