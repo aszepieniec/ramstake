@@ -29,29 +29,38 @@ class BCH:
 
         # get generator
         self.generator = self.Fx(1)
-        minpolys = []
         for i in range(1,delta):
             temp = self.z^i
             minpoly = self.MinPoly(self.z^i)
             self.generator = lcm(self.generator, minpoly)
-            minpolys.append(minpoly)
-
-        # collapse list
-        listsize = len(minpolys)
-        while listsize != 1:
-            j = 0
-            i = 0
-            while i < listsize - 1:
-                minpolys[j] = lcm(minpolys[i], minpolys[i+1])
-                i = i + 2
-                j = j + 1
-            if i == listsize - 1:
-                minpolys[j] = minpolys[i]
-                j = j + 1
-            listsize = j
 
         self.k = self.n - self.generator.degree()
         self.t = floor((delta-1)/2)
+
+    ##
+    # ReinitKN
+    # Another init procedure, but this one maximizes delta
+    # subject to having dimension k and length n.
+    def ReinitKN( self, k, n ):
+        p = 2
+        self.n = n
+        self.k = k
+
+        # get generator
+        self.generator = self.Fx(1)
+        minpolys = []
+        i = 1
+        for i in range(1,n):
+            temp = self.z^i
+            minpoly = self.MinPoly(self.z^i)
+            multiple = lcm(self.generator, minpoly)
+            if k + multiple.degree() > n:
+                break
+            else:
+                self.generator = multiple
+
+        self.delta = i-1
+        self.t = floor((self.delta-1)/2)
 
     def Coefficients( self, elm ):
         if self.m != 16:

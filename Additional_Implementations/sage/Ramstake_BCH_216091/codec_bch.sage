@@ -1,11 +1,14 @@
 load("bch.sage")
 
 class CODEC:
-    def __init__( self, k, n ):
+    def __init__( self, k, n, inner_n, reps ):
         self.k = k
-        self.n = n
-        self.bch_codec = BCH(12, 223, floor((223*6+256)/8)*8)
-        self.repetitions = floor(1.0*self.n/self.bch_codec.n)
+        self.bch_codec = BCH(12, 1, 12)
+        self.bch_codec.ReinitKN(k, inner_n)
+        self.repetitions = floor(1.0*n/self.bch_codec.n)
+        if reps > 0 and reps < self.repetitions:
+            self.repetitions = reps
+        self.n = self.bch_codec.n * self.repetitions
 
     ##
     # encode
