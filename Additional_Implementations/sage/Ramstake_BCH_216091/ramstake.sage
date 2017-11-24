@@ -11,7 +11,7 @@ RAMSTAKE_MULTIPLICATIVE_MASS = 18
 
 RAMSTAKE_DECAPSULATION_FAILURE = -1
 RAMSTAKE_INTEGRITY_FAILURE = -2
-RAMSTAKE_ULONG_LENGTH = 8
+RAMSTAKE_ULONG_LENGTH = 4
 RAMSTAKE_ENCAPS_RANDOM_BYTES = RAMSTAKE_ULONG_LENGTH * (RAMSTAKE_ADDITIVE_MASS + RAMSTAKE_MULTIPLICATIVE_MASS)
 RAMSTAKE_KEYGEN_RANDOM_BYTES = RAMSTAKE_ULONG_LENGTH * (RAMSTAKE_ADDITIVE_MASS + RAMSTAKE_MULTIPLICATIVE_MASS) + RAMSTAKE_SEED_LENGTH
 RAMSTAKE_CODEWORD_LENGTH = 255
@@ -35,20 +35,23 @@ class ramstake_ciphertext:
 def ramstake_sample_sparse_integer( buff, mass ):
     integer = 0
     for i in range(0, mass):
-        uli = sum([256^j * buff[RAMSTAKE_ULONG_LENGTH*i+j] for j in range(0,RAMSTAKE_ULONG_LENGTH)])
+        uli = 0
+        for j in range(0, RAMSTAKE_ULONG_LENGTH):
+            uli = uli * 256
+            uli = uli + buff[RAMSTAKE_ULONG_LENGTH*i+j]
         difference = 2^(uli % RAMSTAKE_MODULUS_BITSIZE)
         integer += difference
 
     return integer
 
-def ramstake_generate_g( seed ):
-    data = SHAKE256(bytearray(seed), ceil(RAMSTAKE_MODULUS_BITSIZE/8))
+def ramstake_generate_g( p, seed ):
+    data = SHAKE256(bytearray(seed), floor((RAMSTAKE_MODULUS_BITSIZE+7)/8)+2)
 
     g = 0
     for i in range(0,len(data)):
         g = 256*g + int(data[i])
 
-    return g
+    return g % p
 
 def ramstake_keygen( random_seed, kat ):
 
@@ -60,11 +63,14 @@ def ramstake_keygen( random_seed, kat ):
     randomness_index = 0
     randomness = SHAKE256(random_seed, RAMSTAKE_KEYGEN_RANDOM_BYTES)
 
+    # obtain modulus
+    p = 2^RAMSTAKE_MODULUS_BITSIZE - 1
+
     # grab seed for g
     pk = ramstake_public_key()
     pk.seed = randomness[randomness_index:(randomness_index+RAMSTAKE_SEED_LENGTH)]
     randomness_index += RAMSTAKE_SEED_LENGTH
-    g = ramstake_generate_g(pk.seed)
+    g = ramstake_generate_g(p, pk.seed)
     if kat >= 1:
         print "seed for generating g:", hexlify(pk.seed)
     if kat >= 3:
@@ -77,6 +83,7 @@ def ramstake_keygen( random_seed, kat ):
     buff = randomness[randomness_index:(randomness_index + RAMSTAKE_MULTIPLICATIVE_MASS*RAMSTAKE_ULONG_LENGTH)]
     randomness_index += RAMSTAKE_MULTIPLICATIVE_MASS * RAMSTAKE_ULONG_LENGTH
     sk.a = ramstake_sample_sparse_integer(buff, RAMSTAKE_MULTIPLICATIVE_MASS)
+
     buff = randomness[randomness_index:(randomness_index + RAMSTAKE_ADDITIVE_MASS*RAMSTAKE_ULONG_LENGTH)]
     randomness_index += RAMSTAKE_ADDITIVE_MASS * RAMSTAKE_ULONG_LENGTH
     sk.b = ramstake_sample_sparse_integer(buff, RAMSTAKE_ADDITIVE_MASS)
@@ -84,9 +91,6 @@ def ramstake_keygen( random_seed, kat ):
         print "Sampled short and sparse integers a and b."
         print "a:", sk.a
         print "b:", sk.b
-
-    # obtain modulus
-    p = 2^RAMSTAKE_MODULUS_BITSIZE - 1
 
     # compute c = ag + b mod p
     pk.c = (g * sk.a + sk.b) % p
@@ -104,7 +108,10 @@ def ramstake_encaps( random_seed, pk, kat ):
 
     # expand randomness
     randomness_index = 0
-    randomness = SHAKE256(random_seed, RAMSTAKE_KEYGEN_RANDOM_BYTES)
+    randomness = SHAKE256(random_seed, RAMSTAKE_ENCAPS_RANDOM_BYTES)
+
+    # obtain modulus
+    p = 2^RAMSTAKE_MODULUS_BITSIZE - 1
 
     # sample secret integers a and b
     buff = randomness[randomness_index:(randomness_index + RAMSTAKE_MULTIPLICATIVE_MASS*RAMSTAKE_ULONG_LENGTH)]
@@ -119,14 +126,11 @@ def ramstake_encaps( random_seed, pk, kat ):
         print "b:", b
 
     # recreate g from pk seed
-    g = ramstake_generate_g(pk.seed)
+    g = ramstake_generate_g(p, pk.seed)
     if kat >= 1:
         print "Recreated g from public key seed:", hexlify(pk.seed)
     if kat >= 3:
         print "g:", g
-
-    # obtain modulus
-    p = 2^RAMSTAKE_MODULUS_BITSIZE - 1
 
     # compute d = ag + b mod p
     c = ramstake_ciphertext()
@@ -173,11 +177,17 @@ def ramstake_encaps( random_seed, pk, kat ):
     if kat >= 1:
         print "Hash of seed in ciphertext:", hexlify(c.h)
 
-    # obtain symmetric key as k = H(randomness || pk)
-    string = hex(pk.c + 255*2^RAMSTAKE_MODULUS_BITSIZE)
-    if len(string)%2 == 1:
-        string = '0'+string
-    string = randomness + bytearray(string.decode("hex"))
+    # obtain symmetric key as k = H(pk || randomness)
+    string = hex(pk.c)
+    if len(string) % 2 != 0:
+        string = '0' + string
+    string = bytearray(string.decode("hex"))[::-1]
+    while len(string) != ceil(RAMSTAKE_MODULUS_BITSIZE/8):
+        string.append(0)
+    string = pk.seed + string + randomness
+    if kat >= 3:
+        print "total length:", len(string)
+        print "Hash input:", hexlify(string)
     key = SHA3_256(string)
     if kat >= 1:
         print "Hashed s into key:", hexlify(key)
@@ -195,11 +205,11 @@ def ramstake_decaps( c, sk, kat ):
         print "secret key seed:", hexlify(sk.seed)
         print "Recreated public key seed for g:", hexlify(pk.seed)
 
-    # recreate g
-    g = ramstake_generate_g(pk.seed)
-
     # obtain modulus
     p = 2^RAMSTAKE_MODULUS_BITSIZE - 1
+
+    # recreate g
+    g = ramstake_generate_g(p, pk.seed)
 
     # compute s = da mod p
     s = (c.d * sk.a) % p
