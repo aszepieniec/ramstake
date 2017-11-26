@@ -1,4 +1,4 @@
-load("codec_bch.sage")
+load("codec_rs.sage")
 from binascii import hexlify
 from CompactFIPS202 import SHA3_256, SHAKE256
 
@@ -154,9 +154,9 @@ def ramstake_encaps( random_seed, pk, kat ):
     string = hex(s)
     if len(string) % 2 == 1:
         string = '0' + string
-    c.e = bytearray(string[0:(2*floor(codec.n/8)*8)].decode("hex"))
+    c.e = bytearray(string[0:(2*floor(codec.n/8))].decode("hex"))
     if kat >= 3:
-        print "Drew most significant", floor(codec.n/8)*8, "bytes from s:", hexlify(c.e)
+        print "Drew most significant", floor(codec.n/8), "bytes from s:", hexlify(c.e)
 
     # encode randomness seed
     data = codec.encode(random_seed)
@@ -225,9 +225,9 @@ def ramstake_decaps( c, sk, kat ):
     string = hex(s)
     if len(string) % 2 == 1:
         string = '0' + string
-    word = bytearray(string[0:(2*floor(codec.n/8)*8)].decode("hex"))
+    word = bytearray(string[0:(2*floor(codec.n/8))].decode("hex"))
     if kat >= 3:
-        print "Drew most significant", floor(codec.n/8)*8, "bytes from s:", hexlify(word)
+        print "Drew most significant", floor(codec.n/8), "bytes from s:", hexlify(word)
 
     # undo OTP
     for i in range(0, len(word)):
