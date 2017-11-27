@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-I../../../KeccakCodePackage/bin/generic64/ # point this and the one below to wherever the keccak code package is located
 OPTFLAGS=-O3
-LFLAGS=-L../../../KeccakCodePackage/bin/generic64/ -lgmp -lkeccak #-lcrypto
+LFLAGS=-L../../../KeccakCodePackage/bin/generic64/ -lgmp -lkeccak -lcrypto
 TEST_HEADERS = csprng.h  gf256x.h  ramstake.h  reedsolomon.h 
 TEST_SOURCE = csprng.c  gf256x.c  ramstake.c  reedsolomon.c  test.c codec_rs.c 
 KAT_HEADERS = csprng.h  gf256x.h  ramstake.h  reedsolomon.h  rng.h 
@@ -12,6 +12,11 @@ test: $(TEST_SOURCE) $(TEST_HEADERS)
 
 kat: $(KAT_HEADERS) $(KAT_SOURCES)
 	gcc -o PQCgenKAT_kem $(KAT_SOURCES) $(CFLAGS) $(LFLAGS) -std=c99 -DKAT
+
+api: ramstake.h genapi.c
+	gcc -o genapi genapi.c
+	./genapi > api.h
+	rm -f genapi
 
 clean:
 	rm *.o

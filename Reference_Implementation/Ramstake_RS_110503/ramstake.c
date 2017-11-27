@@ -226,11 +226,11 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
         data[i] = 0;
     }
     mpz_setbit(s, RAMSTAKE_MODULUS_BITSIZE);
-    mpz_export(data, NULL, 1, 1, 1, 0, s);
-    /* we only care about the last (most significant) SEEDENC_LENGTH bytes. */
+    mpz_export(data, NULL, -1, 1, 1, 0, s);
+    /* we only care about the first (least significant) SEEDENC_LENGTH bytes. */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] = data[1+i];
+        c->e[i] = data[i];
     }
     free(data);
     if( kat >= 3 )
@@ -410,11 +410,11 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
         data[i] = 0;
     }
     mpz_setbit(s, RAMSTAKE_MODULUS_BITSIZE);
-    mpz_export(data, NULL, 1, 1, 1, 0, s);
+    mpz_export(data, NULL, -1, 1, 1, 0, s);
 
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        word[i] = data[1 + i];
+        word[i] = data[i];
     }
     free(data);
     if( kat >= 3 )
@@ -757,7 +757,7 @@ void ramstake_export_ciphertext( unsigned char * data, ramstake_ciphertext c )
     int i;
 
     /* put zeros in the place of the integer */
-    for( i = 0 ; i < (RAMSTAKE_MODULUS_BITSIZE+7)/8+1 ; ++i )
+    for( i = 0 ; i < (RAMSTAKE_MODULUS_BITSIZE+7)/8 ; ++i )
     {
         data[i] = 0;
     }
@@ -768,7 +768,13 @@ void ramstake_export_ciphertext( unsigned char * data, ramstake_ciphertext c )
     /* copy seed encoding */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + 1] = c.e[i];
+        data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8] = c.e[i];
+    }
+
+    /* copy hash */
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH/2 ; ++i )
+    {
+        data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + RAMSTAKE_SEEDENC_LENGTH] = c.h[i];
     }
 }
 
@@ -781,12 +787,18 @@ void ramstake_import_ciphertext( ramstake_ciphertext * c, const unsigned char * 
     int i;
 
     /* copy integer */
-    mpz_import(c->d, (RAMSTAKE_MODULUS_BITSIZE+7)/8 + 1, -1, 1, 1, 0, data);
+    mpz_import(c->d, (RAMSTAKE_MODULUS_BITSIZE+7)/8, -1, 1, 1, 0, data);
 
     /* copy seed encoding */
     for( i = 0 ; i < RAMSTAKE_SEEDENC_LENGTH ; ++i )
     {
-        c->e[i] = data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + 1];
+        c->e[i] = data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8];
+    }
+
+    /* copy hash */
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH/2 ; ++i )
+    {
+        c->h[i] = data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + RAMSTAKE_SEEDENC_LENGTH];
     }
 }
 
