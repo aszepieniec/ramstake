@@ -135,19 +135,19 @@ for p in mersenne_primes:
     for seclvl in security_levels:
         params = Parameters(p, seclvl, bch_codeword_length, bch_corrigible_errors, rs_codeword_length, rs_corrigible_errors)
         params.ComputeMasses()
-        params.ComputeStatistics(10000)
+        params.ComputeStatistics(100) # 10000
 
-        pubkey_size = seclvl + p
+        pubkey_size = 32 + ceil(p/8)
 
         print "RS:",
         repetitions = params.OptimalRSCodewordNumber()
-        ciphertext_size = p + repetitions*rs_codeword_length + seclvl
-        print "p = 2^%i-1, sclvl = %i ---> xmass = %i, +mass = %i, mean = %f, std = %f, #codewords = %i, |ctxt| = %f kB, |pk| = %f kB" % (p, seclvl, params.multiplicative_mass, params.additive_mass, params.byte_errors_mean, params.byte_errors_std, repetitions, (1.0*ciphertext_size)/8/1024, 1.0*pubkey_size/8/1024)
+        ciphertext_size = ceil(p/8) + repetitions*rs_codeword_length/8 + 32
+        print "p = 2^%i-1, sclvl = %i ---> xmass = %i, +mass = %i, mean = %f, std = %f, #codewords = %i, |ctxt| = %f kB, |pk| = %f kB" % (p, seclvl, params.multiplicative_mass, params.additive_mass, params.byte_errors_mean, params.byte_errors_std, repetitions, (1.0*ciphertext_size)/1024, 1.0*pubkey_size/1024)
 
         print "BCH:",
         repetitions = params.OptimalBCHCodewordNumber()
-        ciphertext_size = p + repetitions*bch_codeword_length + seclvl
-        print "p = 2^%i-1, sclvl = %i ---> xmass = %i, +mass = %i, mean = %f, std = %f, #codewords = %i, |ctxt| = %f kB, |pk| = %f kB" % (p, seclvl, params.multiplicative_mass, params.additive_mass, params.bit_errors_mean, params.bit_errors_std, repetitions, (1.0*ciphertext_size)/8/1024, 1.0*pubkey_size/8/1024)
+        ciphertext_size = ceil(p/9) + repetitions*bch_codeword_length/8 + 32
+        print "p = 2^%i-1, sclvl = %i ---> xmass = %i, +mass = %i, mean = %f, std = %f, #codewords = %i, |ctxt| = %f kB, |pk| = %f kB" % (p, seclvl, params.multiplicative_mass, params.additive_mass, params.bit_errors_mean, params.bit_errors_std, repetitions, (1.0*ciphertext_size)/1024, 1.0*pubkey_size/1024)
 
     print ""
 
