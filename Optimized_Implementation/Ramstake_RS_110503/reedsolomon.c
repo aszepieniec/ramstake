@@ -131,7 +131,7 @@ int rs_decode( unsigned char * dest, unsigned char * source )
 int rs_syndrome( unsigned char * syndrome, unsigned char * word )
 {
     int is_all_zero;
-    int i, j, k;
+    int i, j;
     unsigned char z, zi, zij, ev;
 
     /* first, set all elements to zero */
@@ -182,11 +182,15 @@ int rs_decode_error_free( unsigned char * dest, unsigned char * source )
         s.data[i] = source[i];
     }
 
-    ret = !rs_decode_polynomial(&d, s);
+    ret = (0 != rs_decode_polynomial(&d, s));
 
-    for( i = 0 ; i < RS_K ; ++i )
+    for( i = 0 ; i < 1+d.degree ; ++i )
     {
         dest[i] = d.data[i];
+    }
+    for( ; i < RS_K ; ++i )
+    {
+        dest[i] = 0;
     }
 
     gf256x_destroy(s);
@@ -278,7 +282,7 @@ int rs_formal_derivative( gf256x * Df, gf256x f )
 
     for( i = 1 ; i <= f.degree ; ++i )
     {
-        if( i & 1 == 1 )
+        if( (i & 1) == 1 )
         {
             Df->data[i-1] = f.data[i];
         }
@@ -345,97 +349,5 @@ int rs_decode_polynomial( gf256x * dest, gf256x codeword )
     gf256x_destroy(rem);
 
     return ret;
-}
-
-/**
- * rs_encode_muliple
- * Encode a single message of k bytes contained in source into a
- * sequence of multiplicity codewords of n bytes to be put into dest.
- */
-int rs_encode_multiple( unsigned char * dest, unsigned char * source, int multiplicity )
-{
-    int i;
-    for( i = 0 ; i < multiplicity ; ++i )
-    {
-        rs_encode(dest + i*RS_N, source);
-    }
-
-    return 0;
-}
-
-/**
- * rs_decode_multiple
- * Decode a sequence-of-multiplicity-codewords of length n bytes
- * each, into a single message of k bytes. Strategy: decode each
- * word separately and then pick the best candidate (ie the one with
- * fewest errors).
- */
-int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multiplicity )
-{
-    int i, j;
-    unsigned char * decoded;
-    unsigned char * recoded;
-    char diff;
-    int * num_errors;
-    int winner_errors;
-    int * byte_errors;
-    int winner, have_winner;
-
-    decoded = malloc(RS_K * multiplicity);
-    recoded = malloc(RS_N * multiplicity);
-    num_errors = malloc(sizeof(int) * multiplicity);
-    byte_errors = malloc(sizeof(int) * multiplicity);
-
-    /* decode each chunk */
-    for( i = 0 ; i < multiplicity ; ++i )
-    {
-        num_errors[i] = rs_decode(decoded + i*RS_K, source + i*RS_N);
-    }
-
-    /* determine winner */
-    winner = 0;
-    have_winner = 0;
-    for( i = 0 ; i < multiplicity ; ++i )
-    {
-        if( num_errors[i] != -1 )
-        {
-            rs_encode_multiple(recoded, decoded + i*RS_K, multiplicity);
-            num_errors[i] = 0;
-            byte_errors[i] = 0;
-            for( j = 0 ; j < RS_N*multiplicity ; ++j )
-            {
-                diff = source[j] ^ recoded[j];
-                num_errors[i] += RS_HW(diff);
-                byte_errors[i] += (diff != 0);
-            }
-            if( have_winner == 1 && num_errors[i] < num_errors[winner] )
-            {
-                winner = i;
-            }
-            else if( have_winner == 0 )
-            {
-                winner = i;
-                have_winner = 1;
-            }
-        }
-        
-    }
-
-    /* copy winner data */
-    winner_errors = num_errors[winner];
-    if( num_errors[winner] != -1 )
-    {
-        for( i = 0 ; i < RS_K ; ++i )
-        {
-            dest[i] = decoded[winner*RS_K + i];
-        }
-    }
-
-    free(byte_errors);
-    free(decoded);
-    free(recoded);
-    free(num_errors);
-
-    return winner_errors;
 }
 

@@ -131,7 +131,7 @@ int rs_decode( unsigned char * dest, unsigned char * source )
 int rs_syndrome( unsigned char * syndrome, unsigned char * word )
 {
     int is_all_zero;
-    int i, j, k;
+    int i, j;
     unsigned char z, zi, zij, ev;
 
     /* first, set all elements to zero */
@@ -182,11 +182,15 @@ int rs_decode_error_free( unsigned char * dest, unsigned char * source )
         s.data[i] = source[i];
     }
 
-    ret = !rs_decode_polynomial(&d, s);
+    ret = (0 != rs_decode_polynomial(&d, s));
 
-    for( i = 0 ; i < RS_K ; ++i )
+    for( i = 0 ; i < 1+d.degree ; ++i )
     {
         dest[i] = d.data[i];
+    }
+    for( ; i < RS_K ; ++i )
+    {
+        dest[i] = 0;
     }
 
     gf256x_destroy(s);
@@ -278,7 +282,7 @@ int rs_formal_derivative( gf256x * Df, gf256x f )
 
     for( i = 1 ; i <= f.degree ; ++i )
     {
-        if( i & 1 == 1 )
+        if( (i & 1) == 1 )
         {
             Df->data[i-1] = f.data[i];
         }

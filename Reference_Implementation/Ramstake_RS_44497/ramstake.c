@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <libkeccak.a.headers/SimpleFIPS202.h>
 #include "ramstake.h"
-#include "csprng.h"
 #include "codec_rs.h"
 
 /**
@@ -12,7 +11,6 @@
 int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigned char * random_seed, int kat )
 {
     int i;
-    unsigned char * data;
     mpz_t g, p;
     unsigned char * randomness_buffer;
     unsigned int randomness_index;
@@ -124,7 +122,6 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_t p;
     mpz_t g;
     mpz_t s;
-    mpz_t ff;
     int i;
     unsigned char * data;
     unsigned char * randomness_buffer;
@@ -333,6 +330,8 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
     mpz_clear(a);
     mpz_clear(b);
     mpz_clear(g);
+
+    return 0;
 }
 
 /**
@@ -342,11 +341,7 @@ int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_publ
  */
 int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret_key sk, int kat )
 {
-    csprng rng;
-    csprng rng2;
     int i, j;
-    int all_fail;
-    int num_errors;
     int decoding_success;
     codec_rs codec;
     mpz_t g, p;
@@ -492,7 +487,7 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
     }
 
     /* decide whether the entire recreated ciphertext is identical */
-    if( mpz_cmp(rec.d, c.d) == 0 && strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 && strncmp(rec.h, c.h, RAMSTAKE_SEED_LENGTH) == 0 )
+    if( mpz_cmp(rec.d, c.d) == 0 && strncmp((const char *)rec.e, (const char *)c.e, RAMSTAKE_SEEDENC_LENGTH) == 0 && strncmp((const char *)rec.h, (const char *)c.h, RAMSTAKE_SEED_LENGTH) == 0 )
     {
         mpz_clear(g);
         mpz_clear(p);
@@ -510,14 +505,26 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
             printf("ciphertext: "); mpz_out_str(stdout, 10, c.d); printf("\n");
         }
     }
-    if( strncmp(rec.e, c.e, RAMSTAKE_SEEDENC_LENGTH) != 0 )
+    if( strncmp((const char*)rec.e, (const char*)c.e, RAMSTAKE_SEEDENC_LENGTH) != 0 )
     {
         printf("recovered e =/= ciphertext e\n");
     }
-    if( strncmp(rec.h, c.h, RAMSTAKE_SEED_LENGTH) != 0 )
+    if( strncmp((const char*)rec.h, (const char*)c.h, RAMSTAKE_SEED_LENGTH) != 0 )
     {
         printf("recovered h =/= ciphertext h\n");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+            printf("%02x", rec.h[i]);
+        printf("\n");
+        for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+            printf("%02x", c.h[i]);
+        printf("\n");
     }
+    printf("received seed: ");
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
+    {
+        printf("%02x", decoded[i]);
+    }
+    printf("\n");
 
     mpz_clear(g);
     mpz_clear(p);
@@ -537,7 +544,6 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
  */
 void ramstake_sample_sparse_integer( mpz_t integer, unsigned char * buffer, int mass )
 {
-    csprng rng;
     int i, j;
     unsigned long int uli;
     mpz_t difference;
@@ -569,7 +575,6 @@ void ramstake_sample_sparse_integer( mpz_t integer, unsigned char * buffer, int 
 void ramstake_generate_g( mpz_t g, mpz_t p, unsigned char * random_seed )
 {
     unsigned char * data;
-    int i;
     data = malloc((RAMSTAKE_MODULUS_BITSIZE+7)/8+2);
     SHAKE256(data, (RAMSTAKE_MODULUS_BITSIZE+7)/8+2, random_seed, RAMSTAKE_SEED_LENGTH);
     mpz_import(g, (RAMSTAKE_MODULUS_BITSIZE+7)/8+2, 1, sizeof(unsigned char), 1, 0, data);
@@ -772,7 +777,7 @@ void ramstake_export_ciphertext( unsigned char * data, ramstake_ciphertext c )
     }
 
     /* copy hash */
-    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH/2 ; ++i )
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
     {
         data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + RAMSTAKE_SEEDENC_LENGTH] = c.h[i];
     }
@@ -796,7 +801,7 @@ void ramstake_import_ciphertext( ramstake_ciphertext * c, const unsigned char * 
     }
 
     /* copy hash */
-    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH/2 ; ++i )
+    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
     {
         c->h[i] = data[i + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + RAMSTAKE_SEEDENC_LENGTH];
     }

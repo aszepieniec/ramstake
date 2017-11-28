@@ -191,6 +191,8 @@ int gf256x_copy( gf256x* dest, gf256x source )
 int gf256x_destroy( gf256x p )
 {
     free(p.data);
+
+    return 1;
 }
 
 /**
@@ -339,7 +341,7 @@ int gf256x_multiply_constant_shift( gf256x* dest, gf256x poly, unsigned char con
  */
 int gf256x_divide( gf256x* quo, gf256x* rem, gf256x num, gf256x divisor )
 {
-    int i, j;
+    int i;
     unsigned char inv, compl;
     gf256x remainder, poly;
     unsigned char * quotient_data;

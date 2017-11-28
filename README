@@ -51,6 +51,7 @@ Where 1 is the number of trials, and deadbeef is the hex encoding of the randomn
 |       |-- ./Reference_Implementation/[paramset]/codec_rs.c  --  functions of the interface between ramstake functions and Reed-Solomon codec
 |       |-- ./Reference_Implementation/[paramset]/rng.c  --  provided by NIST for KATs
 |       |-- ./Reference_Implementation/[paramset]/rng.h  --  provided by NIST for KATs
+|       |-- ./Reference_Implementation/[paramset]/perform.c  --  performance test
 |       `-- ./Reference_Implementation/[paramset]/test.c  --  test procedure
 
 Make sure the Makefile references the correct directory for the Keccak Code Package. Then:
@@ -63,6 +64,9 @@ Make sure the Makefile references the correct directory for the Keccak Code Pack
  * $> make kat
    compiles NIST's KAT generation program. Intermediate KATs will be sent to stdout. Run as
    $> ./PQCgenKAT_kem > KAT.int
+ * $> make perform
+   generates a performance test, which collects timings and cycle counts for a user-defined number of trials. Run as
+   $> ./perform 10000 deadbeef
 
 ## Optimized Implementation
 |       |-- ./Optimized_Implementation/[paramset]/genapi.c  -- generates api.h (to avoid computing the public key size etc by hand)
@@ -82,6 +86,7 @@ Make sure the Makefile references the correct directory for the Keccak Code Pack
 |       |-- ./Optimized_Implementation/[paramset]/codec_rs.c  --  functions of the interface between ramstake functions and Reed-Solomon codec
 |       |-- ./Optimized_Implementation/[paramset]/rng.c  --  provided by NIST for KATs
 |       |-- ./Optimized_Implementation/[paramset]/rng.h  --  provided by NIST for KATs
+|       |-- ./Optimized_Implementation/[paramset]/perform.c  --  performance test
 |       `-- ./Optimized_Implementation/[paramset]/test.c  --  test procedure
 
 Make sure the Makefile references the correct directory for the Keccak Code Package. Then:
@@ -94,4 +99,7 @@ Make sure the Makefile references the correct directory for the Keccak Code Pack
  * $> make kat
    compiles NIST's KAT generation program. Intermediate KATs will be sent to stdout. Run as
    $> ./PQCgenKAT_kem > KAT.int
+ * $> make perform
+   generates a performance test, which collects timings and cycle counts for a user-defined number of trials. Run as
+   $> ./perform 10000 deadbeef
 

@@ -135,7 +135,7 @@ for p in mersenne_primes:
     for seclvl in security_levels:
         params = Parameters(p, seclvl, bch_codeword_length, bch_corrigible_errors, rs_codeword_length, rs_corrigible_errors)
         params.ComputeMasses()
-        params.ComputeStatistics(1000)
+        params.ComputeStatistics(10000)
 
         pubkey_size = seclvl + p
 

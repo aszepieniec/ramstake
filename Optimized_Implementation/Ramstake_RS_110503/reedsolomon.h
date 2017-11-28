@@ -8,8 +8,6 @@
 #define RS_K 32
 #define RS_T 111
 
-#define RS_HW(x) (((x)&1)  + (((x)>>1)&1) + (((x)>>2)&1) + (((x)>>3)&1) + (((x)>>4)&1) + (((x)>>5)&1) + (((x)>>6)&1)+ (((x)>>7)&1))
-
 extern unsigned char generator_data[RS_DELTA];
 extern int generator_degree;
 
@@ -22,8 +20,5 @@ int rs_interrupted_euclidean( gf256x * a, gf256x * b, gf256x x, gf256x y );
 int rs_formal_derivative( gf256x * Df, gf256x f );
 int rs_errors( unsigned char * errors, gf256x sigma, gf256x sigma_deriv, gf256x omega );
 int rs_decode_polynomial( gf256x * dest, gf256x codeword );
-
-int rs_encode_multiple( unsigned char * dest, unsigned char * source, int multiplicity );
-int rs_decode_multiple( unsigned char * dest, unsigned char * source, int multiplicity );
 #endif
 

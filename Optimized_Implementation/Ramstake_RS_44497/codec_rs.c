@@ -72,7 +72,7 @@ int codec_rs_decode( unsigned char * dest, codec_rs cd, unsigned char * source, 
 
         if( equals == 1 )
         {
-           return 1;
+            return 1;
         }
     }
 

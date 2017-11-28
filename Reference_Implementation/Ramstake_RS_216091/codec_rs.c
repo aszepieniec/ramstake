@@ -1,5 +1,8 @@
 #include "codec_rs.h"
 #include <libkeccak.a.headers/SimpleFIPS202.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 /**
  * codec_rs_init
@@ -51,6 +54,7 @@ int codec_rs_decode( unsigned char * dest, codec_rs cd, unsigned char * source, 
     int i, j;
     unsigned char hash[32];
 
+    equals = 1;
     for( i = 0 ; i < cd.repetitions ; ++i )
     {
         /* decode */
@@ -63,12 +67,12 @@ int codec_rs_decode( unsigned char * dest, codec_rs cd, unsigned char * source, 
         equals = 1;
         for( j = 0 ; j < 32 ; ++j )
         {
-            equals &= (hash[i] == helper_data[i]);
+            equals &= (hash[j] == helper_data[j]);
         }
 
         if( equals == 1 )
         {
-            break;
+           return 1;
         }
     }
 

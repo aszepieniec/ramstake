@@ -519,12 +519,6 @@ int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret
             printf("%02x", c.h[i]);
         printf("\n");
     }
-    printf("received seed: ");
-    for( i = 0 ; i < RAMSTAKE_SEED_LENGTH ; ++i )
-    {
-        printf("%02x", decoded[i]);
-    }
-    printf("\n");
 
     mpz_clear(g);
     mpz_clear(p);

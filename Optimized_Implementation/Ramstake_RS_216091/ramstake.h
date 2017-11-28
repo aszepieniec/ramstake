@@ -6,12 +6,14 @@
 
 #define RAMSTAKE_SEED_LENGTH 32
 #define RAMSTAKE_KEY_LENGTH 32
+#define RAMSTAKE_ULONG_LENGTH 4
 
-#define RAMSTAKE_MODULUS_BITSIZE 22040
-#define RAMSTAKE_MODULUS_TAIL 2325
-#define RAMSTAKE_CODEWORD_NUMBER 5
-#define RAMSTAKE_SECRET_SPARSITY 22
-/**/
+#define RAMSTAKE_CODEWORD_NUMBER 4
+#define RAMSTAKE_ADDITIVE_MASS 238
+#define RAMSTAKE_MULTIPLICATIVE_MASS 18
+#define RAMSTAKE_KEYGEN_RANDOM_BYTES (RAMSTAKE_ULONG_LENGTH*(RAMSTAKE_ADDITIVE_MASS + RAMSTAKE_MULTIPLICATIVE_MASS) + RAMSTAKE_SEED_LENGTH)
+#define RAMSTAKE_ENCAPS_RANDOM_BYTES (RAMSTAKE_ULONG_LENGTH*(RAMSTAKE_ADDITIVE_MASS + RAMSTAKE_MULTIPLICATIVE_MASS))
+#define RAMSTAKE_MODULUS_BITSIZE 216091
 
 #define RAMSTAKE_CODEWORD_LENGTH 255
 #define RAMSTAKE_SEEDENC_LENGTH (RAMSTAKE_CODEWORD_NUMBER * RAMSTAKE_CODEWORD_LENGTH)
@@ -20,9 +22,9 @@
 #define RAMSTAKE_DECODING_FAILURE -1
 #define RAMSTAKE_INTEGRITY_FAILURE -2
 
-#define RAMSTAKE_SECRET_KEY_LENGTH (RAMSTAKE_SEED_LENGTH + RAMSTAKE_MODULUS_BITSIZE/8 + RAMSTAKE_MODULUS_BITSIZE/8)
-#define RAMSTAKE_PUBLIC_KEY_LENGTH (RAMSTAKE_SEED_LENGTH + RAMSTAKE_MODULUS_BITSIZE/8)
-#define RAMSTAKE_CIPHERTEXT_LENGTH (RAMSTAKE_MODULUS_BITSIZE/8 + RAMSTAKE_SEEDENC_LENGTH)
+#define RAMSTAKE_SECRET_KEY_LENGTH (RAMSTAKE_SEED_LENGTH + (RAMSTAKE_MODULUS_BITSIZE+7)/8 + (RAMSTAKE_MODULUS_BITSIZE+7)/8)
+#define RAMSTAKE_PUBLIC_KEY_LENGTH (RAMSTAKE_SEED_LENGTH + (RAMSTAKE_MODULUS_BITSIZE+7)/8)
+#define RAMSTAKE_CIPHERTEXT_LENGTH ((RAMSTAKE_MODULUS_BITSIZE+7)/8 + RAMSTAKE_SEEDENC_LENGTH + RAMSTAKE_SEED_LENGTH)
 
 typedef struct
 {
@@ -40,13 +42,15 @@ typedef struct
 {
     mpz_t d;
     unsigned char e[RAMSTAKE_SEEDENC_LENGTH];
+    unsigned char h[RAMSTAKE_SEED_LENGTH];
 } ramstake_ciphertext;
 
 int ramstake_keygen( ramstake_secret_key * sk, ramstake_public_key * pk, unsigned char * random_seed, int kat );
 int ramstake_encaps( ramstake_ciphertext * c, unsigned char * key, ramstake_public_key pk, unsigned char * randomness, int kat );
 int ramstake_decaps( unsigned char * key, ramstake_ciphertext c, ramstake_secret_key sk, int kat );
 
-void ramstake_sample_small_sparse_integer( mpz_t integer, unsigned char * random_seed );
+void ramstake_sample_sparse_integer( mpz_t integer, unsigned char * random_seed, int mass );
+void ramstake_generate_g( mpz_t integer, mpz_t p, unsigned char * random_seed );
 
 void ramstake_modulus_init( mpz_t p );
 void ramstake_modulus_destroy( mpz_t );
