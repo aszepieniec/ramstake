@@ -28,10 +28,12 @@ class Parameters:
 
     def ComputeMasses( self ):
         if self.additive_mass == None or self.multiplicative_mass == None:
-            for self.multiplicative_mass in range(0, self.modulus_bitsize // 2):
-                if log(1.0*binomial(self.modulus_bitsize, self.multiplicative_mass), 2.0) >= self.security_level:
-                    break
-            self.additive_mass = self.security_level - self.multiplicative_mass
+            #for self.multiplicative_mass in range(0, self.modulus_bitsize // 2):
+            #    if log(1.0*binomial(self.modulus_bitsize, self.multiplicative_mass), 2.0) >= self.security_level:
+            #        break
+            #self.additive_mass = self.security_level - self.multiplicative_mass
+            self.additive_mass = self.security_level / 2
+            self.multiplicative_mass = self.security_level / 2
 
     def ComputeStatistics( self, num_trials ):
         p = 2^self.modulus_bitsize - 1
@@ -92,7 +94,7 @@ class Parameters:
         all_fail_probability = 1.0
         number = 0
         for number in range(0, floor(self.modulus_bitsize / self.rs_codeword_length)+10):
-            if all_fail_probability <= 2^-60: #<= 10^(-17):
+            if all_fail_probability <= 2^-64: #<= 10^(-17):
                 break
             all_fail_probability *= failure_probability
 
@@ -113,7 +115,7 @@ class Parameters:
         all_fail_probability = 1.0
         number = 0
         for number in range(0, floor(self.modulus_bitsize / self.bch_codeword_length)+10):
-            if all_fail_probability <= 2^-60: #<= 10^(-17):
+            if all_fail_probability <= 2^-64: #<= 10^(-17):
                 break
             all_fail_probability *= failure_probability
 
@@ -123,7 +125,7 @@ class Parameters:
 
         return number
 
-mersenne_primes = [44497, 86243, 110503, 132049, 216091]
+mersenne_primes = [44497, 86243, 110503, 132049, 216091, 756839]
 security_levels = [128, 192, 256]
 delta = 321
 bch_codeword_length = 255*8#delta*12 + 256
@@ -135,7 +137,7 @@ for p in mersenne_primes:
     for seclvl in security_levels:
         params = Parameters(p, seclvl, bch_codeword_length, bch_corrigible_errors, rs_codeword_length, rs_corrigible_errors)
         params.ComputeMasses()
-        params.ComputeStatistics(100) # 10000
+        params.ComputeStatistics(10000) # 10000
 
         pubkey_size = 32 + ceil(p/8)
 
