@@ -1,9 +1,9 @@
-#define CRYPTO_SECRETKEYBYTES 54056
-#define CRYPTO_PUBLICKEYBYTES 27044
+#define CRYPTO_SECRETKEYBYTES 189242
+#define CRYPTO_PUBLICKEYBYTES 94637
 #define CRYPTO_BYTES 32
-#define CRYPTO_CIPHERTEXTBYTES 28064
+#define CRYPTO_CIPHERTEXTBYTES 96167
 
-#define CRYPTO_ALGNAME "Ramstake RS 216091"
+#define CRYPTO_ALGNAME "Ramstake RS 756839"
 
 int crypto_kem_keypair( unsigned char *pk, unsigned char *sk );
 int crypto_kem_enc( unsigned char *ct, unsigned char *ss, const unsigned char *pk );

@@ -1,0 +1,1700 @@
+
+# ramstake_keygen
+seed: 7c9935a0b07694aa0c6d10e4db6b1add2fd81a25ccb148032dcd739936737f2d
+seed for generating g: 1c0ee1111b08003f28e65e8b3bdeb037cf8f221dfcdaf5950edb38d506d85bef
+
+# ramstake_encaps
+seed: 8626ed79d451140800e03b59b956f8210e556067407d13dc90fa9e8b872bfb8f
+Recreated g from public key seed: 1c0ee1111b08003f28e65e8b3bdeb037cf8f221dfcdaf5950edb38d506d85bef
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 07813bcdf99d963b09ee4d0d9242d01b490387fefdf287b2f4890b5eb44d5cee
+Hashed s into key: fcd44a3b8173f810de6c2bec8dcdafa5dbfd4454f1ad7bb7a2bb50466a06afc6
+
+# ramstake_decaps
+secret key seed: 7c9935a0b07694aa0c6d10e4db6b1add2fd81a25ccb148032dcd739936737f2d
+Recreated public key seed for g: 1c0ee1111b08003f28e65e8b3bdeb037cf8f221dfcdaf5950edb38d506d85bef
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8626ed79d451140800e03b59b956f8210e556067407d13dc90fa9e8b872bfb8f
+
+# ramstake_keygen
+seed: d60b93492a1d8c1c7ba6fc0b733137f3406cee8110a93f170e7a78658af326d9
+seed for generating g: 1c474ada1fc1f3197c9d563b96a74ff66c11bab43ef163a907b2099268adb441
+
+# ramstake_encaps
+seed: 003271531cf27285b8721ed5cb46853043b346a66cba6cf765f1b0eaa40bf672
+Recreated g from public key seed: 1c474ada1fc1f3197c9d563b96a74ff66c11bab43ef163a907b2099268adb441
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 887951c4198dbbb974ab6a83daa2018eb1c7e0b7aeb0aeedfc1a9b85091fb8a8
+Hashed s into key: f9428619ad5c45148cc50cccdad410682e388da6ae66b4fa59ed1292cf3f8013
+
+# ramstake_decaps
+secret key seed: d60b93492a1d8c1c7ba6fc0b733137f3406cee8110a93f170e7a78658af326d9
+Recreated public key seed for g: 1c474ada1fc1f3197c9d563b96a74ff66c11bab43ef163a907b2099268adb441
+Re-encapsulating ciphertext from transmitted seed.
+seed: 003271531cf27285b8721ed5cb46853043b346a66cba6cf765f1b0eaa40bf672
+
+# ramstake_keygen
+seed: 4b622de1350119c45a9f2e2ef3dc5df50a759d138cdfbd64c81cc7cc2f513345
+seed for generating g: b541c1e92ceadd904a09ec08ad306d974734a077868471e58d077187c46604cf
+
+# ramstake_encaps
+seed: e82fcc97ca60ccb27bf6938c975658aeb8b4d37cffbde25d97e561f36c219ade
+Recreated g from public key seed: b541c1e92ceadd904a09ec08ad306d974734a077868471e58d077187c46604cf
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 7ee3c1c8e426da4f617ed28532bc2610e3e7e0de374fda1afcefef3c1b9fde7d
+Hashed s into key: ea2ca706368dc1b99992ea864f7ef5a2255e88b24eec78272760908e1a25a884
+
+# ramstake_decaps
+secret key seed: 4b622de1350119c45a9f2e2ef3dc5df50a759d138cdfbd64c81cc7cc2f513345
+Recreated public key seed for g: b541c1e92ceadd904a09ec08ad306d974734a077868471e58d077187c46604cf
+Re-encapsulating ciphertext from transmitted seed.
+seed: e82fcc97ca60ccb27bf6938c975658aeb8b4d37cffbde25d97e561f36c219ade
+
+# ramstake_keygen
+seed: 050d58f9f757edc1e8180e3808b806f5bbb3586db3470b069826d1bb9a4efc2c
+seed for generating g: 38caa402957e56ff149d9f8ee7c2354b3bdbf0e3752d8017af1222d51f819b2f
+
+# ramstake_encaps
+seed: de950541fd53a8a47aaa8cdfe80d928262a5ef7f8129ec3ef92f78d7cc32ef60
+Recreated g from public key seed: 38caa402957e56ff149d9f8ee7c2354b3bdbf0e3752d8017af1222d51f819b2f
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 88271539b0640e01f1642b8d32efeaf7834936e2016bae041090d31a6c65c35a
+Hashed s into key: 408ba481573cb7ce9cf6c9266b8a7fdaaf03d802ee4a8aeac032e0a4f2788c72
+
+# ramstake_decaps
+secret key seed: 050d58f9f757edc1e8180e3808b806f5bbb3586db3470b069826d1bb9a4efc2c
+Recreated public key seed for g: 38caa402957e56ff149d9f8ee7c2354b3bdbf0e3752d8017af1222d51f819b2f
+Re-encapsulating ciphertext from transmitted seed.
+seed: de950541fd53a8a47aaa8cdfe80d928262a5ef7f8129ec3ef92f78d7cc32ef60
+
+# ramstake_keygen
+seed: 66b79b844e0c2adad694e0478661ac46fe6b6001f6a71ff8e2f034b1fd8833d3
+seed for generating g: f9ea3b5db788bb4a63f522ddde24af5001377b835bbf8fe5848604e9179f32ce
+
+# ramstake_encaps
+seed: be2d3c64d38269a1ee8660b9a2beaeb9f5ac022e8f0a357feebfd13b06813854
+Recreated g from public key seed: f9ea3b5db788bb4a63f522ddde24af5001377b835bbf8fe5848604e9179f32ce
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: bb6ec3b7ba110a84ea3b8248dc51c8a636afc13918998832f238d29aab4409f6
+Hashed s into key: ff4d36fd999be954ea05ef7e34f7b842aaa10f2295508a2b215d4a806c4b5a34
+
+# ramstake_decaps
+secret key seed: 66b79b844e0c2adad694e0478661ac46fe6b6001f6a71ff8e2f034b1fd8833d3
+Recreated public key seed for g: f9ea3b5db788bb4a63f522ddde24af5001377b835bbf8fe5848604e9179f32ce
+Re-encapsulating ciphertext from transmitted seed.
+seed: be2d3c64d38269a1ee8660b9a2beaeb9f5ac022e8f0a357feebfd13b06813854
+
+# ramstake_keygen
+seed: 7ec408f52c9aa723d0c41d9987682a5f4ce6c9da7cd0215af60bbaf5484ab353
+seed for generating g: d392170943dc39410b1c98f38850f876780dd8641f0e3568c01e99bcf17aba75
+
+# ramstake_encaps
+seed: a08ccf451b049fd51d7a9ad77ae14a81569df8c9bd3a8f1ebea86fdcfb823082
+Recreated g from public key seed: d392170943dc39410b1c98f38850f876780dd8641f0e3568c01e99bcf17aba75
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: a382913a9bdc9bbcedad84b2ad110e62fe81820d8ee884d7181461c45fd13e11
+Hashed s into key: e4e6ad04792809ed985527f798cc3e9148c42b0cf0fb85c36d18065a2fc858aa
+
+# ramstake_decaps
+secret key seed: 7ec408f52c9aa723d0c41d9987682a5f4ce6c9da7cd0215af60bbaf5484ab353
+Recreated public key seed for g: d392170943dc39410b1c98f38850f876780dd8641f0e3568c01e99bcf17aba75
+Re-encapsulating ciphertext from transmitted seed.
+seed: a08ccf451b049fd51d7a9ad77ae14a81569df8c9bd3a8f1ebea86fdcfb823082
+
+# ramstake_keygen
+seed: c121915bfef6abdfc177dae2f5a24218f9abda2559afc6741b08e0e61ab433eb
+seed for generating g: 1224f9a3e5e5322e7f980d524f2486cbbc6e478b67ea27a81951662b8924c323
+
+# ramstake_encaps
+seed: 84ef52db5eaa6df8ec3a0bc5ffa730db0dde8c5f38f266d5c680a78d264a7b96
+Recreated g from public key seed: 1224f9a3e5e5322e7f980d524f2486cbbc6e478b67ea27a81951662b8924c323
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: da7c54792d0765b4d0b762f6559f197f671450f651a58f33c19aaf3af5bc8de8
+Hashed s into key: fc1c05c053787dd459fea996bbd4bc41db262ff465d54732a1d17693f9a700b9
+
+# ramstake_decaps
+secret key seed: c121915bfef6abdfc177dae2f5a24218f9abda2559afc6741b08e0e61ab433eb
+Recreated public key seed for g: 1224f9a3e5e5322e7f980d524f2486cbbc6e478b67ea27a81951662b8924c323
+Re-encapsulating ciphertext from transmitted seed.
+seed: 84ef52db5eaa6df8ec3a0bc5ffa730db0dde8c5f38f266d5c680a78d264a7b96
+
+# ramstake_keygen
+seed: d86634ecf96cc2603761e284c0e36734cedec64e7ff486469e38539c71141c5a
+seed for generating g: 00f93db5a2c6f95fac99ee2cfbda4bddbab21d1b8e68b73a847d8f75eb5cfdd7
+
+# ramstake_encaps
+seed: 99daf37400cfe59841afc412ec97f2929dc84a6f3c36f378ee84ce3e46cd1209
+Recreated g from public key seed: 00f93db5a2c6f95fac99ee2cfbda4bddbab21d1b8e68b73a847d8f75eb5cfdd7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: f517f9fb1bb6c6a49f0b42e0193abcf3bc2654f9ab5cb946d879913498995339
+Hashed s into key: a926439d9f056f397e114c6ced3c4c09657db73df35c353d7ee275e342e3847b
+
+# ramstake_decaps
+secret key seed: d86634ecf96cc2603761e284c0e36734cedec64e7ff486469e38539c71141c5a
+Recreated public key seed for g: 00f93db5a2c6f95fac99ee2cfbda4bddbab21d1b8e68b73a847d8f75eb5cfdd7
+Re-encapsulating ciphertext from transmitted seed.
+seed: 99daf37400cfe59841afc412ec97f2929dc84a6f3c36f378ee84ce3e46cd1209
+
+# ramstake_keygen
+seed: 0610678ff4dc3128e1619f915dc192c220f8fad94da1943b90aaec401683a492
+seed for generating g: c160f82720ec8b2ca5346f38eee5298814ea5b986a922e72c616dce7ad3431b4
+
+# ramstake_encaps
+seed: da1804ddb5aa9b1c6a47a98f8505a49bae2affde5fe75e69e828e546a6771004
+Recreated g from public key seed: c160f82720ec8b2ca5346f38eee5298814ea5b986a922e72c616dce7ad3431b4
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: ff33c1a89351c1f3472b83f6916c1aa9b5b0fac44a2ac11ae2fc0507dd718055
+Hashed s into key: 8302523bb07f3380947199b2efb638bbe7a57224705888df3a343dee9a79a20a
+
+# ramstake_decaps
+secret key seed: 0610678ff4dc3128e1619f915dc192c220f8fad94da1943b90aaec401683a492
+Recreated public key seed for g: c160f82720ec8b2ca5346f38eee5298814ea5b986a922e72c616dce7ad3431b4
+Re-encapsulating ciphertext from transmitted seed.
+seed: da1804ddb5aa9b1c6a47a98f8505a49bae2affde5fe75e69e828e546a6771004
+
+# ramstake_keygen
+seed: d322d56d8ef067ba1f24c92492b9c56df3a6ef54a304adc1b69913766a1ce697
+seed for generating g: addf5babe7bfcb894e26233a965e10521ee789fd67c51e6334a2f788b79abd7b
+
+# ramstake_encaps
+seed: 56047447b810cc094d400ab204cf9ae71e3afa68b88586ecb6498c68ac0e51b9
+Recreated g from public key seed: addf5babe7bfcb894e26233a965e10521ee789fd67c51e6334a2f788b79abd7b
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 70a59e9155f4e1c52c4c8eaad134cb0745d3452cb914aa2c9982a92bf6bcab9f
+Hashed s into key: 407e9a56485cd8c1a2fb6b75c9fefb5582af33092550fe81a7912875f41c1774
+
+# ramstake_decaps
+secret key seed: d322d56d8ef067ba1f24c92492b9c56df3a6ef54a304adc1b69913766a1ce697
+Recreated public key seed for g: addf5babe7bfcb894e26233a965e10521ee789fd67c51e6334a2f788b79abd7b
+Re-encapsulating ciphertext from transmitted seed.
+seed: 56047447b810cc094d400ab204cf9ae71e3afa68b88586ecb6498c68ac0e51b9
+
+# ramstake_keygen
+seed: 2f1d8a3bebb34540324b9485fdf3d5be3b858f544abc3fc641b5728cafab03ba
+seed for generating g: 4e8e569cd1ae606e03729368c846ffd6c988181449e13386f29ce3ce98247ef5
+
+# ramstake_encaps
+seed: 8d6c42e7270ee2b77b6045385f3d175984a0e260363166c73b0c70c971644363
+Recreated g from public key seed: 4e8e569cd1ae606e03729368c846ffd6c988181449e13386f29ce3ce98247ef5
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 4ec6fa3ec2034bf21fbe41eaad0b8b0b8c0a7d4fb037b9e2a8546a3636f8557f
+Hashed s into key: ee152ed06aa0253eca9d5f2332e8a3cd0d3c031147acf074a6ca0b052bfa071d
+
+# ramstake_decaps
+secret key seed: 2f1d8a3bebb34540324b9485fdf3d5be3b858f544abc3fc641b5728cafab03ba
+Recreated public key seed for g: 4e8e569cd1ae606e03729368c846ffd6c988181449e13386f29ce3ce98247ef5
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8d6c42e7270ee2b77b6045385f3d175984a0e260363166c73b0c70c971644363
+
+# ramstake_keygen
+seed: 31beda3462627f601cbc56f3ddf4424e1529c04737ef0ef2af6d7401f653b8a1
+seed for generating g: 41c96554a4f9cb211346845c7c64ba472c6a05d3ccc9d408e774d6fa7acd41e8
+
+# ramstake_encaps
+seed: 812083bfa3b670e3eaf9b443702fb6db16ac1197656bbd61a8e25ed523b8d1e5
+Recreated g from public key seed: 41c96554a4f9cb211346845c7c64ba472c6a05d3ccc9d408e774d6fa7acd41e8
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 28fbdf26f2a8c779749012fc730925c223a8eb9dc3786e65b1e8803a219ce359
+Hashed s into key: 4a7ff77e662cb389a5ca35c0a8588b530810e52e6dd3b0fd09e194ca9406cf47
+
+# ramstake_decaps
+secret key seed: 31beda3462627f601cbc56f3ddf4424e1529c04737ef0ef2af6d7401f653b8a1
+Recreated public key seed for g: 41c96554a4f9cb211346845c7c64ba472c6a05d3ccc9d408e774d6fa7acd41e8
+Re-encapsulating ciphertext from transmitted seed.
+seed: 812083bfa3b670e3eaf9b443702fb6db16ac1197656bbd61a8e25ed523b8d1e5
+
+# ramstake_keygen
+seed: cbdff028766d558af4466ef14043a1a9cf765f7748c63cc09dceb59ab39a4e4d
+seed for generating g: 789b3be6ae3b05c5d7636b09734f65fd0c9d34069c6b6c3ff0990f63b5bbd0a6
+
+# ramstake_encaps
+seed: 8e9a30597e4b52ffa87a54b83c91d12a5e9c2cd90fcac2c11b3a348240411a4c
+Recreated g from public key seed: 789b3be6ae3b05c5d7636b09734f65fd0c9d34069c6b6c3ff0990f63b5bbd0a6
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: a67e0bd246ea9abe319544e91048f767a03aabe15e970c52df55497c11c804ed
+Hashed s into key: 66bc4bda51a6c66a122a2dada08f731a7e7d8bc95e2bd138d6f43e98ff5c3e69
+
+# ramstake_decaps
+secret key seed: cbdff028766d558af4466ef14043a1a9cf765f7748c63cc09dceb59ab39a4e4d
+Recreated public key seed for g: 789b3be6ae3b05c5d7636b09734f65fd0c9d34069c6b6c3ff0990f63b5bbd0a6
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8e9a30597e4b52ffa87a54b83c91d12a5e9c2cd90fcac2c11b3a348240411a4c
+
+# ramstake_keygen
+seed: 4c04310bea66305c6ca8ba6b8f61ca96257a67663afc11761f13fb5c7b324b6b
+seed for generating g: 35c5e5183bb0f878a6b692eb5d3fa8618bd9f915a6d9094b65e7ac5c478392e6
+
+# ramstake_encaps
+seed: 8aec87a9a79204cee2986867a2906eb851b734b8b22b91d6749b1a5f07c44e3b
+Recreated g from public key seed: 35c5e5183bb0f878a6b692eb5d3fa8618bd9f915a6d9094b65e7ac5c478392e6
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: d74f345bd879e9515f40e1e81e084d56deeed287490cea2ec1457c38df4c48a7
+Hashed s into key: bb6c740c20efc3a15a120be3a08d692756905e7b739b601350b300055fc1a292
+
+# ramstake_decaps
+secret key seed: 4c04310bea66305c6ca8ba6b8f61ca96257a67663afc11761f13fb5c7b324b6b
+Recreated public key seed for g: 35c5e5183bb0f878a6b692eb5d3fa8618bd9f915a6d9094b65e7ac5c478392e6
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8aec87a9a79204cee2986867a2906eb851b734b8b22b91d6749b1a5f07c44e3b
+
+# ramstake_keygen
+seed: 38a0d5f41d7dc1896efd1b45b0485634cef149828751b96087a0a6dd81b4d58a
+seed for generating g: a09bcdd8b4358655c061937ab5c33e478e7f5b1be59bbb3c4a667093aab7674f
+
+# ramstake_encaps
+seed: a2acf359556df4a2abaeb9dcee945829beb71185b4d6bd18b76e5668f253383a
+Recreated g from public key seed: a09bcdd8b4358655c061937ab5c33e478e7f5b1be59bbb3c4a667093aab7674f
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 32e20e59701ae1c229dbbdb304ebd69d47156f74e4ffbffa762535f215137767
+Hashed s into key: 96b2691fc9916ba92d8db5885ecb19994c11cbfa513d14ed491841773dd8663c
+
+# ramstake_decaps
+secret key seed: 38a0d5f41d7dc1896efd1b45b0485634cef149828751b96087a0a6dd81b4d58a
+Recreated public key seed for g: a09bcdd8b4358655c061937ab5c33e478e7f5b1be59bbb3c4a667093aab7674f
+Re-encapsulating ciphertext from transmitted seed.
+seed: a2acf359556df4a2abaeb9dcee945829beb71185b4d6bd18b76e5668f253383a
+
+# ramstake_keygen
+seed: 97b5665676e59e3538ebadaa8cd50df1f9fda1502d9894c616a946078e56b621
+seed for generating g: 62b05a2754a9f4c8abe0c2028cf28b9dcc279c792bf80654c47753657a25c341
+
+# ramstake_encaps
+seed: df05318b5f655efe36f1b678cf4b875108a18db2fa312261caf839f84bd956c5
+Recreated g from public key seed: 62b05a2754a9f4c8abe0c2028cf28b9dcc279c792bf80654c47753657a25c341
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 37f11f634f617be8f3fe0c858a6231879154b5b97d15906cbe459d1d358c0a9d
+Hashed s into key: 4f11823343b390cdfea8ee135f235a60e79a0f9ffffe8a0c1b736fa831555f25
+
+# ramstake_decaps
+secret key seed: 97b5665676e59e3538ebadaa8cd50df1f9fda1502d9894c616a946078e56b621
+Recreated public key seed for g: 62b05a2754a9f4c8abe0c2028cf28b9dcc279c792bf80654c47753657a25c341
+Re-encapsulating ciphertext from transmitted seed.
+seed: df05318b5f655efe36f1b678cf4b875108a18db2fa312261caf839f84bd956c5
+
+# ramstake_keygen
+seed: ef99224a03a85a46ef115474ec5b5d620da6795d6efcca4c9135d19958a9de62
+seed for generating g: eceb1c52de3cc0e40d907f83cfa47e93ece3e98a34eb08911205724d84ba0a79
+
+# ramstake_encaps
+seed: df7d92dda83e6b2ef4cce08c9134563063068a196d7b1a1a13623e48ae12528e
+Recreated g from public key seed: eceb1c52de3cc0e40d907f83cfa47e93ece3e98a34eb08911205724d84ba0a79
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 028b93f651b33d11c7590c5caccb0047dbe2fbc78b60fd83d88ab6140a7beedf
+Hashed s into key: 35b568fafcba01b40d0484e4796e3edef27214e25fad41e1a15511d77d41bb9b
+
+# ramstake_decaps
+secret key seed: ef99224a03a85a46ef115474ec5b5d620da6795d6efcca4c9135d19958a9de62
+Recreated public key seed for g: eceb1c52de3cc0e40d907f83cfa47e93ece3e98a34eb08911205724d84ba0a79
+Re-encapsulating ciphertext from transmitted seed.
+seed: df7d92dda83e6b2ef4cce08c9134563063068a196d7b1a1a13623e48ae12528e
+
+# ramstake_keygen
+seed: b12f6fd965ea9c5b947db80fc60c83d5e232dca82e7263027c19bd62e5a6ff55
+seed for generating g: 5bad9858ab70ed87b557adbd1eb588a634c408a87e6aaa02bb6ffc01444a5965
+
+# ramstake_encaps
+seed: 0f6aa3e88f7fa8a96067f8cdaeceeac90c2d0b5e277e56e9c405ec9420c30252
+Recreated g from public key seed: 5bad9858ab70ed87b557adbd1eb588a634c408a87e6aaa02bb6ffc01444a5965
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: d0dc68ff039615c604bc38c45460d232548cef1f333daa22e472b54b41a10d5d
+Hashed s into key: 79b307c6540f736ba97a287bf12b40370b9a700a8a4dfdfff75a4657b63059bd
+
+# ramstake_decaps
+secret key seed: b12f6fd965ea9c5b947db80fc60c83d5e232dca82e7263027c19bd62e5a6ff55
+Recreated public key seed for g: 5bad9858ab70ed87b557adbd1eb588a634c408a87e6aaa02bb6ffc01444a5965
+Re-encapsulating ciphertext from transmitted seed.
+seed: 0f6aa3e88f7fa8a96067f8cdaeceeac90c2d0b5e277e56e9c405ec9420c30252
+
+# ramstake_keygen
+seed: 9f52af92ca165fdc38788f2b59ba02e01c8281ff7c1e60504688043a5fe814b0
+seed for generating g: 0c55a05d7053883f86df34b6e0079c4e0db04ef534adff12979a47d29866bab2
+
+# ramstake_encaps
+seed: 4f3029e1be4e1c0258c3a22ff5b50b2674cc094ba7018da2a61569845c17d26f
+Recreated g from public key seed: 0c55a05d7053883f86df34b6e0079c4e0db04ef534adff12979a47d29866bab2
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 258a9477d251247fcfb1d295cf668eeacd555c4d61b90d01e56b2709ef8626ba
+Hashed s into key: 3b61b86c6b1bbca90490e5ba04c62355630688750beed05238b46db1da455b87
+
+# ramstake_decaps
+secret key seed: 9f52af92ca165fdc38788f2b59ba02e01c8281ff7c1e60504688043a5fe814b0
+Recreated public key seed for g: 0c55a05d7053883f86df34b6e0079c4e0db04ef534adff12979a47d29866bab2
+Re-encapsulating ciphertext from transmitted seed.
+seed: 4f3029e1be4e1c0258c3a22ff5b50b2674cc094ba7018da2a61569845c17d26f
+
+# ramstake_keygen
+seed: 851ea90fd3854cbf28fe39fb81f68e4b14345cf0d6eee7ec4ce772513df8410d
+seed for generating g: 6deeb79a57468f09945c234e85c5699c89fe8f0d80e016c5bd9fb3a3ab9d0162
+
+# ramstake_encaps
+seed: 1c0ec046899a777655233e4e1b5ca44e9afbdc67964bfd5d5e3dbb45e60d03cf
+Recreated g from public key seed: 6deeb79a57468f09945c234e85c5699c89fe8f0d80e016c5bd9fb3a3ab9d0162
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: b50217e09017b1df1be4f3b5e4acde1db8f61fe3c6e63968e4682ce6336bdb22
+Hashed s into key: 957fc9cb8bb6d55aff859ceae2bdf4ea9a53b7460292e5a0b2ac29750ecc0d20
+
+# ramstake_decaps
+secret key seed: 851ea90fd3854cbf28fe39fb81f68e4b14345cf0d6eee7ec4ce772513df8410d
+Recreated public key seed for g: 6deeb79a57468f09945c234e85c5699c89fe8f0d80e016c5bd9fb3a3ab9d0162
+Re-encapsulating ciphertext from transmitted seed.
+seed: 1c0ec046899a777655233e4e1b5ca44e9afbdc67964bfd5d5e3dbb45e60d03cf
+
+# ramstake_keygen
+seed: d304c9389cc973477f169788abcb9d511f843219d246a9b587822f422a70c238
+seed for generating g: 5bdf4e60fbb7a2bf6b27dca59be4daa0b4dfbda5aa72b9675389a1786d2d27b7
+
+# ramstake_encaps
+seed: 6590a2e5c7ed86cf2c5c2a898662bc9a81418720bbb632ef9cf0b845ed052d73
+Recreated g from public key seed: 5bdf4e60fbb7a2bf6b27dca59be4daa0b4dfbda5aa72b9675389a1786d2d27b7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 1981a2d471e868e7fcf9349b90ed670f9eb7a25e0276caf810121595072bfa6d
+Hashed s into key: 209825254faeefb3e40f8d0766799e7f9428a0238a9215180cef7dd8580a2df1
+
+# ramstake_decaps
+secret key seed: d304c9389cc973477f169788abcb9d511f843219d246a9b587822f422a70c238
+Recreated public key seed for g: 5bdf4e60fbb7a2bf6b27dca59be4daa0b4dfbda5aa72b9675389a1786d2d27b7
+Re-encapsulating ciphertext from transmitted seed.
+seed: 6590a2e5c7ed86cf2c5c2a898662bc9a81418720bbb632ef9cf0b845ed052d73
+
+# ramstake_keygen
+seed: 89a6e3be304a3518fb82b18ca730f0b359cd6ba90664a493fb4f8edaf965b9c3
+seed for generating g: 50851fc96a166df5c92fc9cb8ca2cc715260dd3adf814e9626bb8c5dc979b0a6
+
+# ramstake_encaps
+seed: b6591121e25d64010c25a18676033e1d7278ac5f2d0b43a31f3a4156ae710465
+Recreated g from public key seed: 50851fc96a166df5c92fc9cb8ca2cc715260dd3adf814e9626bb8c5dc979b0a6
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: a47177c609af895c3885a249b93ef19fe5386e0c92941fba415979376c70ca46
+Hashed s into key: 8b5446379aa4ef453e837e1ef6cc9ae48c0353bdc6850429c74576e40c94df0e
+
+# ramstake_decaps
+secret key seed: 89a6e3be304a3518fb82b18ca730f0b359cd6ba90664a493fb4f8edaf965b9c3
+Recreated public key seed for g: 50851fc96a166df5c92fc9cb8ca2cc715260dd3adf814e9626bb8c5dc979b0a6
+Re-encapsulating ciphertext from transmitted seed.
+seed: b6591121e25d64010c25a18676033e1d7278ac5f2d0b43a31f3a4156ae710465
+
+# ramstake_keygen
+seed: d569b935ce015c85f792f8f7fb0d83c4f53b492959361dd4f75fb764d6564501
+seed for generating g: 1e0ffc1667a37eed99c83d08215e566c03bf79bca5107894c70698d2ec3de1f0
+
+# ramstake_encaps
+seed: 76eae84d11c4528382828f7a689a0d5cff87b8ca0bba97feacb39b935a8788cb
+Recreated g from public key seed: 1e0ffc1667a37eed99c83d08215e566c03bf79bca5107894c70698d2ec3de1f0
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 8a94c5f94e4b62ad4c094e2d781befed303303f2cd5074918fd58d91fdaa27ea
+Hashed s into key: f69915a2a9ee42d5d6a3a5bc78bd14aaddd3604f1f78f1c03c97e53d449b2c0d
+
+# ramstake_decaps
+secret key seed: d569b935ce015c85f792f8f7fb0d83c4f53b492959361dd4f75fb764d6564501
+Recreated public key seed for g: 1e0ffc1667a37eed99c83d08215e566c03bf79bca5107894c70698d2ec3de1f0
+Re-encapsulating ciphertext from transmitted seed.
+seed: 76eae84d11c4528382828f7a689a0d5cff87b8ca0bba97feacb39b935a8788cb
+
+# ramstake_keygen
+seed: 5cbb141c2763425c274f7404fe530d9116e08c33f9f200a20b011cf563a28990
+seed for generating g: 0cfc99139d128c79bbb2992e585fbe19d1a99d6276dffa943a7707f6abdf94f8
+
+# ramstake_encaps
+seed: fc9ebbe336dc464489861db8253606971bd0a9008a433ed17752d04023781552
+Recreated g from public key seed: 0cfc99139d128c79bbb2992e585fbe19d1a99d6276dffa943a7707f6abdf94f8
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 026ae1d58ace38550901f6b3a36f5453ff17bb12df47f1b2685e47a859e96bc2
+Hashed s into key: 02ddb1261f0a66607674eb548d91a47602424cf8fcef22109242d6fec1490e63
+
+# ramstake_decaps
+secret key seed: 5cbb141c2763425c274f7404fe530d9116e08c33f9f200a20b011cf563a28990
+Recreated public key seed for g: 0cfc99139d128c79bbb2992e585fbe19d1a99d6276dffa943a7707f6abdf94f8
+Re-encapsulating ciphertext from transmitted seed.
+seed: fc9ebbe336dc464489861db8253606971bd0a9008a433ed17752d04023781552
+
+# ramstake_keygen
+seed: 293abb6d1c207927945417cf84883ef010823e11b487ed55239e466e83696d0c
+seed for generating g: edf097e92a1a2868df3933977927c6be50b9b5ba7eedfff0e129a9f7d173c80c
+
+# ramstake_encaps
+seed: ff8563038aad865a817cab9ce98846ba75be9363718ecf5fea538aea90b2a558
+Recreated g from public key seed: edf097e92a1a2868df3933977927c6be50b9b5ba7eedfff0e129a9f7d173c80c
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: f4a255a9b0b58f155150b1d5b8395a4aeb85432fa962d4a2cd06424fe0ab62cb
+Hashed s into key: 42bf3b484b1d199240c28562b10447a8e1b22d644cb861d026e48baa24ba9825
+
+# ramstake_decaps
+secret key seed: 293abb6d1c207927945417cf84883ef010823e11b487ed55239e466e83696d0c
+Recreated public key seed for g: edf097e92a1a2868df3933977927c6be50b9b5ba7eedfff0e129a9f7d173c80c
+Re-encapsulating ciphertext from transmitted seed.
+seed: ff8563038aad865a817cab9ce98846ba75be9363718ecf5fea538aea90b2a558
+
+# ramstake_keygen
+seed: 74d87c7556f2671f2d666854a4d6e073e69f35421e6e1a428cccea49c37f972c
+seed for generating g: 8c56c6b579f3d145a0d300e358eaff8da6e7908c5d740fbd5b738c5b608b3270
+
+# ramstake_encaps
+seed: e1fb7456ac0aa1b97068f452cba64ebdc138bcf5d36b0a0fada2a3b374141eb9
+Recreated g from public key seed: 8c56c6b579f3d145a0d300e358eaff8da6e7908c5d740fbd5b738c5b608b3270
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: c7ea8d2ae6596bc7fd8a85b10da4020a7d629c5ee410905fab5e8dc85d6c7d80
+Hashed s into key: a5b41ff57e61d971849cb42b88fbcd4d3a6a43f29d706261853c68e68eb6ef56
+
+# ramstake_decaps
+secret key seed: 74d87c7556f2671f2d666854a4d6e073e69f35421e6e1a428cccea49c37f972c
+Recreated public key seed for g: 8c56c6b579f3d145a0d300e358eaff8da6e7908c5d740fbd5b738c5b608b3270
+Re-encapsulating ciphertext from transmitted seed.
+seed: e1fb7456ac0aa1b97068f452cba64ebdc138bcf5d36b0a0fada2a3b374141eb9
+
+# ramstake_keygen
+seed: 013bab0212d04ecd54b478daf72748003a25e2cb060ba6cc50bf95c292b8206b
+seed for generating g: dfed4513b269c83a2efcff9040dbff2b9cb66816703afc0467911937f3c5e120
+
+# ramstake_encaps
+seed: 9da0c5da5f195b80fbb99c2e8b06926074f3f604b3f6195b5a5b9737876bba72
+Recreated g from public key seed: dfed4513b269c83a2efcff9040dbff2b9cb66816703afc0467911937f3c5e120
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: b92ac5b7ef11e7bc105c72bc575076faf2f9f4e972df5a6b36d7f75c0d792cb1
+Hashed s into key: 0e4e5a89958219a777e743e9255c97621f4e82d761ecf1913f9e745420491395
+
+# ramstake_decaps
+secret key seed: 013bab0212d04ecd54b478daf72748003a25e2cb060ba6cc50bf95c292b8206b
+Recreated public key seed for g: dfed4513b269c83a2efcff9040dbff2b9cb66816703afc0467911937f3c5e120
+Re-encapsulating ciphertext from transmitted seed.
+seed: 9da0c5da5f195b80fbb99c2e8b06926074f3f604b3f6195b5a5b9737876bba72
+
+# ramstake_keygen
+seed: ccb073c4b90be0ad746e26fb093b60c70110bd1dcbcddb566a8cffb7b3caf80e
+seed for generating g: 7f713c2b2d44dce1cf8d93aa0a760beb459b202274e5741b716a5a49e262978f
+
+# ramstake_encaps
+seed: 71600a8982c350df524cde514431ded7aec23576530894bcbf0ec0bfef0bb64f
+Recreated g from public key seed: 7f713c2b2d44dce1cf8d93aa0a760beb459b202274e5741b716a5a49e262978f
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: d79d56dbadc1ee062286b7cdc8dd94e12873b2cd9792213e674725de02d8c0d9
+Hashed s into key: c5cc2bdd247d91ec5c61a45318bccd07644df45208c873cce3ed7d332e406803
+
+# ramstake_decaps
+secret key seed: ccb073c4b90be0ad746e26fb093b60c70110bd1dcbcddb566a8cffb7b3caf80e
+Recreated public key seed for g: 7f713c2b2d44dce1cf8d93aa0a760beb459b202274e5741b716a5a49e262978f
+Re-encapsulating ciphertext from transmitted seed.
+seed: 71600a8982c350df524cde514431ded7aec23576530894bcbf0ec0bfef0bb64f
+
+# ramstake_keygen
+seed: 2e889f44e28901e9ac7ca6b2fffcb124c8979401b17064d7e1d51a7e3c3adbfa
+seed for generating g: b5995a2d1f4c93aa83928cb9f6e9b6787d1c1f948be68d3a3f5ab02f8f134950
+
+# ramstake_encaps
+seed: 0e145e44aae52cfc609e6f47fd7a6f6af877190ff52256d0ac5b05b89c3f449f
+Recreated g from public key seed: b5995a2d1f4c93aa83928cb9f6e9b6787d1c1f948be68d3a3f5ab02f8f134950
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 8fa52026fb40a488542e86a027cd02c81f197076c1b4d8fd5486b937e8320af8
+Hashed s into key: aa670e82745996402673621ba0f3035f4a4919f8e2ee23eb5efa0fc054a6b3ee
+
+# ramstake_decaps
+secret key seed: 2e889f44e28901e9ac7ca6b2fffcb124c8979401b17064d7e1d51a7e3c3adbfa
+Recreated public key seed for g: b5995a2d1f4c93aa83928cb9f6e9b6787d1c1f948be68d3a3f5ab02f8f134950
+Re-encapsulating ciphertext from transmitted seed.
+seed: 0e145e44aae52cfc609e6f47fd7a6f6af877190ff52256d0ac5b05b89c3f449f
+
+# ramstake_keygen
+seed: 174aaa36410566dc15a5e62874218d7abdde0b2c0f30d877bb80b1abd5f5a0a4
+seed for generating g: 25035657964a7d9c802c68b1595121151ffbfb60157fe550e16f7c1b1ab53613
+
+# ramstake_encaps
+seed: 50a7a2354f7e5cefa6f4a4e9a1c411eb9364506e9e1204a8acb3cb77fbd2c4ed
+Recreated g from public key seed: 25035657964a7d9c802c68b1595121151ffbfb60157fe550e16f7c1b1ab53613
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: be24c0d8c50e965c07147728f828c65a7ec22cbb587be4f9e6af30321711a97c
+Hashed s into key: 14f62d48874c378c0ed03c72a38f0d945f12d06151147facdec52d27e400544e
+
+# ramstake_decaps
+secret key seed: 174aaa36410566dc15a5e62874218d7abdde0b2c0f30d877bb80b1abd5f5a0a4
+Recreated public key seed for g: 25035657964a7d9c802c68b1595121151ffbfb60157fe550e16f7c1b1ab53613
+Re-encapsulating ciphertext from transmitted seed.
+seed: 50a7a2354f7e5cefa6f4a4e9a1c411eb9364506e9e1204a8acb3cb77fbd2c4ed
+
+# ramstake_keygen
+seed: 351fe4313e2da7fac83d509f3103caf7b4c64a4d458fefdf636785ac361a1390
+seed for generating g: ec0518051981abcfc2715d67e67ae279c105cfab401fe857d615f86ec8d72ee8
+
+# ramstake_encaps
+seed: f072d9b5a99f9c7a0a011e4dc10f6b600d611f40bba75071e7bee61d23fd5eda
+Recreated g from public key seed: ec0518051981abcfc2715d67e67ae279c105cfab401fe857d615f86ec8d72ee8
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 1de946c55757ba878622bacc365b477095916643053eaec6d3e971451734ac15
+Hashed s into key: 4746c46d52f8ac19d6dcb11d1f5c42e2c991bcfca31721210eeb96169a7ebc77
+
+# ramstake_decaps
+secret key seed: 351fe4313e2da7fac83d509f3103caf7b4c64a4d458fefdf636785ac361a1390
+Recreated public key seed for g: ec0518051981abcfc2715d67e67ae279c105cfab401fe857d615f86ec8d72ee8
+Re-encapsulating ciphertext from transmitted seed.
+seed: f072d9b5a99f9c7a0a011e4dc10f6b600d611f40bba75071e7bee61d23fd5eda
+
+# ramstake_keygen
+seed: 9bc5315580207c6c16dcf3a30c48daf278de12e8c27df6733e62f799068ad23d
+seed for generating g: e7d5febb9b59f5df31e14287d71630549cd9b4e9cbd14e70c7714639b8205f7e
+
+# ramstake_encaps
+seed: 5a4d0a8a41c4f666854e9b13673071ceb2fd61def9a850c211e7c50071b1ddad
+Recreated g from public key seed: e7d5febb9b59f5df31e14287d71630549cd9b4e9cbd14e70c7714639b8205f7e
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: c236fc979964bc9ed4342ae44f1629e78b077df709c02b77cf5fb76f9608ac71
+Hashed s into key: f97905b789d4629403e04f19812fb5ea2613218eb0dd2bfc2500c75a2f1f44e7
+
+# ramstake_decaps
+secret key seed: 9bc5315580207c6c16dcf3a30c48daf278de12e8c27df6733e62f799068ad23d
+Recreated public key seed for g: e7d5febb9b59f5df31e14287d71630549cd9b4e9cbd14e70c7714639b8205f7e
+Re-encapsulating ciphertext from transmitted seed.
+seed: 5a4d0a8a41c4f666854e9b13673071ceb2fd61def9a850c211e7c50071b1ddad
+
+# ramstake_keygen
+seed: d8b907b34d152ff8603b73051f772daa71eb902c47b7e2f070508269d757e02e
+seed for generating g: a9ef7816ee8eeb50613bee4fd15065ea423a11dae7722ce789e8527516293345
+
+# ramstake_encaps
+seed: 36b817736cbc5f7b1dd6eef5fe6332fb1a598f3871e5470d440fd2ea631da28a
+Recreated g from public key seed: a9ef7816ee8eeb50613bee4fd15065ea423a11dae7722ce789e8527516293345
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: d4b18ecde9066f04aa848b336530be4d1b7f714425c26cd80e1b64365cf8519c
+Hashed s into key: 01a44ffec7b532ca82b610bf549c5b7d99a774ea7ed8e1e355b89f0f8f210c9b
+
+# ramstake_decaps
+secret key seed: d8b907b34d152ff8603b73051f772daa71eb902c47b7e2f070508269d757e02e
+Recreated public key seed for g: a9ef7816ee8eeb50613bee4fd15065ea423a11dae7722ce789e8527516293345
+Re-encapsulating ciphertext from transmitted seed.
+seed: 36b817736cbc5f7b1dd6eef5fe6332fb1a598f3871e5470d440fd2ea631da28a
+
+# ramstake_keygen
+seed: 684a29e4e5480a5f2533e1526b5fac8cdf5927f3d85087c71f928c59690eb565
+seed for generating g: 19c1a37fdd1e041c0c8a34ec097e992da49e3f1f0fe7c4081e8e89ce27161a22
+
+# ramstake_encaps
+seed: 75d12195ec32a8686d0600e45d4a7f54219b0d7a3826d193a51b9156ecf2edd6
+Recreated g from public key seed: 19c1a37fdd1e041c0c8a34ec097e992da49e3f1f0fe7c4081e8e89ce27161a22
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 08eba2e824130b87c9442245edcadaf7201afb103b9a0384ca3c28474c9f10cd
+Hashed s into key: d3c6844dc146367e443917c5d1f34c9419541360b45af2663b401ffdaa0d0cd0
+
+# ramstake_decaps
+secret key seed: 684a29e4e5480a5f2533e1526b5fac8cdf5927f3d85087c71f928c59690eb565
+Recreated public key seed for g: 19c1a37fdd1e041c0c8a34ec097e992da49e3f1f0fe7c4081e8e89ce27161a22
+Re-encapsulating ciphertext from transmitted seed.
+seed: 75d12195ec32a8686d0600e45d4a7f54219b0d7a3826d193a51b9156ecf2edd6
+
+# ramstake_keygen
+seed: d76b3573f596eb286ab5231feec7499686b13021be36cb126c7ebeb9d7030daf
+seed for generating g: 0bea597ec12846d418cee1692df7762b97a956d71ebb4964ebba31a0aa2862c5
+
+# ramstake_encaps
+seed: 248c0a21ea0bb6d6f56f12300e8584d8e9a34e0e6f52227281151ae4c305fb8f
+Recreated g from public key seed: 0bea597ec12846d418cee1692df7762b97a956d71ebb4964ebba31a0aa2862c5
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 7e0a515c9fb982242f45de26bce0cf0776ce064d5d35680a9640829d57c9c27b
+Hashed s into key: dc5b9c004e4d28ad5fb5b52cdd106056bae00107f325e84ce543de1591255d74
+
+# ramstake_decaps
+secret key seed: d76b3573f596eb286ab5231feec7499686b13021be36cb126c7ebeb9d7030daf
+Recreated public key seed for g: 0bea597ec12846d418cee1692df7762b97a956d71ebb4964ebba31a0aa2862c5
+Re-encapsulating ciphertext from transmitted seed.
+seed: 248c0a21ea0bb6d6f56f12300e8584d8e9a34e0e6f52227281151ae4c305fb8f
+
+# ramstake_keygen
+seed: b87439fde81c9e39eebe7cf741c685785532c1dd23e8ef868b9ce7a541010f3d
+seed for generating g: c9c7c93f52a271fa6a4ed6938e006d31d5335362f5f029eb152b7233efa1b097
+
+# ramstake_encaps
+seed: 1646460817a0fce5836bdfe124a7448e7adf7b8ecc2652ac6d280e986682df71
+Recreated g from public key seed: c9c7c93f52a271fa6a4ed6938e006d31d5335362f5f029eb152b7233efa1b097
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 169b8302eae5d55cc4db3265576c8b0b24160c902b7f7489c46d266f705a9b2a
+Hashed s into key: ca49baefe53b83ea3957e836263b7ffd15dca8dbe9871eeef61ac9f482b2da3e
+
+# ramstake_decaps
+secret key seed: b87439fde81c9e39eebe7cf741c685785532c1dd23e8ef868b9ce7a541010f3d
+Recreated public key seed for g: c9c7c93f52a271fa6a4ed6938e006d31d5335362f5f029eb152b7233efa1b097
+Re-encapsulating ciphertext from transmitted seed.
+seed: 1646460817a0fce5836bdfe124a7448e7adf7b8ecc2652ac6d280e986682df71
+
+# ramstake_keygen
+seed: 056661b38038da4fdd7426f32a81576c73ed84843b305168a374f934e27a4e1b
+seed for generating g: 67408b25699934431eb9cf2b018d45e239c12c907d99fca62b422602fca9f10b
+
+# ramstake_encaps
+seed: 79238a80dcfd7c992d84b2dffa67493e669243d4fa38c46b090bdf86bc548411
+Recreated g from public key seed: 67408b25699934431eb9cf2b018d45e239c12c907d99fca62b422602fca9f10b
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 36101f9ca04176cc904f95fb592bdf1c3a85a1e56780d2e3a9f04626d49b56ed
+Hashed s into key: 4f3f57f7de958d18f913ec86ae78dbff6d47f554057988f130ac07e8bd3e05ba
+
+# ramstake_decaps
+secret key seed: 056661b38038da4fdd7426f32a81576c73ed84843b305168a374f934e27a4e1b
+Recreated public key seed for g: 67408b25699934431eb9cf2b018d45e239c12c907d99fca62b422602fca9f10b
+Re-encapsulating ciphertext from transmitted seed.
+seed: 79238a80dcfd7c992d84b2dffa67493e669243d4fa38c46b090bdf86bc548411
+
+# ramstake_keygen
+seed: a1b52d871612a1c611ae0944f9e71858f35d3bd14f20e96a931720668bdf0a6b
+seed for generating g: 42d444416f3f4875b2ab5048657c71cae41d466780501fa9cc3552925c0f5e04
+
+# ramstake_encaps
+seed: 1f135cf64b6403e103afae34da038613e2853bbfc36baafa3c6a95347193f37c
+Recreated g from public key seed: 42d444416f3f4875b2ab5048657c71cae41d466780501fa9cc3552925c0f5e04
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 66c4319b08ed7fc7ed9995f6f74738ef11593c43eb22fa6252c97a6ef99d3b82
+Hashed s into key: dbbca25640d7624c1d00b6bbdf91699888ca6bb4531ee846a879aa550e026555
+
+# ramstake_decaps
+secret key seed: a1b52d871612a1c611ae0944f9e71858f35d3bd14f20e96a931720668bdf0a6b
+Recreated public key seed for g: 42d444416f3f4875b2ab5048657c71cae41d466780501fa9cc3552925c0f5e04
+Re-encapsulating ciphertext from transmitted seed.
+seed: 1f135cf64b6403e103afae34da038613e2853bbfc36baafa3c6a95347193f37c
+
+# ramstake_keygen
+seed: 952b49c803d6d6fba69f4375adce8594847a00bcae2179da49af2aed04232502
+seed for generating g: 2849c0e801cbc13e7285819de6899848d308887b8ffdf6eaaa1a7fd69d27638d
+
+# ramstake_encaps
+seed: 62d7033947ae42ca53522a65fbafe18d3bc3e0cb66164e9a094fe4b44d8977ed
+Recreated g from public key seed: 2849c0e801cbc13e7285819de6899848d308887b8ffdf6eaaa1a7fd69d27638d
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 7e39e19ebea5d6f66672e3926770b0dd1fe650f69df0a7b4440d3f7d692e24df
+Hashed s into key: 4d0e5c68a2595cb58c2303fc448a8a5e51156babc55f0595b0a66c60df46dddd
+
+# ramstake_decaps
+secret key seed: 952b49c803d6d6fba69f4375adce8594847a00bcae2179da49af2aed04232502
+Recreated public key seed for g: 2849c0e801cbc13e7285819de6899848d308887b8ffdf6eaaa1a7fd69d27638d
+Re-encapsulating ciphertext from transmitted seed.
+seed: 62d7033947ae42ca53522a65fbafe18d3bc3e0cb66164e9a094fe4b44d8977ed
+
+# ramstake_keygen
+seed: 3c815e57e9233e975fa1630208aab206b71ae0db37a7a8789ac683d9f9b2d298
+seed for generating g: ecf9d355e01f625ccf71b780aff28e5b878159574b4f47a7505563b97a385743
+
+# ramstake_encaps
+seed: 01c8e376fdb140ee343106c093af7cb149b316ba79446ceb4e5e0cedb9b164f9
+Recreated g from public key seed: ecf9d355e01f625ccf71b780aff28e5b878159574b4f47a7505563b97a385743
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 1d9818067f38e0e0bee59574a098ee505875f81e1d859ff47546060ec8e82d58
+Hashed s into key: 2656d68b8e7e1ab3a7be05b364324cc851a3bc58fb8bbe5ad2cafaf3315cc266
+
+# ramstake_decaps
+secret key seed: 3c815e57e9233e975fa1630208aab206b71ae0db37a7a8789ac683d9f9b2d298
+Recreated public key seed for g: ecf9d355e01f625ccf71b780aff28e5b878159574b4f47a7505563b97a385743
+Re-encapsulating ciphertext from transmitted seed.
+seed: 01c8e376fdb140ee343106c093af7cb149b316ba79446ceb4e5e0cedb9b164f9
+
+# ramstake_keygen
+seed: 588760826dcfbd36d9abe6ae44a669bb3ebba6a218eab69e30f18a3bd536576e
+seed for generating g: 4523740f02d2ee51d41ab897dc76506688cb4c9a1373ef254efd44a1bebaaca0
+
+# ramstake_encaps
+seed: 0e860576285483bb5fd36e2f944d32c4317bebc1e441470c1372046a790d79d4
+Recreated g from public key seed: 4523740f02d2ee51d41ab897dc76506688cb4c9a1373ef254efd44a1bebaaca0
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: f0c4b7c1c15e8f7c5d1840d492d5d94df2a314cfe9cfcbf1ab734c82d6af4782
+Hashed s into key: 6ec3f55b5febc1c705d5d176e685bed621b28042ee5d65cbd0c3e9c1f45811d8
+
+# ramstake_decaps
+secret key seed: 588760826dcfbd36d9abe6ae44a669bb3ebba6a218eab69e30f18a3bd536576e
+Recreated public key seed for g: 4523740f02d2ee51d41ab897dc76506688cb4c9a1373ef254efd44a1bebaaca0
+Re-encapsulating ciphertext from transmitted seed.
+seed: 0e860576285483bb5fd36e2f944d32c4317bebc1e441470c1372046a790d79d4
+
+# ramstake_keygen
+seed: 47550e9edacb6ddce3d9ab81f6b61080dd4f2693854acb05e0ccc7a4fb6390fb
+seed for generating g: 479ff5ef030b940aa66f952ee28a374c1195b53b86e300421e54b84c55fb2cee
+
+# ramstake_encaps
+seed: f89d7d99d5c3e0d10d6ef9af054d842375f695abb28e3b8eb495100f04306e92
+Recreated g from public key seed: 479ff5ef030b940aa66f952ee28a374c1195b53b86e300421e54b84c55fb2cee
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9c5f24371c4f4cfbc2e4ac3285da9d2e8f98f00b77ae2e3cf1a3c34c1c85781c
+Hashed s into key: 5bf1ac09e7e6ce68bc0c9b3ea7b13f0c50ddd93f1be7a1a7e529a97b5d6c383f
+
+# ramstake_decaps
+secret key seed: 47550e9edacb6ddce3d9ab81f6b61080dd4f2693854acb05e0ccc7a4fb6390fb
+Recreated public key seed for g: 479ff5ef030b940aa66f952ee28a374c1195b53b86e300421e54b84c55fb2cee
+Re-encapsulating ciphertext from transmitted seed.
+seed: f89d7d99d5c3e0d10d6ef9af054d842375f695abb28e3b8eb495100f04306e92
+
+# ramstake_keygen
+seed: 610afb64be8cc1df288cfb016ee2f44c6c07113de7f6fee071fe0c3fe31c6215
+seed for generating g: d278213b6671fee1d60f9b7aa7963c8a5c85c59df0bc03ecd9c5f38ae23c9560
+
+# ramstake_encaps
+seed: cd292e4c5f9e1a55e0489bceffb204d672a6215f4f3980a646d9f880817c52dd
+Recreated g from public key seed: d278213b6671fee1d60f9b7aa7963c8a5c85c59df0bc03ecd9c5f38ae23c9560
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 3f5444c50ab228f00caa171b18035f4efd7ba7660c0afd0c208f7bb750984f34
+Hashed s into key: 2ce8bd1df49ca3e976b46c55ac6759b99b0a86c4b06869b87b9a0b6f98808783
+
+# ramstake_decaps
+secret key seed: 610afb64be8cc1df288cfb016ee2f44c6c07113de7f6fee071fe0c3fe31c6215
+Recreated public key seed for g: d278213b6671fee1d60f9b7aa7963c8a5c85c59df0bc03ecd9c5f38ae23c9560
+Re-encapsulating ciphertext from transmitted seed.
+seed: cd292e4c5f9e1a55e0489bceffb204d672a6215f4f3980a646d9f880817c52dd
+
+# ramstake_keygen
+seed: e1953800acaa85ac02a906c72cb8e8d704e8d27820345f88f71e89c1f549afcc
+seed for generating g: 499de17b4e360bae4af504461283d6f0eb4a83d7327280900c010ba1e4b58713
+
+# ramstake_encaps
+seed: 8c64c049c6dfc0f1476cffd520b055756162f7ec94243de6b14ac0b9e5fb366c
+Recreated g from public key seed: 499de17b4e360bae4af504461283d6f0eb4a83d7327280900c010ba1e4b58713
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 18f9e31033888105fb276cc094af5afd558ad0c77d0f7ef1c2132e049ccd371a
+Hashed s into key: 2a793f901d607a77365cd4167fae737311da0998ffcb21cf80c2182c105c130e
+
+# ramstake_decaps
+secret key seed: e1953800acaa85ac02a906c72cb8e8d704e8d27820345f88f71e89c1f549afcc
+Recreated public key seed for g: 499de17b4e360bae4af504461283d6f0eb4a83d7327280900c010ba1e4b58713
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8c64c049c6dfc0f1476cffd520b055756162f7ec94243de6b14ac0b9e5fb366c
+
+# ramstake_keygen
+seed: c719f9b2d16399b7326ce4eca30dabefe8fdaab18e9f6df888b0a134ef355570
+seed for generating g: 0430ed0b9a41b6094355d03393767d47955a11419ae80d3326026e9da6cd583d
+
+# ramstake_encaps
+seed: e40771856eb77e4633504899fcb86c6a3d433d0b8d60e26f07bd61f1d4ed69bd
+Recreated g from public key seed: 0430ed0b9a41b6094355d03393767d47955a11419ae80d3326026e9da6cd583d
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 41ff8d195087ea846936a82a2be53d812fd37e07cd8b30695f1633b3ab4a096d
+Hashed s into key: 3f886e28cafb61d7679990d1eac15965c5def37a61a135709955bd736c453f89
+
+# ramstake_decaps
+secret key seed: c719f9b2d16399b7326ce4eca30dabefe8fdaab18e9f6df888b0a134ef355570
+Recreated public key seed for g: 0430ed0b9a41b6094355d03393767d47955a11419ae80d3326026e9da6cd583d
+Re-encapsulating ciphertext from transmitted seed.
+seed: e40771856eb77e4633504899fcb86c6a3d433d0b8d60e26f07bd61f1d4ed69bd
+
+# ramstake_keygen
+seed: e9acbb774be970206c3a738e243b420805a509fa59fa902044be2f0d013650d2
+seed for generating g: 16d26ce3ec6ac404da45c8f287dd0c8caa3d6190f9def83a17b404c7ecab0872
+
+# ramstake_encaps
+seed: ded5edaec5de3bf5b4d7c2f2e18e87f499c1968993eff196753db8045e2c8ba8
+Recreated g from public key seed: 16d26ce3ec6ac404da45c8f287dd0c8caa3d6190f9def83a17b404c7ecab0872
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: c4cb3d78f98196b4dd89a72f608ddd6e844356bfd336776cb6000968301ca02e
+Hashed s into key: 73d4a671cc2ebdb06cf0875059a30e9062688dbacd88614d0b83ebc7c9843e9c
+
+# ramstake_decaps
+secret key seed: e9acbb774be970206c3a738e243b420805a509fa59fa902044be2f0d013650d2
+Recreated public key seed for g: 16d26ce3ec6ac404da45c8f287dd0c8caa3d6190f9def83a17b404c7ecab0872
+Re-encapsulating ciphertext from transmitted seed.
+seed: ded5edaec5de3bf5b4d7c2f2e18e87f499c1968993eff196753db8045e2c8ba8
+
+# ramstake_keygen
+seed: c1b3cbffad4b306f9af0cdd3028876486dbe858875c9b6497fe20172a986c82b
+seed for generating g: 26c947849228f07ded9da1f5701313e9507423ab98618907156a59a4f3195800
+
+# ramstake_encaps
+seed: 1c96249919cedc2369d8d739ab125e0d2ccb82dfebcd90240a545cdfe07511f2
+Recreated g from public key seed: 26c947849228f07ded9da1f5701313e9507423ab98618907156a59a4f3195800
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: b3ca57e486e9e121b44b2884469f22ab44ce24ef4bb5f4bb49644cee1952f173
+Hashed s into key: 3045fc3e1dba0e92365b4229c3c9a54ef6e4f754839eacdea3d4444049c8cb33
+
+# ramstake_decaps
+secret key seed: c1b3cbffad4b306f9af0cdd3028876486dbe858875c9b6497fe20172a986c82b
+Recreated public key seed for g: 26c947849228f07ded9da1f5701313e9507423ab98618907156a59a4f3195800
+Re-encapsulating ciphertext from transmitted seed.
+seed: 1c96249919cedc2369d8d739ab125e0d2ccb82dfebcd90240a545cdfe07511f2
+
+# ramstake_keygen
+seed: ff7495b8575b5a98e4fd21fb4c3e58cbb60f14bef21aa74cf8802e3153f14807
+seed for generating g: d6c3a68ef87b17aec6d83cc2ce2590332c3d77fe1bbd8a680d4653781aad7d80
+
+# ramstake_encaps
+seed: bdc370460375a778d1a31d01c42b66367ed8d9e8f84551002f552f0e52102b5d
+Recreated g from public key seed: d6c3a68ef87b17aec6d83cc2ce2590332c3d77fe1bbd8a680d4653781aad7d80
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 6d4b6c8e28d388614b745ee334fa464446c8e8ea483f76c36407b349e85f5f37
+Hashed s into key: 36d26c13308632e83950044f4492e153f87874f782cd0d01eef792126dcf1c46
+
+# ramstake_decaps
+secret key seed: ff7495b8575b5a98e4fd21fb4c3e58cbb60f14bef21aa74cf8802e3153f14807
+Recreated public key seed for g: d6c3a68ef87b17aec6d83cc2ce2590332c3d77fe1bbd8a680d4653781aad7d80
+Re-encapsulating ciphertext from transmitted seed.
+seed: bdc370460375a778d1a31d01c42b66367ed8d9e8f84551002f552f0e52102b5d
+
+# ramstake_keygen
+seed: bdc3fba1c32751139fc45bacffb3ea97f26573d804a5f27a459293d95190ed8e
+seed for generating g: b572694522301c0f5eb604cbfcc289dc4a5ac5a401aa6d45751d8882a37727aa
+
+# ramstake_encaps
+seed: fd5a08f656a6eb8cd20679930a31caa6a6331c4b133a6838c223ef9f769f6246
+Recreated g from public key seed: b572694522301c0f5eb604cbfcc289dc4a5ac5a401aa6d45751d8882a37727aa
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 3fe272db8cf2771312122432ac86678957cf14d11420889fce11b16785350afd
+Hashed s into key: c78ca6c83f4b1eadaf01098e72527a81d7cd2fc3e1724f3ffc7a1d4667d98153
+
+# ramstake_decaps
+secret key seed: bdc3fba1c32751139fc45bacffb3ea97f26573d804a5f27a459293d95190ed8e
+Recreated public key seed for g: b572694522301c0f5eb604cbfcc289dc4a5ac5a401aa6d45751d8882a37727aa
+Re-encapsulating ciphertext from transmitted seed.
+seed: fd5a08f656a6eb8cd20679930a31caa6a6331c4b133a6838c223ef9f769f6246
+
+# ramstake_keygen
+seed: 447f6076a627bbc5ad7773fbfeb14b4ba9ac43a0f8b99fb6dcd5e452aa3c47ec
+seed for generating g: cd3c55ef6303d568236aa0ed43ee392f370ac99cfcab3524c57af2859fafc945
+
+# ramstake_encaps
+seed: 20a7237801f470fcc2bd9fd7bea8322859b850f7882d362947432913dd068c01
+Recreated g from public key seed: cd3c55ef6303d568236aa0ed43ee392f370ac99cfcab3524c57af2859fafc945
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 216e120f30fd54454b0a6fd5b85619a5de162fd55725166a9cafac580b3b4fb2
+Hashed s into key: e94fe138858d9e00cb92cb03eabe2869e3145d7ad0d9072dd515d0f4cdaa86e6
+
+# ramstake_decaps
+secret key seed: 447f6076a627bbc5ad7773fbfeb14b4ba9ac43a0f8b99fb6dcd5e452aa3c47ec
+Recreated public key seed for g: cd3c55ef6303d568236aa0ed43ee392f370ac99cfcab3524c57af2859fafc945
+Re-encapsulating ciphertext from transmitted seed.
+seed: 20a7237801f470fcc2bd9fd7bea8322859b850f7882d362947432913dd068c01
+
+# ramstake_keygen
+seed: 2d5df64d62cb07fe630310bb801c658dbf3d97993e68626745de39d37fbfc2b2
+seed for generating g: b33915d6d6d07381b3c5c12d3de4c600d41955f675b0df3bae85b20a24850e7d
+
+# ramstake_encaps
+seed: 7b534537addaba4ecf14f02ab317d36cb9f0f50222ced7cf029dff8a0d3d2fd9
+Recreated g from public key seed: b33915d6d6d07381b3c5c12d3de4c600d41955f675b0df3bae85b20a24850e7d
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9b5d971b0843935c2139469a9a66c4d5eb7999f231b7146ba8ece3ccf842a737
+Hashed s into key: 9bc38cf2343e1265ceb8ae6c8a8e1565124ae2bfc67cacfe02c2ea922039b89f
+
+# ramstake_decaps
+secret key seed: 2d5df64d62cb07fe630310bb801c658dbf3d97993e68626745de39d37fbfc2b2
+Recreated public key seed for g: b33915d6d6d07381b3c5c12d3de4c600d41955f675b0df3bae85b20a24850e7d
+Re-encapsulating ciphertext from transmitted seed.
+seed: 7b534537addaba4ecf14f02ab317d36cb9f0f50222ced7cf029dff8a0d3d2fd9
+
+# ramstake_keygen
+seed: 25056d1b8113bb362dd979d98643d7a7ac9c4f95994c0ba060609b6d07002ff3
+seed for generating g: 721a989296cb51d057e3266f45d1659004cec334aaef5f25db74ea29708a6ba5
+
+# ramstake_encaps
+seed: f48a9254dd40b117941fa35a66bb50296327b725525deef70e128ca8045ec451
+Recreated g from public key seed: 721a989296cb51d057e3266f45d1659004cec334aaef5f25db74ea29708a6ba5
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: ef5040f928ff519901a18bda4d8512010f401095de33420e6f79dc35d1098443
+Hashed s into key: ee1bfbea769f9a2a7099037babe15820898db5d0d3e05f8b38f1171336227b42
+
+# ramstake_decaps
+secret key seed: 25056d1b8113bb362dd979d98643d7a7ac9c4f95994c0ba060609b6d07002ff3
+Recreated public key seed for g: 721a989296cb51d057e3266f45d1659004cec334aaef5f25db74ea29708a6ba5
+Re-encapsulating ciphertext from transmitted seed.
+seed: f48a9254dd40b117941fa35a66bb50296327b725525deef70e128ca8045ec451
+
+# ramstake_keygen
+seed: e4d34e12982aeeb1d62fd488d9b9e28557ed3429292239fb4f76fa9098009aca
+seed for generating g: f7664f10a6d0be81ae6653ee865703239a00e883136e92cf1830320517263d99
+
+# ramstake_encaps
+seed: e6c45c7fc62329b13c8d29844405db8ff6860de474bf727ecd19e54e6e1a141b
+Recreated g from public key seed: f7664f10a6d0be81ae6653ee865703239a00e883136e92cf1830320517263d99
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 8bb3b5a229d957f9cd781b031b16b22858109587684019c49d4a2e6139303b84
+Hashed s into key: cddcaed24691edab2020cd492baa720505a119a24d9ad6f3f20a060a6662f0e2
+
+# ramstake_decaps
+secret key seed: e4d34e12982aeeb1d62fd488d9b9e28557ed3429292239fb4f76fa9098009aca
+Recreated public key seed for g: f7664f10a6d0be81ae6653ee865703239a00e883136e92cf1830320517263d99
+Re-encapsulating ciphertext from transmitted seed.
+seed: e6c45c7fc62329b13c8d29844405db8ff6860de474bf727ecd19e54e6e1a141b
+
+# ramstake_keygen
+seed: cd6a99396eb3539ca663a51e42063a3a262cc1c5a5fce1566f0597b52ad9fa32
+seed for generating g: 97f0323f602da77a05e2b4d3dec4d4de5c4f492fa4588e2d1ddab963e0876d64
+
+# ramstake_encaps
+seed: 5a3407f591791a5db4578b5972093a95bec3b8e70c1d542c9b5c9789729f8922
+Recreated g from public key seed: 97f0323f602da77a05e2b4d3dec4d4de5c4f492fa4588e2d1ddab963e0876d64
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 535196c0229004f76a50fccd0d06485c89c45e2815f9f1d1ba402bf9151ff70f
+Hashed s into key: 042cace8325169aa8a041c6de8cd7eb22fe6bf2b9de75c81956791f07edf1ffb
+
+# ramstake_decaps
+secret key seed: cd6a99396eb3539ca663a51e42063a3a262cc1c5a5fce1566f0597b52ad9fa32
+Recreated public key seed for g: 97f0323f602da77a05e2b4d3dec4d4de5c4f492fa4588e2d1ddab963e0876d64
+Re-encapsulating ciphertext from transmitted seed.
+seed: 5a3407f591791a5db4578b5972093a95bec3b8e70c1d542c9b5c9789729f8922
+
+# ramstake_keygen
+seed: 6c8c53ed6f65e6b2e324b84364e10de42d1c26a106d4d1c99eee79c78586fb55
+seed for generating g: 8855d64540bdda3d7cdb084b734b58f512888e67397b9a4415b8a12d573ec640
+
+# ramstake_encaps
+seed: b9402bf02481ce4b27a52e87feb92c4399c7f2988d40e942e7496ad15ad2aa88
+Recreated g from public key seed: 8855d64540bdda3d7cdb084b734b58f512888e67397b9a4415b8a12d573ec640
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: b37dc37b350de8ce0a78b5f12f3e9fdd999bb484d074a15aff169f0cdb4b3db8
+Hashed s into key: 2e4411991722c184ba4bb0c2fc127ce0950d247c7d995bdbc2c09b0365051661
+
+# ramstake_decaps
+secret key seed: 6c8c53ed6f65e6b2e324b84364e10de42d1c26a106d4d1c99eee79c78586fb55
+Recreated public key seed for g: 8855d64540bdda3d7cdb084b734b58f512888e67397b9a4415b8a12d573ec640
+Re-encapsulating ciphertext from transmitted seed.
+seed: b9402bf02481ce4b27a52e87feb92c4399c7f2988d40e942e7496ad15ad2aa88
+
+# ramstake_keygen
+seed: 2107204cd995f1df14314d5381f8c5440f09a347502e161cffc0a2ec3dcfbc73
+seed for generating g: b901a4483883f78067d7c8c0d111b198f1af9cf6b5e16e25a225cd3553efcecd
+
+# ramstake_encaps
+seed: 24c3da70fe850e80aa818301d60c70f3038153866dcd5d179e22db59b8991bb4
+Recreated g from public key seed: b901a4483883f78067d7c8c0d111b198f1af9cf6b5e16e25a225cd3553efcecd
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 97b9e6699d949847f484a9eebdfd7f641720bac931476495d961ee84e7db5cc2
+Hashed s into key: 025fed0796d557d8b4fefb443d3fd2dc1603730b0ac1fc6405ddbff1c5838799
+
+# ramstake_decaps
+secret key seed: 2107204cd995f1df14314d5381f8c5440f09a347502e161cffc0a2ec3dcfbc73
+Recreated public key seed for g: b901a4483883f78067d7c8c0d111b198f1af9cf6b5e16e25a225cd3553efcecd
+Re-encapsulating ciphertext from transmitted seed.
+seed: 24c3da70fe850e80aa818301d60c70f3038153866dcd5d179e22db59b8991bb4
+
+# ramstake_keygen
+seed: 63a925685a8ac5bbd918faa33ac397d1ffbcf99135d9da7c3d6ff7aa4c50af3d
+seed for generating g: a17449b48015b9acdbc443311d48bfa4d4e8dffad47244757a7e30aff4215e26
+
+# ramstake_encaps
+seed: 3afdb8a246a56ee71465591831c371f2eb87467b0559dedd776ba063ee6d2f93
+Recreated g from public key seed: a17449b48015b9acdbc443311d48bfa4d4e8dffad47244757a7e30aff4215e26
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 7b560a227750178d07cc8cc59fcbdade81a80e11edb22833fa62ea24b9163151
+Hashed s into key: 5c0d17a5119ee4204b22d7b8b0f7833120ae7c46a71a714284928f313b365ca3
+
+# ramstake_decaps
+secret key seed: 63a925685a8ac5bbd918faa33ac397d1ffbcf99135d9da7c3d6ff7aa4c50af3d
+Recreated public key seed for g: a17449b48015b9acdbc443311d48bfa4d4e8dffad47244757a7e30aff4215e26
+Re-encapsulating ciphertext from transmitted seed.
+seed: 3afdb8a246a56ee71465591831c371f2eb87467b0559dedd776ba063ee6d2f93
+
+# ramstake_keygen
+seed: 6a1aee5e708c1b47f02bdacce4f56c860f74fc7cfec1ef3b58285b1c8ad7fec2
+seed for generating g: 868c83eb368f1ff5093fd9bf7dae4495bb40a3e3a98abc085c90863c312ab13e
+
+# ramstake_encaps
+seed: 230e05b7114ff0395cc6634db1eae8258072d09c09f291e92d6620b177dc50d7
+Recreated g from public key seed: 868c83eb368f1ff5093fd9bf7dae4495bb40a3e3a98abc085c90863c312ab13e
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: ce7a17dafb8fae0ae5f38c166e3e22686d5cc2d52a2e499ac38e766063febc16
+Hashed s into key: 20036cf4ae7252b622fd3e15fddda55b1794b8c573aa3078114f7f84a262f4ce
+
+# ramstake_decaps
+secret key seed: 6a1aee5e708c1b47f02bdacce4f56c860f74fc7cfec1ef3b58285b1c8ad7fec2
+Recreated public key seed for g: 868c83eb368f1ff5093fd9bf7dae4495bb40a3e3a98abc085c90863c312ab13e
+Re-encapsulating ciphertext from transmitted seed.
+seed: 230e05b7114ff0395cc6634db1eae8258072d09c09f291e92d6620b177dc50d7
+
+# ramstake_keygen
+seed: 6396b328b100e4c7f4bcae69875edea1a1982421558c608c13c592bf7b5d0fef
+seed for generating g: 7aa37e5b90b8bf2ea57cdf16b2ed25aee74e6e401b5243ded92ed58f0e401cd4
+
+# ramstake_encaps
+seed: 1100ced48add211a5c937b8d6079d8e271af3f949edc61f70e60453aef20dea9
+Recreated g from public key seed: 7aa37e5b90b8bf2ea57cdf16b2ed25aee74e6e401b5243ded92ed58f0e401cd4
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: f4aa996f99722376375fea5c2ed60b89873a9aad060472f5a2383c999a32f446
+Hashed s into key: d19d75cbd207e61dd47d15d841e7075005788299583b763c6b9a67726299f922
+
+# ramstake_decaps
+secret key seed: 6396b328b100e4c7f4bcae69875edea1a1982421558c608c13c592bf7b5d0fef
+Recreated public key seed for g: 7aa37e5b90b8bf2ea57cdf16b2ed25aee74e6e401b5243ded92ed58f0e401cd4
+Re-encapsulating ciphertext from transmitted seed.
+seed: 1100ced48add211a5c937b8d6079d8e271af3f949edc61f70e60453aef20dea9
+
+# ramstake_keygen
+seed: a453bcacdd2b0d4646009e5ed451c3c45f08fb827ef733db3c517a9dc1af93e6
+seed for generating g: 22b111827dda940136bc30129ce6a218fea2b6528d124a9ef43dcbe4213443a0
+
+# ramstake_encaps
+seed: 7a3cc8aa3239d4c52ce4c95afdeff6efbfacac10d294edc0e7cf4535059bfdba
+Recreated g from public key seed: 22b111827dda940136bc30129ce6a218fea2b6528d124a9ef43dcbe4213443a0
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 60f4597c20631ad4d776f18533c5124336b18cfc3372f4290abdca4f9af272c2
+Hashed s into key: 590ceccdd3b07229aeea2a04ddcd60b3af0642bb845df549ea29104dc2545811
+
+# ramstake_decaps
+secret key seed: a453bcacdd2b0d4646009e5ed451c3c45f08fb827ef733db3c517a9dc1af93e6
+Recreated public key seed for g: 22b111827dda940136bc30129ce6a218fea2b6528d124a9ef43dcbe4213443a0
+Re-encapsulating ciphertext from transmitted seed.
+seed: 7a3cc8aa3239d4c52ce4c95afdeff6efbfacac10d294edc0e7cf4535059bfdba
+
+# ramstake_keygen
+seed: 47ca2b77c5b717f423222c2730ca5cb9c856bc951d01b2b2c80bd76ccb5539b7
+seed for generating g: d63403ad92dd761a33291821a7a911a1d7c9300cca77b0b169e9f5940b687860
+
+# ramstake_encaps
+seed: 8f1481d7cab000e33fa07de8dc9627a85e76fabb4428a3376e66300cf12a0787
+Recreated g from public key seed: d63403ad92dd761a33291821a7a911a1d7c9300cca77b0b169e9f5940b687860
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 20c2a5bf7a6aec64476e79a2357bce2014750eeeb9592231ac17baae6e84012e
+Hashed s into key: 55c86324164874544f2a5bf652d7951ca0c52b111de82c63fd5760a040e3003d
+
+# ramstake_decaps
+secret key seed: 47ca2b77c5b717f423222c2730ca5cb9c856bc951d01b2b2c80bd76ccb5539b7
+Recreated public key seed for g: d63403ad92dd761a33291821a7a911a1d7c9300cca77b0b169e9f5940b687860
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8f1481d7cab000e33fa07de8dc9627a85e76fabb4428a3376e66300cf12a0787
+
+# ramstake_keygen
+seed: aaf6eb40e596a5e3e8218871e708b089240dcbe7fd3641f0e5e41e071ce49107
+seed for generating g: 3bfbea0f06f234746d56dccbbeac0bb3aef6db9a97abb958cf849c9efc11e76d
+
+# ramstake_encaps
+seed: e2f8d320ac3cb0c52efdc753282f092bc39baf4a18783a48ea031a191865eb78
+Recreated g from public key seed: 3bfbea0f06f234746d56dccbbeac0bb3aef6db9a97abb958cf849c9efc11e76d
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 24a7a8d00ed5629faf1c2f10be012eb5f49cbaa4199355c063cd004e456c1590
+Hashed s into key: 8e4ba1c5acb08d9d37ba17378002841fdba2a7bade5d4b0a6caf786d959e6349
+
+# ramstake_decaps
+secret key seed: aaf6eb40e596a5e3e8218871e708b089240dcbe7fd3641f0e5e41e071ce49107
+Recreated public key seed for g: 3bfbea0f06f234746d56dccbbeac0bb3aef6db9a97abb958cf849c9efc11e76d
+Re-encapsulating ciphertext from transmitted seed.
+seed: e2f8d320ac3cb0c52efdc753282f092bc39baf4a18783a48ea031a191865eb78
+
+# ramstake_keygen
+seed: 6500f32c93415cfdbc0bd31d78d5be95cb9060c8cfa2013955b56f8b6868b322
+seed for generating g: c81f824a1f41867b08bef51b2a0c2eaf2762bcbd7c6656a34201dbc85d7403df
+
+# ramstake_encaps
+seed: 393308641a9a4647f230201e1389624a296b55192a9819fcb19ab77c25f95445
+Recreated g from public key seed: c81f824a1f41867b08bef51b2a0c2eaf2762bcbd7c6656a34201dbc85d7403df
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 53599cce09bbd5722c83a47aefe8941d1ff751734e35d5b809025370759dcd4f
+Hashed s into key: 6d6061db1ee9dcbe3070de1a66929a45f7630f9e08a997c5a9debdc704a7f2a0
+
+# ramstake_decaps
+secret key seed: 6500f32c93415cfdbc0bd31d78d5be95cb9060c8cfa2013955b56f8b6868b322
+Recreated public key seed for g: c81f824a1f41867b08bef51b2a0c2eaf2762bcbd7c6656a34201dbc85d7403df
+Re-encapsulating ciphertext from transmitted seed.
+seed: 393308641a9a4647f230201e1389624a296b55192a9819fcb19ab77c25f95445
+
+# ramstake_keygen
+seed: 7643cef2d62cc5aaeecf754653ea62294cd2208e5bf3ddeea209e3dc45373d49
+seed for generating g: d84274bec78c26309782c6898d15c94195601f1c385758d27b43ab899828cdde
+
+# ramstake_encaps
+seed: eac9d531a532770837a854b4f5531f6e0c8d6c10183b30d3435498c2dd142951
+Recreated g from public key seed: d84274bec78c26309782c6898d15c94195601f1c385758d27b43ab899828cdde
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: cf334e4275ae9a9853ee7206cc7c3c1d9e6f8be1d9568691ec070555afb62266
+Hashed s into key: 03953481c4b1cf4f945f5cc31fb6183ad5ed507d56f6b08d8be0d8ee5e186d42
+
+# ramstake_decaps
+secret key seed: 7643cef2d62cc5aaeecf754653ea62294cd2208e5bf3ddeea209e3dc45373d49
+Recreated public key seed for g: d84274bec78c26309782c6898d15c94195601f1c385758d27b43ab899828cdde
+Re-encapsulating ciphertext from transmitted seed.
+seed: eac9d531a532770837a854b4f5531f6e0c8d6c10183b30d3435498c2dd142951
+
+# ramstake_keygen
+seed: f8ee95521060c03bb8dacc79f7eb7db640f545f315613a35d447a09e504cb4e1
+seed for generating g: 1e3346f38abe5a20f1e34518f83f78a1b1dc5ee19f3054301a10d76a3978c2ef
+
+# ramstake_encaps
+seed: 3fc3d8392cb53f36ed647364a04e37278a0e0a45b720f4a75c580c9920eba98d
+Recreated g from public key seed: 1e3346f38abe5a20f1e34518f83f78a1b1dc5ee19f3054301a10d76a3978c2ef
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 4197747e0a139a3259dc1097c1495180e4171064a622f4b39860627d09dbc57a
+Hashed s into key: 0356d001715a39824685575e9de63170d01cbb6c9664222f0ed42b1f8c533774
+
+# ramstake_decaps
+secret key seed: f8ee95521060c03bb8dacc79f7eb7db640f545f315613a35d447a09e504cb4e1
+Recreated public key seed for g: 1e3346f38abe5a20f1e34518f83f78a1b1dc5ee19f3054301a10d76a3978c2ef
+Re-encapsulating ciphertext from transmitted seed.
+seed: 3fc3d8392cb53f36ed647364a04e37278a0e0a45b720f4a75c580c9920eba98d
+
+# ramstake_keygen
+seed: b8bd0493a882e3a49b4e0f6256fb1fea0912562fd9ba26ec3d6c9cc12c8973ab
+seed for generating g: 059569a7adc88c2d35734254eadff1a04fb32e4bfb570e2183085b2980808ab5
+
+# ramstake_encaps
+seed: d7e4b5d8021c486b9c3114d7cbbeb7cd49eba8a61bc2bcae1f1bef30a1daf76d
+Recreated g from public key seed: 059569a7adc88c2d35734254eadff1a04fb32e4bfb570e2183085b2980808ab5
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9bca6e2dbd6c231528ebea01d5defe8cbddc306a637472482e94f6b116dff121
+Hashed s into key: d4e715b5dceaf10d16d8e36f847212e8d99434636491d9bef41eb076f144fe6f
+
+# ramstake_decaps
+secret key seed: b8bd0493a882e3a49b4e0f6256fb1fea0912562fd9ba26ec3d6c9cc12c8973ab
+Recreated public key seed for g: 059569a7adc88c2d35734254eadff1a04fb32e4bfb570e2183085b2980808ab5
+Re-encapsulating ciphertext from transmitted seed.
+seed: d7e4b5d8021c486b9c3114d7cbbeb7cd49eba8a61bc2bcae1f1bef30a1daf76d
+
+# ramstake_keygen
+seed: c0407e41ddf48d333978b89bcf2db01e4613425b456249e76a6f25b8a2827bf5
+seed for generating g: d8a6c422bfa7dcd51a7610b78b802491b0794a9aad5c9167b24bb410035f117d
+
+# ramstake_encaps
+seed: b2dca81e3f5f748d23c9d356a2209f6b2d60247b2e45c9808de497f64f124643
+Recreated g from public key seed: d8a6c422bfa7dcd51a7610b78b802491b0794a9aad5c9167b24bb410035f117d
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: b4cfc704b8616d0bc0ca036cb01b8c99ac142cef3166048d331b439535900ebf
+Hashed s into key: 6d0ec6180be098d36daad0c5b425b2d8b34534c4c0f973a37c02ff7fb56f510a
+
+# ramstake_decaps
+secret key seed: c0407e41ddf48d333978b89bcf2db01e4613425b456249e76a6f25b8a2827bf5
+Recreated public key seed for g: d8a6c422bfa7dcd51a7610b78b802491b0794a9aad5c9167b24bb410035f117d
+Re-encapsulating ciphertext from transmitted seed.
+seed: b2dca81e3f5f748d23c9d356a2209f6b2d60247b2e45c9808de497f64f124643
+
+# ramstake_keygen
+seed: 334382d39164d1989696a2ff77b25a28af8bead9883b5365eb6fcca7c1781cc9
+seed for generating g: 1b5b6bcbb2582543d30f54aa3a15c84bed3cab9a2a25d09c2125bf7753e695c9
+
+# ramstake_encaps
+seed: aba5068af837be962f439f233593d193ce5e08f7d66efb3389885927b89d2523
+Recreated g from public key seed: 1b5b6bcbb2582543d30f54aa3a15c84bed3cab9a2a25d09c2125bf7753e695c9
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 1073444a9238d80d002566c009dc8e84ee87ac08cfd187f8d2c5185b585280d5
+Hashed s into key: 6e1fb0819ba448cc3e5795381dd2cf45cdf1bb30250e9e1dc9882d59c525ae3b
+
+# ramstake_decaps
+secret key seed: 334382d39164d1989696a2ff77b25a28af8bead9883b5365eb6fcca7c1781cc9
+Recreated public key seed for g: 1b5b6bcbb2582543d30f54aa3a15c84bed3cab9a2a25d09c2125bf7753e695c9
+Re-encapsulating ciphertext from transmitted seed.
+seed: aba5068af837be962f439f233593d193ce5e08f7d66efb3389885927b89d2523
+
+# ramstake_keygen
+seed: 6995143e8eb8a6e93840f76eec844f67d2b5f75b1839a5040337e61f9806764a
+seed for generating g: 32fc819a196cc1db14896a373c0a74a0d08ffd3ff7aced71669b56d0ee4ea335
+
+# ramstake_encaps
+seed: 0f4dff8e56f68440836a072412a30d851ace2c7c6f02d60e7a8420001a63e6c6
+Recreated g from public key seed: 32fc819a196cc1db14896a373c0a74a0d08ffd3ff7aced71669b56d0ee4ea335
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 539e353fb82312b0a881f1b8b82fb4053f64f9fa8f5d3a833db2679280883c2d
+Hashed s into key: f89e89922f29a190fe2513fbaf74898dbc5313f05b42794cb615a6886ae2f7ed
+
+# ramstake_decaps
+secret key seed: 6995143e8eb8a6e93840f76eec844f67d2b5f75b1839a5040337e61f9806764a
+Recreated public key seed for g: 32fc819a196cc1db14896a373c0a74a0d08ffd3ff7aced71669b56d0ee4ea335
+Re-encapsulating ciphertext from transmitted seed.
+seed: 0f4dff8e56f68440836a072412a30d851ace2c7c6f02d60e7a8420001a63e6c6
+
+# ramstake_keygen
+seed: 995eff7e0d195c6d0533f3dc194d47e60f9ad14696144cde694d60a95f3e96b4
+seed for generating g: 97a255510738782d4bc3da1f90887a3a63a6893aa9c6953c409cdfff55b2cb58
+
+# ramstake_encaps
+seed: b28f7e7a15a005f92400ce33db073d49b53871594a88fc45e0f94207b5f0f2dc
+Recreated g from public key seed: 97a255510738782d4bc3da1f90887a3a63a6893aa9c6953c409cdfff55b2cb58
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 7a1592769ff1272b44476c60aa1906306e384b8b266facb7b055bd649ca20b34
+Hashed s into key: 93182a15e3c5fe6dcb6034c250c63ae5a8fb28a01f6f6e81f1f03918709bdde6
+
+# ramstake_decaps
+secret key seed: 995eff7e0d195c6d0533f3dc194d47e60f9ad14696144cde694d60a95f3e96b4
+Recreated public key seed for g: 97a255510738782d4bc3da1f90887a3a63a6893aa9c6953c409cdfff55b2cb58
+Re-encapsulating ciphertext from transmitted seed.
+seed: b28f7e7a15a005f92400ce33db073d49b53871594a88fc45e0f94207b5f0f2dc
+
+# ramstake_keygen
+seed: 3e809ec8dd0fec0d911a4e3fac20f70fbb128c5de94dc7184ca7310ae9157a98
+seed for generating g: f387f7a14337fb831c55c90a6cfe037077eb7cda0ee52e9af60c84e8fbcfab92
+
+# ramstake_encaps
+seed: d8128601c28b1def8d393a0db283229f7c7383152a814e7cefe8ef9d9768c473
+Recreated g from public key seed: f387f7a14337fb831c55c90a6cfe037077eb7cda0ee52e9af60c84e8fbcfab92
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: e12ed43f94a90a9fbb53f468148085a96f58088b93d87f4e8e4c2c73a97c1d07
+Hashed s into key: 7342f1872e5cac54219564145c3fcaddcc83220abb0e475eaa826e27d218da1d
+
+# ramstake_decaps
+secret key seed: 3e809ec8dd0fec0d911a4e3fac20f70fbb128c5de94dc7184ca7310ae9157a98
+Recreated public key seed for g: f387f7a14337fb831c55c90a6cfe037077eb7cda0ee52e9af60c84e8fbcfab92
+Re-encapsulating ciphertext from transmitted seed.
+seed: d8128601c28b1def8d393a0db283229f7c7383152a814e7cefe8ef9d9768c473
+
+# ramstake_keygen
+seed: dbf1c465fff3d9f783bd9ee61a573715e45691147b8904439b5ffaa64f94ff7b
+seed for generating g: 8c019c1a721173399c53e459b0b1471e188c50fcbd61042aff141d0456a72422
+
+# ramstake_encaps
+seed: b6d75eac6c76ced1b0a025b40a55440712ad8424672e761e9bc400d63812006f
+Recreated g from public key seed: 8c019c1a721173399c53e459b0b1471e188c50fcbd61042aff141d0456a72422
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 73a7c1c5d68875d79c8001a4109d652f591234792027fe3f68b98d1dbd4fc6c9
+Hashed s into key: 05af6b335ea201aa97a2eb35965859e58a2aa1f26c46f6cf71b1b230f2fb6272
+
+# ramstake_decaps
+secret key seed: dbf1c465fff3d9f783bd9ee61a573715e45691147b8904439b5ffaa64f94ff7b
+Recreated public key seed for g: 8c019c1a721173399c53e459b0b1471e188c50fcbd61042aff141d0456a72422
+Re-encapsulating ciphertext from transmitted seed.
+seed: b6d75eac6c76ced1b0a025b40a55440712ad8424672e761e9bc400d63812006f
+
+# ramstake_keygen
+seed: 1f7cfd2b70863154e8a69d1758532e86c20cfc763d67c758bd10a13b24e759b5
+seed for generating g: f30aeafe1c26137995278b86aac051f4437894ae7b2ee27acb8c18ed4cfb4df7
+
+# ramstake_encaps
+seed: 273b38bddc18488024ec90e62a4110129a42a16d2a93c45439888e76008604c6
+Recreated g from public key seed: f30aeafe1c26137995278b86aac051f4437894ae7b2ee27acb8c18ed4cfb4df7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: eb8ce391f8d1b28518c0461edb40ce93b949c7710f8de346554b214b9a6ffd56
+Hashed s into key: 9820c993f82d3a4f2289b9fcb00043d1456a3a13b1f9c6fec6311c6cdc33a573
+
+# ramstake_decaps
+secret key seed: 1f7cfd2b70863154e8a69d1758532e86c20cfc763d67c758bd10a13b24e759b5
+Recreated public key seed for g: f30aeafe1c26137995278b86aac051f4437894ae7b2ee27acb8c18ed4cfb4df7
+Re-encapsulating ciphertext from transmitted seed.
+seed: 273b38bddc18488024ec90e62a4110129a42a16d2a93c45439888e76008604c6
+
+# ramstake_keygen
+seed: 3a19577908efd37697b8edc7fdaf47d1bd3ad01a1b77faf794bee5b9c3192a6f
+seed for generating g: 69d06f3288016dcc47f8cc40a96eced6d221a923f527444d82b1170a4397ec2c
+
+# ramstake_encaps
+seed: a3729672816f3eba84c9638a79676eeac0f22c8a48e0c5d50a26ff0844c66b99
+Recreated g from public key seed: 69d06f3288016dcc47f8cc40a96eced6d221a923f527444d82b1170a4397ec2c
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9b48a8f1d902321ba96599fbc85156d30d3f321868184cd879265d87d488e9f8
+Hashed s into key: 80b980756f44437bdb6ac4bdfa4a93f1143d7e672178f969519988d2d2525369
+
+# ramstake_decaps
+secret key seed: 3a19577908efd37697b8edc7fdaf47d1bd3ad01a1b77faf794bee5b9c3192a6f
+Recreated public key seed for g: 69d06f3288016dcc47f8cc40a96eced6d221a923f527444d82b1170a4397ec2c
+Re-encapsulating ciphertext from transmitted seed.
+seed: a3729672816f3eba84c9638a79676eeac0f22c8a48e0c5d50a26ff0844c66b99
+
+# ramstake_keygen
+seed: ae0f65e29f38804a6759f70f4d01e2aaff7fe1c91ebc4f892dd0de3ab2e68ea5
+seed for generating g: 82ec7e13a6b4d922e5596e8b036c9c659275a66d991c4a3441182bc7472ac142
+
+# ramstake_encaps
+seed: e03ff73e02a217659f53d8c47556bf3d8c94040f630d63605e2d0f923579370c
+Recreated g from public key seed: 82ec7e13a6b4d922e5596e8b036c9c659275a66d991c4a3441182bc7472ac142
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9c5db8e32f0111bf9bf8bece28cf570b3576904e23297ef507cc5a19ceb3726a
+Hashed s into key: 46bb198c673cd20aab3104ef5be6a620e680e6a2973edd48f16cf823c5c3b809
+
+# ramstake_decaps
+secret key seed: ae0f65e29f38804a6759f70f4d01e2aaff7fe1c91ebc4f892dd0de3ab2e68ea5
+Recreated public key seed for g: 82ec7e13a6b4d922e5596e8b036c9c659275a66d991c4a3441182bc7472ac142
+Re-encapsulating ciphertext from transmitted seed.
+seed: e03ff73e02a217659f53d8c47556bf3d8c94040f630d63605e2d0f923579370c
+
+# ramstake_keygen
+seed: 6084a235f79dd093ef6d185b54e69df33dacee73a9bf2f379004421a10e3a79d
+seed for generating g: 4e59a6393ef386fa60236c6398c5e302d6c2a073d16c9a2e4c7e6e247727b186
+
+# ramstake_encaps
+seed: 9f684fb055ece19459eb464e91e126a7a6e3ed11ccee0046da234d964c985110
+Recreated g from public key seed: 4e59a6393ef386fa60236c6398c5e302d6c2a073d16c9a2e4c7e6e247727b186
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 6de8629223473f30e78e141bbd3a367c223c7c5e9568b1bbf8b8e67322741835
+Hashed s into key: b07b2a9ca090341efc4bb6f3942a44b64a4738e4d0cf9fd5460ceb6553d77357
+
+# ramstake_decaps
+secret key seed: 6084a235f79dd093ef6d185b54e69df33dacee73a9bf2f379004421a10e3a79d
+Recreated public key seed for g: 4e59a6393ef386fa60236c6398c5e302d6c2a073d16c9a2e4c7e6e247727b186
+Re-encapsulating ciphertext from transmitted seed.
+seed: 9f684fb055ece19459eb464e91e126a7a6e3ed11ccee0046da234d964c985110
+
+# ramstake_keygen
+seed: acd1c0217fad5caa4235544dd9de153ab1880ccf4c76f16f236fae4e4bfda04c
+seed for generating g: e45ba98471b34f9682b4079a8844ae8bdff6d6f2d54ba835fd7901b3a608d58e
+
+# ramstake_encaps
+seed: f03a8abb0a5010f400ae5722a75bdf5a2f6d5b546b34d73857cb1bfc7e587aa7
+Recreated g from public key seed: e45ba98471b34f9682b4079a8844ae8bdff6d6f2d54ba835fd7901b3a608d58e
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 2f45926737d9b175b9f2c838921f3f8956cf09f349cf62a5fe3a984e16b7549c
+Hashed s into key: 34ba1ae56246c35138e4bd06232556438b5b374751cf7ccf50b748c2dc16e4cb
+
+# ramstake_decaps
+secret key seed: acd1c0217fad5caa4235544dd9de153ab1880ccf4c76f16f236fae4e4bfda04c
+Recreated public key seed for g: e45ba98471b34f9682b4079a8844ae8bdff6d6f2d54ba835fd7901b3a608d58e
+Re-encapsulating ciphertext from transmitted seed.
+seed: f03a8abb0a5010f400ae5722a75bdf5a2f6d5b546b34d73857cb1bfc7e587aa7
+
+# ramstake_keygen
+seed: 241191401a63afa750f05662e354dddbc683c776ce3222beb83e3cf913d7ed7c
+seed for generating g: 31a085f85760b0454f83ca4f121e44d888f1b607a6eae7de53d0cf0bbae51d99
+
+# ramstake_encaps
+seed: a59b3bd23b49a95bc1fad20070fec930b6060bd827d742b077092e422268e15d
+Recreated g from public key seed: 31a085f85760b0454f83ca4f121e44d888f1b607a6eae7de53d0cf0bbae51d99
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9d434c3e8f6449d99b98e9ff91ea03915feef598d23099207b273489fd5098bd
+Hashed s into key: 56e8e55f474f60c60a191905554bdda62d27d4e8d59c17f670c0f7f5863ac590
+
+# ramstake_decaps
+secret key seed: 241191401a63afa750f05662e354dddbc683c776ce3222beb83e3cf913d7ed7c
+Recreated public key seed for g: 31a085f85760b0454f83ca4f121e44d888f1b607a6eae7de53d0cf0bbae51d99
+Re-encapsulating ciphertext from transmitted seed.
+seed: a59b3bd23b49a95bc1fad20070fec930b6060bd827d742b077092e422268e15d
+
+# ramstake_keygen
+seed: b9a6b0c05677e957d41a34ba03bd06f2a9092e31f63389397d7e70fde6409d18
+seed for generating g: 337dd7e60b9f06bc9417c91f868e869e695dd0f474ce0a958484dd8c65b8105f
+
+# ramstake_encaps
+seed: e99c0e7b82be89bc3c1eaee6680aa4efd394e40c2b3f30523c8117f7c26a8969
+Recreated g from public key seed: 337dd7e60b9f06bc9417c91f868e869e695dd0f474ce0a958484dd8c65b8105f
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 8e4f86c20ad0be4b78fcd9a685dfd0c8cbc787825895852939624834cc13fbf3
+Hashed s into key: 204ab3781c41ecfb7b9c35d5c8ab5b66a213e95441d9cb29fe62fdc467cd7ff3
+
+# ramstake_decaps
+secret key seed: b9a6b0c05677e957d41a34ba03bd06f2a9092e31f63389397d7e70fde6409d18
+Recreated public key seed for g: 337dd7e60b9f06bc9417c91f868e869e695dd0f474ce0a958484dd8c65b8105f
+Re-encapsulating ciphertext from transmitted seed.
+seed: e99c0e7b82be89bc3c1eaee6680aa4efd394e40c2b3f30523c8117f7c26a8969
+
+# ramstake_keygen
+seed: 28a96c71577ba00c94f99fe965bc595a26db2b3ca6ab5cf8e443cdd8462b1792
+seed for generating g: 2224a641d9f60839dbfef6ba2fdbda3c6e2283f150ca29a1cabb3472d5fe2b77
+
+# ramstake_encaps
+seed: 9c35d165453e5fcdc6f9df64526d9de698f2bd3e6bac6c7fdd86601b9ba5f4a5
+Recreated g from public key seed: 2224a641d9f60839dbfef6ba2fdbda3c6e2283f150ca29a1cabb3472d5fe2b77
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 1bf11b6e2ff73784e9076cc53360795288534a750385009be91ce631e345ebb8
+Hashed s into key: 434dd939b68f04dfe490bbaf4be835caf281184b9159980fac6426e4beaafc7b
+
+# ramstake_decaps
+secret key seed: 28a96c71577ba00c94f99fe965bc595a26db2b3ca6ab5cf8e443cdd8462b1792
+Recreated public key seed for g: 2224a641d9f60839dbfef6ba2fdbda3c6e2283f150ca29a1cabb3472d5fe2b77
+Re-encapsulating ciphertext from transmitted seed.
+seed: 9c35d165453e5fcdc6f9df64526d9de698f2bd3e6bac6c7fdd86601b9ba5f4a5
+
+# ramstake_keygen
+seed: c08ba2ef8c3a0a043afad931652d7a19e6e8cb670f840de5f1fa03309b2ca9ec
+seed for generating g: 88782d16fb74da00a1f66fa1483aec00cc0689f358241ec8dd471d23c0344c80
+
+# ramstake_encaps
+seed: 5fe6141a25f7ab9f875f79e0a82d6ea5cde5a017ab637d5fdb7c42646a1d71df
+Recreated g from public key seed: 88782d16fb74da00a1f66fa1483aec00cc0689f358241ec8dd471d23c0344c80
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 18e06a4259bdef2faf64d1364acde3aeb6058c79fb1cd602a2e984700519d7bb
+Hashed s into key: 03185303dc9fff35bb2226856ecdd3b9e33651591e15cf1dce2d9f648bb8454d
+
+# ramstake_decaps
+secret key seed: c08ba2ef8c3a0a043afad931652d7a19e6e8cb670f840de5f1fa03309b2ca9ec
+Recreated public key seed for g: 88782d16fb74da00a1f66fa1483aec00cc0689f358241ec8dd471d23c0344c80
+Re-encapsulating ciphertext from transmitted seed.
+seed: 5fe6141a25f7ab9f875f79e0a82d6ea5cde5a017ab637d5fdb7c42646a1d71df
+
+# ramstake_keygen
+seed: 0e3b30e102d707538c2671060f603bb0b8a014103f132d63b09ece07e4a4c75b
+seed for generating g: 80067335a451cdb282d3027c9a022f553f09beeea5bb9173639307ba0af57c75
+
+# ramstake_encaps
+seed: 11eafeca9e810796c34e8cfce9d59342884456007b01ddd12edce6d10ed87e4c
+Recreated g from public key seed: 80067335a451cdb282d3027c9a022f553f09beeea5bb9173639307ba0af57c75
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 5fe5f08a19410ced03242247e6c1c4fb69a8ad31c142b2f861bf80ef5bdbe0f5
+Hashed s into key: 0506cc43cef2a0fd0e9417e0b6e5685d8703f5ddaff9b37d08a64d2634b0e890
+
+# ramstake_decaps
+secret key seed: 0e3b30e102d707538c2671060f603bb0b8a014103f132d63b09ece07e4a4c75b
+Recreated public key seed for g: 80067335a451cdb282d3027c9a022f553f09beeea5bb9173639307ba0af57c75
+Re-encapsulating ciphertext from transmitted seed.
+seed: 11eafeca9e810796c34e8cfce9d59342884456007b01ddd12edce6d10ed87e4c
+
+# ramstake_keygen
+seed: 2478f7d3de6041e7e5cd11c5e2ef483d1aa6218eb126444091535f6ae532fa73
+seed for generating g: 5aa685199ee0fe125edbd025290c90b8e592ba29f0e4bacb5d4898b0a31da751
+
+# ramstake_encaps
+seed: 11136e2681df2ef881b51a092a9badbe72c9772c169808521c47149578621e28
+Recreated g from public key seed: 5aa685199ee0fe125edbd025290c90b8e592ba29f0e4bacb5d4898b0a31da751
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: a4f34e41b502df90d49642b9878df26722afa391a0c81822ff60127fca3474f0
+Hashed s into key: 97e32e4ef02438aaad545ebfcded26b904436d7a58164c9d74351b51677f2782
+
+# ramstake_decaps
+secret key seed: 2478f7d3de6041e7e5cd11c5e2ef483d1aa6218eb126444091535f6ae532fa73
+Recreated public key seed for g: 5aa685199ee0fe125edbd025290c90b8e592ba29f0e4bacb5d4898b0a31da751
+Re-encapsulating ciphertext from transmitted seed.
+seed: 11136e2681df2ef881b51a092a9badbe72c9772c169808521c47149578621e28
+
+# ramstake_keygen
+seed: 9d405d3ebdaf35fa8722de431b669722acaaea2fd10b814310b17f78b66147d1
+seed for generating g: e579dd80164d7907edf2e65e1e98335235a92db71198077d8e9c715ccea8e669
+
+# ramstake_encaps
+seed: 6ceb14f7662be0c42779459f69a145c0e2ce9f0bd9a0cd1bf32ed5694cc9ae32
+Recreated g from public key seed: e579dd80164d7907edf2e65e1e98335235a92db71198077d8e9c715ccea8e669
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 547e1fe2b4994f410adf4ce2f6dacb0d1bbbf12b22ee54c4f1d71cf18dcbef4d
+Hashed s into key: 7f208ace535ad7f4729b1418985c3c87a0e3a2378e54637ccc4a150bfd48c416
+
+# ramstake_decaps
+secret key seed: 9d405d3ebdaf35fa8722de431b669722acaaea2fd10b814310b17f78b66147d1
+Recreated public key seed for g: e579dd80164d7907edf2e65e1e98335235a92db71198077d8e9c715ccea8e669
+Re-encapsulating ciphertext from transmitted seed.
+seed: 6ceb14f7662be0c42779459f69a145c0e2ce9f0bd9a0cd1bf32ed5694cc9ae32
+
+# ramstake_keygen
+seed: 9a86490f0615f3edf789cb0654066e9ee339cc59f968281f3b89213f83c692ed
+seed for generating g: 33513c126c4070726c21a6c413fde98acf45e6b9f54a0820d97a41fe0de913fe
+
+# ramstake_encaps
+seed: faeb2ef44d2f608621e831187ce79b2d2f4a20f1568bbe76b0d3d5af36111714
+Recreated g from public key seed: 33513c126c4070726c21a6c413fde98acf45e6b9f54a0820d97a41fe0de913fe
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 67fc83f7c8fe0ed53fe524e176375e1d759bdd811cc3136b75c5855e9ff4e58b
+Hashed s into key: a2ee278a695002cd1304c73708d7e895f5bc05c24304d68c4a77de2654e28eaf
+
+# ramstake_decaps
+secret key seed: 9a86490f0615f3edf789cb0654066e9ee339cc59f968281f3b89213f83c692ed
+Recreated public key seed for g: 33513c126c4070726c21a6c413fde98acf45e6b9f54a0820d97a41fe0de913fe
+Re-encapsulating ciphertext from transmitted seed.
+seed: faeb2ef44d2f608621e831187ce79b2d2f4a20f1568bbe76b0d3d5af36111714
+
+# ramstake_keygen
+seed: 6dfd9b575872560c7bdc2732c4a28dac4db04e535eb8e402c3dffd145c09ce47
+seed for generating g: 35db7d6330d6f59233553a25f062a0ed7e2f4597b31d28fd40eb282e889aa9f7
+
+# ramstake_encaps
+seed: a2985c1c4d203778597947d710dec806e36b0cd949fe460ef141213bfc525e5b
+Recreated g from public key seed: 35db7d6330d6f59233553a25f062a0ed7e2f4597b31d28fd40eb282e889aa9f7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 390d9b6d70816bc6339c5358993fc8aa051c859c285040546c20ca57da09f11d
+Hashed s into key: 1c2dae5368d7f7aa515a77a2b8c9eede6d17f0285323913e8b26c098022d1312
+
+# ramstake_decaps
+secret key seed: 6dfd9b575872560c7bdc2732c4a28dac4db04e535eb8e402c3dffd145c09ce47
+Recreated public key seed for g: 35db7d6330d6f59233553a25f062a0ed7e2f4597b31d28fd40eb282e889aa9f7
+Re-encapsulating ciphertext from transmitted seed.
+seed: a2985c1c4d203778597947d710dec806e36b0cd949fe460ef141213bfc525e5b
+
+# ramstake_keygen
+seed: 6fca9f4e384d8418075cc064c70730801bdb8249899d456a77130d5beeb3662c
+seed for generating g: fc41c5416f0478cc75a6ce0bf756f2cb2d95c796176add9c710955bcee500e90
+
+# ramstake_encaps
+seed: ce7683f8a03d3cf04e46970ff7d6a12494ae12558346dfc8fd9370bf944a0102
+Recreated g from public key seed: fc41c5416f0478cc75a6ce0bf756f2cb2d95c796176add9c710955bcee500e90
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 0f84c0c55717d613922c6af4a2448a96cfdc6284fadfb4cfdcffb49477cb6293
+Hashed s into key: d279280e3ec5067bc842ff823161baa4c91f7f7fb00487cab624a595e39ea406
+
+# ramstake_decaps
+secret key seed: 6fca9f4e384d8418075cc064c70730801bdb8249899d456a77130d5beeb3662c
+Recreated public key seed for g: fc41c5416f0478cc75a6ce0bf756f2cb2d95c796176add9c710955bcee500e90
+Re-encapsulating ciphertext from transmitted seed.
+seed: ce7683f8a03d3cf04e46970ff7d6a12494ae12558346dfc8fd9370bf944a0102
+
+# ramstake_keygen
+seed: e58f71bf175c0550a67e00e0f7b3b7fc36bc2707bf0c93044a492626de36301a
+seed for generating g: 9f6d6335bd478dcc425b5dbd657208928b8857bfa042756d46307c9defc7ed29
+
+# ramstake_encaps
+seed: 7f7054814869cf7625e45647bc1547aff288dbb90699b2ad84893f3b755d9722
+Recreated g from public key seed: 9f6d6335bd478dcc425b5dbd657208928b8857bfa042756d46307c9defc7ed29
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 9cda1ff38f862bb3cb281d328e8559313e2249bb5f5cb2e9348c4f5174a7caed
+Hashed s into key: 8c4b7667d14c533736face253363f9a81a88a1564c343cda86fceae2ade5812e
+
+# ramstake_decaps
+secret key seed: e58f71bf175c0550a67e00e0f7b3b7fc36bc2707bf0c93044a492626de36301a
+Recreated public key seed for g: 9f6d6335bd478dcc425b5dbd657208928b8857bfa042756d46307c9defc7ed29
+Re-encapsulating ciphertext from transmitted seed.
+seed: 7f7054814869cf7625e45647bc1547aff288dbb90699b2ad84893f3b755d9722
+
+# ramstake_keygen
+seed: e3fc575ed51513e62aba655d24cd9c8f1c6c848aaffa946c49a53ac3ea59e474
+seed for generating g: ba5297ffff33b43c1c107962754831bdc22f9fea95395c8053b4991fc83f1e71
+
+# ramstake_encaps
+seed: d82c2f1bf2e6aebde5660fa73356982e12999d8fdafbb3cb186341d0386dead0
+Recreated g from public key seed: ba5297ffff33b43c1c107962754831bdc22f9fea95395c8053b4991fc83f1e71
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 4f146d004d15f0a51b828b07a5c9c7633405d89fff3ebba7bbd0251ff27afae8
+Hashed s into key: 43821daa6bd52eb7e12c9b6e2aac5a172ea91544b2437e7989f728ac57a32b9a
+
+# ramstake_decaps
+secret key seed: e3fc575ed51513e62aba655d24cd9c8f1c6c848aaffa946c49a53ac3ea59e474
+Recreated public key seed for g: ba5297ffff33b43c1c107962754831bdc22f9fea95395c8053b4991fc83f1e71
+Re-encapsulating ciphertext from transmitted seed.
+seed: d82c2f1bf2e6aebde5660fa73356982e12999d8fdafbb3cb186341d0386dead0
+
+# ramstake_keygen
+seed: 470b4943f0fe7fd0d8ec5185aba0d1db09d112934e4fb4787e2bbc6b88466e7b
+seed for generating g: f0d38ad7ae2a6574b56c3fa3eaab6f5da270a3f6fc95bc902222901c85c46bdc
+
+# ramstake_encaps
+seed: 8b2809fd40008be70a6b184981101724bc3d5ec5e1956b510b82fd5ad0668a5a
+Recreated g from public key seed: f0d38ad7ae2a6574b56c3fa3eaab6f5da270a3f6fc95bc902222901c85c46bdc
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: c1d0ae7c194f0492b9a07dfce553beb6d71f4d69851286c1ce3a2365926bd852
+Hashed s into key: e964eb38e3ef38b21c9bed7be81ef907acaa7b8dd3be8fc2dcd7bf5535d869bc
+
+# ramstake_decaps
+secret key seed: 470b4943f0fe7fd0d8ec5185aba0d1db09d112934e4fb4787e2bbc6b88466e7b
+Recreated public key seed for g: f0d38ad7ae2a6574b56c3fa3eaab6f5da270a3f6fc95bc902222901c85c46bdc
+Re-encapsulating ciphertext from transmitted seed.
+seed: 8b2809fd40008be70a6b184981101724bc3d5ec5e1956b510b82fd5ad0668a5a
+
+# ramstake_keygen
+seed: 6df4385db978d27b27d2aa5e452e4152b36f097503d9581ac3390105c5727e7d
+seed for generating g: aff285bfbdcc23e102e95c745387d7dc26634016f9eeceeefe1cf836117f898b
+
+# ramstake_encaps
+seed: c95fa08ed106ce84660e8a4c90bd2b22634e40769aa0090a101c5dddad45edc5
+Recreated g from public key seed: aff285bfbdcc23e102e95c745387d7dc26634016f9eeceeefe1cf836117f898b
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: cd5fb548417be5ddd73bdfc8f6f0e9a7c0e4198d6beeba19f6e804df241a4037
+Hashed s into key: 81c4bee9944a70b803c208188e1e053d2c696a784f3259455305b5b811e3c60c
+
+# ramstake_decaps
+secret key seed: 6df4385db978d27b27d2aa5e452e4152b36f097503d9581ac3390105c5727e7d
+Recreated public key seed for g: aff285bfbdcc23e102e95c745387d7dc26634016f9eeceeefe1cf836117f898b
+Re-encapsulating ciphertext from transmitted seed.
+seed: c95fa08ed106ce84660e8a4c90bd2b22634e40769aa0090a101c5dddad45edc5
+
+# ramstake_keygen
+seed: dbacba825728444921b227cdba54446b3f6881b47be9cd02832f78b023b1bee0
+seed for generating g: 605ea9167067316b117b0fd53afeff97629c960e3ee340ef13bd0a1e0dfed7d7
+
+# ramstake_encaps
+seed: e15274a8e2bc08fe818b117ba28c5dfae74d54fcdf6f20052f79be333edc8dde
+Recreated g from public key seed: 605ea9167067316b117b0fd53afeff97629c960e3ee340ef13bd0a1e0dfed7d7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: c78e86ec5e0340e6a55c636913469af8f1e319fbed28be51647552bc24d14979
+Hashed s into key: 9e88d115277c46ab21ce437e03d757ab0404c45978aa0a285cd58beaa555113a
+
+# ramstake_decaps
+secret key seed: dbacba825728444921b227cdba54446b3f6881b47be9cd02832f78b023b1bee0
+Recreated public key seed for g: 605ea9167067316b117b0fd53afeff97629c960e3ee340ef13bd0a1e0dfed7d7
+Re-encapsulating ciphertext from transmitted seed.
+seed: e15274a8e2bc08fe818b117ba28c5dfae74d54fcdf6f20052f79be333edc8dde
+
+# ramstake_keygen
+seed: 690eb71fd7052b906eaec09937a8ed374e0b02afa27c2f14399932be5839fad2
+seed for generating g: 8cc21576a35c0c1f1a2d5e5a92c3410b1fdbaff58f942adb8549435ada10b909
+
+# ramstake_encaps
+seed: 81c38c2cb5cfafac81b96a810ab749b61806b6d54c9f8cf4bf1be0192423288f
+Recreated g from public key seed: 8cc21576a35c0c1f1a2d5e5a92c3410b1fdbaff58f942adb8549435ada10b909
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: fb60c6ee801ac5d24eb9d9deabef327193de47028bb86e4f82c7ed34ee62f6aa
+Hashed s into key: 1368317a6c35cf013bcc519cdab21e748e3258edc4cfdf8c984345bec63c73e8
+
+# ramstake_decaps
+secret key seed: 690eb71fd7052b906eaec09937a8ed374e0b02afa27c2f14399932be5839fad2
+Recreated public key seed for g: 8cc21576a35c0c1f1a2d5e5a92c3410b1fdbaff58f942adb8549435ada10b909
+Re-encapsulating ciphertext from transmitted seed.
+seed: 81c38c2cb5cfafac81b96a810ab749b61806b6d54c9f8cf4bf1be0192423288f
+
+# ramstake_keygen
+seed: 32e0ea9089fa928482c0770da545af1bb871a03ce38604138b0d08ea2a10ca2b
+seed for generating g: 144edbca2e7587a9497117a49ca6598d12afac1e457402a8c74e52b086691e08
+
+# ramstake_encaps
+seed: c06c5bef7b6508409daf847a64c8d30d0974fd3ba7476dc76c46b458a036d884
+Recreated g from public key seed: 144edbca2e7587a9497117a49ca6598d12afac1e457402a8c74e52b086691e08
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: e2a53c9917d5bcbf55559507cb5030aff7daac8b6951ce6ed3c19f20b9f2a3b2
+Hashed s into key: 0646702c30afbc3ce37c0ff7de099f35aa45b20b819acc23a72a9573931a2447
+
+# ramstake_decaps
+secret key seed: 32e0ea9089fa928482c0770da545af1bb871a03ce38604138b0d08ea2a10ca2b
+Recreated public key seed for g: 144edbca2e7587a9497117a49ca6598d12afac1e457402a8c74e52b086691e08
+Re-encapsulating ciphertext from transmitted seed.
+seed: c06c5bef7b6508409daf847a64c8d30d0974fd3ba7476dc76c46b458a036d884
+
+# ramstake_keygen
+seed: 6fb2ec719f2a0dea152bf3f64b9d148f8ab8ba88f64e61f5db53e12d59f52557
+seed for generating g: 4b6b1e56617b47276eaadeeb9edfd9a0c6fc43cddb8bd1aa5cc14a2d9515ebef
+
+# ramstake_encaps
+seed: 4f797c007e4061f95c7d56cfc7ee5c49e849dde3fea8f25e7876df2a18515c34
+Recreated g from public key seed: 4b6b1e56617b47276eaadeeb9edfd9a0c6fc43cddb8bd1aa5cc14a2d9515ebef
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 909971e3c1350b6cdef917b6795b873fc2a6df4f6825eddb269427e1c4b0f684
+Hashed s into key: d2c3c399f3d2bc4c000dac69dc475b74469a530d196a210c91eced51404edcbf
+
+# ramstake_decaps
+secret key seed: 6fb2ec719f2a0dea152bf3f64b9d148f8ab8ba88f64e61f5db53e12d59f52557
+Recreated public key seed for g: 4b6b1e56617b47276eaadeeb9edfd9a0c6fc43cddb8bd1aa5cc14a2d9515ebef
+Re-encapsulating ciphertext from transmitted seed.
+seed: 4f797c007e4061f95c7d56cfc7ee5c49e849dde3fea8f25e7876df2a18515c34
+
+# ramstake_keygen
+seed: 527fb88c8bd9a4d6031dad15e63878abd2b559e7e08d61f69e8e78fca964ee6a
+seed for generating g: 1764802fefd19b9b50a10b83142b1704005591e69ceb138d72436e599342f86e
+
+# ramstake_encaps
+seed: e32d432b4f9f751bde0496c580a181ffed762aa35454a02d3f1f47ee0394c89c
+Recreated g from public key seed: 1764802fefd19b9b50a10b83142b1704005591e69ceb138d72436e599342f86e
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 37a7074213b180cd0ba7d81d50dd313b3a85b7c6592bc1f3acc8941ad3bd8cab
+Hashed s into key: 5aff7ab7a7f83ca7baadc57ca94cecfc57a0243ca1da5d90b6cb05b593ad21f6
+
+# ramstake_decaps
+secret key seed: 527fb88c8bd9a4d6031dad15e63878abd2b559e7e08d61f69e8e78fca964ee6a
+Recreated public key seed for g: 1764802fefd19b9b50a10b83142b1704005591e69ceb138d72436e599342f86e
+Re-encapsulating ciphertext from transmitted seed.
+seed: e32d432b4f9f751bde0496c580a181ffed762aa35454a02d3f1f47ee0394c89c
+
+# ramstake_keygen
+seed: ac6fcfaeeef795b6ef9e062f02bf42975fa01e7d91ba832f74e05269a72684d0
+seed for generating g: 49ec4684931e96622c044056a60ea1e3fbea4480d2187c2d141f8cbc27c8b6f4
+
+# ramstake_encaps
+seed: 5aeda108ea4d6c6bc0fb958286850422bc357ca67b83c986048e0d0087fa11ec
+Recreated g from public key seed: 49ec4684931e96622c044056a60ea1e3fbea4480d2187c2d141f8cbc27c8b6f4
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: fc880258f7710f326962aa20d50bf1a7c6b1da2d4319a67b8c03fd26127ad9ed
+Hashed s into key: 1f72f756a3128bc9ea5fb5cbebd0b21b42ad3bd0df6fff9e26fad9e70fdacc2a
+
+# ramstake_decaps
+secret key seed: ac6fcfaeeef795b6ef9e062f02bf42975fa01e7d91ba832f74e05269a72684d0
+Recreated public key seed for g: 49ec4684931e96622c044056a60ea1e3fbea4480d2187c2d141f8cbc27c8b6f4
+Re-encapsulating ciphertext from transmitted seed.
+seed: 5aeda108ea4d6c6bc0fb958286850422bc357ca67b83c986048e0d0087fa11ec
+
+# ramstake_keygen
+seed: ba2fb9318d4dbe7488057c33e95e6f054583a2800c41bb83083c330a914a12cf
+seed for generating g: 84f880a84995cfa8beba48a7c5bf08c856faafd52cf935d225218d2bb00de753
+
+# ramstake_encaps
+seed: e63f8ffda3565c2424c89b20974b748a65a5aba75133fcb3156dfb6626a83bab
+Recreated g from public key seed: 84f880a84995cfa8beba48a7c5bf08c856faafd52cf935d225218d2bb00de753
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: fc691df048ce1a10a7a1c08bbccfb6bf1bd0faa17d2b6d75d5f767942cbc8dab
+Hashed s into key: ac8bdc029c1363225d5f1e7711a639ce0798b134e97ad3835b399928332688db
+
+# ramstake_decaps
+secret key seed: ba2fb9318d4dbe7488057c33e95e6f054583a2800c41bb83083c330a914a12cf
+Recreated public key seed for g: 84f880a84995cfa8beba48a7c5bf08c856faafd52cf935d225218d2bb00de753
+Re-encapsulating ciphertext from transmitted seed.
+seed: e63f8ffda3565c2424c89b20974b748a65a5aba75133fcb3156dfb6626a83bab
+
+# ramstake_keygen
+seed: aa6dd1e5799cdf7af9c4fc632b3eb9d51d66e85c8e0a21ec98664fc51ab63c7d
+seed for generating g: 234729d524a505c50ff91821be53a46834a6517c73759079d32857154fb1573f
+
+# ramstake_encaps
+seed: fda268813efab5204efa60f78bf81d320d01ac09ac06244f7afbd2d80fd356d9
+Recreated g from public key seed: 234729d524a505c50ff91821be53a46834a6517c73759079d32857154fb1573f
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 5def69b319ad6ba91f82fa1f99e0004b7c861039ce2f9232e56b657836a3752d
+Hashed s into key: 3a1eabac0470f3b73beb373e174e7285f9805acabcbc9890ea230d50c7d9f44e
+
+# ramstake_decaps
+secret key seed: aa6dd1e5799cdf7af9c4fc632b3eb9d51d66e85c8e0a21ec98664fc51ab63c7d
+Recreated public key seed for g: 234729d524a505c50ff91821be53a46834a6517c73759079d32857154fb1573f
+Re-encapsulating ciphertext from transmitted seed.
+seed: fda268813efab5204efa60f78bf81d320d01ac09ac06244f7afbd2d80fd356d9
+
+# ramstake_keygen
+seed: 195d6c86a3df4c21e3007d7f2768b43c74cb3060e0eca77f0a5d3271542b9a84
+seed for generating g: 8c8470639ef2911ead50b4be7ef41e1dc35f340e65a36681ff4b913b89e671f7
+
+# ramstake_encaps
+seed: ae77e0f9f21eabd8c0c6eea7767f4e10fde5c2d79b8400bf96b19014b457ec21
+Recreated g from public key seed: 8c8470639ef2911ead50b4be7ef41e1dc35f340e65a36681ff4b913b89e671f7
+Encoded randomness using repetition of 4 codewords of length 2040
+Hash of seed in ciphertext: 348cbb426f7d4e28bf442977e1c1d9e8be59788bca53995cc101083082cb6f32
+Hashed s into key: e543bb932872c23e90c9172d042f8a85293dd7fd3396a11a17e2c435f89bcf5b
+
+# ramstake_decaps
+secret key seed: 195d6c86a3df4c21e3007d7f2768b43c74cb3060e0eca77f0a5d3271542b9a84
+Recreated public key seed for g: 8c8470639ef2911ead50b4be7ef41e1dc35f340e65a36681ff4b913b89e671f7
+Re-encapsulating ciphertext from transmitted seed.
+seed: ae77e0f9f21eabd8c0c6eea7767f4e10fde5c2d79b8400bf96b19014b457ec21
