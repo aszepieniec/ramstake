@@ -72,6 +72,7 @@ class ReedSolomon:
             else:
                 return L
 
+    # Berlekamp-Massey
     def InterruptedEuclid( self, S, g ):
         t1 = self.Fx(1)
         t2 = self.Fx(0)
@@ -79,7 +80,10 @@ class ReedSolomon:
         r2 = S
         s1 = self.Fx(0)
         s2 = self.Fx(1)
-        while r2.degree() >= t2.degree():
+        # s1 * S + t1 * g = r1
+        # s2 * S + t2 * g = r2
+        #while r2.degree() >= t2.degree():
+        while r2.degree() >= s2.degree():
             quo = r1 // r2
             
             temp = t1
@@ -94,7 +98,8 @@ class ReedSolomon:
             r1 = r2
             r2 = temp - quo * r1
 
-        return (s1, r1)
+        #return (s1, r1)
+        return (s2, r2)
 
     def Syndrome( self, word ):
         s = [0]*(self.delta-1)

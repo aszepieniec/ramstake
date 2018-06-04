@@ -17,6 +17,9 @@ RAMSTAKE_KEYGEN_RANDOM_BYTES = RAMSTAKE_ULONG_LENGTH * (RAMSTAKE_ADDITIVE_MASS +
 RAMSTAKE_CODEWORD_LENGTH = 255
 RAMSTAKE_CODEWORD_NUMBER = 4
 
+def export(a):
+    return "".join(reversed([a[i:i+2] for i in range(0, len(a), 2)]))
+
 class ramstake_public_key:
     def __init__( self ):
         self.c = 0
@@ -154,7 +157,7 @@ def ramstake_encaps( random_seed, pk, kat ):
     string = hex(s)
     if len(string) % 2 == 1:
         string = '0' + string
-    c.e = bytearray(string[0:(2*floor(codec.n/8))].decode("hex"))
+    c.e = bytearray(export(string)[0:(2*floor(codec.n/8))].decode("hex"))
     if kat >= 3:
         print "Drew most significant", floor(codec.n/8), "bytes from s:", hexlify(c.e)
 
@@ -225,7 +228,7 @@ def ramstake_decaps( c, sk, kat ):
     string = hex(s)
     if len(string) % 2 == 1:
         string = '0' + string
-    word = bytearray(string[0:(2*floor(codec.n/8))].decode("hex"))
+    word = bytearray(export(string)[0:(2*floor(codec.n/8))].decode("hex"))
     if kat >= 3:
         print "Drew most significant", floor(codec.n/8), "bytes from s:", hexlify(word)
 
