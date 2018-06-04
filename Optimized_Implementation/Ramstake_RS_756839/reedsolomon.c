@@ -229,7 +229,8 @@ int rs_interrupted_euclidean( gf256x * a, gf256x * b, gf256x x, gf256x y )
     gf256x_zero(&s1);
     gf256x_one(&s2);
 
-    while( r2.degree >= t2.degree )
+    /*while( r2.degree >= t2.degree )*/
+    while( r2.degree >= s2.degree )
     {
         gf256x_divide(&quotient, &remainder, r1, r2);
 
@@ -249,8 +250,10 @@ int rs_interrupted_euclidean( gf256x * a, gf256x * b, gf256x x, gf256x y )
         gf256x_add(&r2, temp, prod);
     }
 
-    gf256x_copy(a, s1);
-    gf256x_copy(b, r1);
+    /*gf256x_copy(a, s1);
+    gf256x_copy(b, r1);*/
+    gf256x_copy(a, s2);
+    gf256x_copy(b, r2);
 
     gf256x_destroy(t1);
     gf256x_destroy(t2);
