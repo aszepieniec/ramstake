@@ -367,7 +367,7 @@ int gf256x_divide( gf256x* quo, gf256x* rem, gf256x num, gf256x divisor )
     }
 
     /* make sure numerator leading coefficient is not zero */
-    if( num.data[num.degree] == 0 )
+    if( num.data[num.degree] == 0 && num.degree>0 )
     {
         poly.data = malloc(num.degree);
         for( i = 0 ; i < num.degree ; ++i )
